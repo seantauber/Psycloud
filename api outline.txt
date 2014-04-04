@@ -1,0 +1,26 @@
+
+
+POST	/participants/register												Register a new participant
+POST	/participants/register/[registration_code]							Register a new participant
+
+GET		/participants/[participant_id]										Retrieve a participant
+
+
+GET		/participants/[participant_id]/stimuli								Retrieve list of stimuli
+GET		/participants/[participant_id]/stimuli/current						Retrieve the current stimulus
+GET		/participants/[participant_id]/stimuli/[stimulus_number]			Retrieve a specific stimulus
+
+PUT		/participants/[participant_id]/stimuli/increment					Increment stimulus index and return next stimulus
+
+
+GET		/participants/[participant_id]/responses							Retrieve list of responses
+GET		/participants/[participant_id]/responses/previous					Retrieve previous response
+GET		/participants/[participant_id]/responses/previous/[n]				Retrieve list of previous [n] responses
+GET		/participants/[participant_id]/responses/[stimulus_id]				Retrieve the response for a specific stimulus
+
+POST	/participants/[participant_id]/responses							Save a list of responses
+POST	/participants/[participant_id]/responses/current					Save a response for the current stimuli
+PUT		/participants/[participant_id]/responses/[stimulus_id]				Update the response for a specific stimulus
+
+GET		/participants/[participant_id]/data									Retrieve list of stimuli and response data
+
