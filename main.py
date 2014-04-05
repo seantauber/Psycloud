@@ -30,8 +30,8 @@ def unauthorized():
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
 # how to upload a Json experiment file:
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/webexperiment/admin/api/v0.1/upload_experiment
-@app.route('/webexperiment/admin/api/upload_experiment',
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/v0.1/upload_experiment
+@app.route('/psycloud/admin/api/upload_experiment',
 	methods=['POST'])
 @auth.login_required
 def upload_experiment():
@@ -43,8 +43,8 @@ def upload_experiment():
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
-# curl -u username:password -XDELETE http://localhost:8080/webexperiment/admin/api/v0.1/experiment/<experiment_id>
-@app.route('/webexperiment/admin/api/experiment/<urlsafe_experiment_id>',
+# curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/v0.1/experiment/<experiment_id>
+@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>',
 	methods=['DELETE'])
 @auth.login_required
 def remove_experiment(urlsafe_experiment_id):
@@ -55,56 +55,56 @@ def remove_experiment(urlsafe_experiment_id):
 		return jsonify({ 'result': 'failed' })
 
 # Create a new experiment
-@app.route('/webexperiment/admin/api/experiment',
+@app.route('/psycloud/admin/api/experiment',
 	methods=['POST'])
 @auth.login_required
 def create_experiment():
 	pass
 
 # Retrieve a list of experiments
-@app.route('/webexperiment/admin/api/experiment',
+@app.route('/psycloud/admin/api/experiment',
 	methods=['GET'])
 @auth.login_required
 def get_experiment_list():
 	pass
 
 # Retrieve an experiment
-@app.route('/webexperiment/admin/api/experiment/<experiment_id>',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>',
 	methods=['GET'])
 @auth.login_required
 def get_experiment(experiment_id):
 	pass
 
 # Modify an experiment
-@app.route('/webexperiment/admin/api/experiment/<experiment_id>',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>',
 	methods=['PUT'])
 @auth.login_required
 def modify_experiment(experiment_id):
 	pass
 
 # Retrieve a list of participants
-@app.route('/webexperiment/admin/api/experiment/<urlsafe_experiment_id>/participants',
+@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants',
 	methods=['GET'])
 @auth.login_required
 def get_participant_list(urlsafe_experiment_id):
 	pass
 
 # Save a list of participants
-@app.route('/webexperiment/admin/api/experiment/<urlsafe_experiment_id>/participants',
+@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants',
 	methods=['POST'])
 @auth.login_required
 def save_participant_list(urlsafe_experiment_id):
 	pass
 
 # Save a participant
-@app.route('/webexperiment/admin/api/experiment/<urlsafe_experiment_id>/participants<participant_id>',
+@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants<participant_id>',
 	methods=['POST'])
 @auth.login_required
 def save_participant(urlsafe_experiment_id, participant_id):
 	pass
 
 # Modify a participant
-@app.route('/webexperiment/admin/api/experiment/<urlsafe_experiment_id>/participants<participant_id>',
+@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants<participant_id>',
 	methods=['PUT'])
 @auth.login_required
 def modify_participant(urlsafe_experiment_id, participant_id):
@@ -118,14 +118,14 @@ def modify_participant(urlsafe_experiment_id, participant_id):
 
 
 # Register a new participant
-@app.route('/webexperiment/api/experiment/<urlsafe_experiment_id>/participants/register',
+@app.route('/psycloud/api/experiment/<urlsafe_experiment_id>/participants/register',
 	methods=['POST'])
 @auth.login_required
 def register_participant(urlsafe_experiment_id):
 	pass
 
 # Register a new participant with registration code
-@app.route('/webexperiment/api/experiment/<urlsafe_experiment_id>/participants/register/<registration_code>',
+@app.route('/psycloud/api/experiment/<urlsafe_experiment_id>/participants/register/<registration_code>',
 	methods=['POST'])
 @auth.login_required
 def register_participant_with_code(urlsafe_experiment_id, registration_code):
