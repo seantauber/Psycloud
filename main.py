@@ -24,9 +24,13 @@ def unauthorized():
     # return 403 instead of 401 to prevent browsers from displaying the default auth dialog
 
 
-####################################################
-# EXPERIMENT ADMINISTRATOR API 
-####################################################
+#######################################################################################
+#######################################################################################
+# 
+# ADMINISTRATOR API 
+# 
+#######################################################################################
+#######################################################################################
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
 # how to upload a Json experiment file:
@@ -34,25 +38,31 @@ def unauthorized():
 @app.route('/psycloud/admin/api/upload_experiment',
 	methods=['POST'])
 @auth.login_required
-def upload_experiment():
+def upload_experiment_data():
 	data = request.get_json()
-	experiment_key = datastore.upload_experiment(data)
-	url_string = experiment_key.urlsafe()
+	experiment_key = datastore.upload_experiment_data(data)
 	response = {'experiment_id': experiment_key.urlsafe()}
 	return jsonify(response)
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
 # curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/experiment/<experiment_id>
-@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>',
 	methods=['DELETE'])
 @auth.login_required
-def remove_experiment(urlsafe_experiment_id):
-	result = datastore.remove_experiment(urlsafe_experiment_id)
+def remove_experiment(experiment_id):
+	result = datastore.remove_experiment(experiment_id)
 	if result:
 		return jsonify({ 'result': 'success' })
 	else:
 		return jsonify({ 'result': 'failed' })
+
+# Retrieve all experiment data
+@app.route('/psycloud/admin/api/experiment/<experiment_id>/data',
+	methods=['GET'])
+@auth.login_required
+def get_experiment_data(experiment_id, participant_id):
+	pass
 
 # Create a new experiment
 @app.route('/psycloud/admin/api/experiment',
@@ -83,82 +93,139 @@ def modify_experiment(experiment_id):
 	pass
 
 # Retrieve a list of participants
-@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants',
 	methods=['GET'])
 @auth.login_required
-def get_participant_list(urlsafe_experiment_id):
+def get_participant_list(experiment_id):
 	pass
 
 # Save a list of participants
-@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants',
 	methods=['POST'])
 @auth.login_required
-def save_participant_list(urlsafe_experiment_id):
+def save_participant_list(experiment_id):
 	pass
 
 # Save a participant
-@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants<participant_id>',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants<participant_id>',
 	methods=['POST'])
 @auth.login_required
-def save_participant(urlsafe_experiment_id, participant_id):
+def save_participant(experiment_id, participant_id):
 	pass
 
 # Modify a participant
-@app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>/participants<participant_id>',
+@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants<participant_id>',
 	methods=['PUT'])
 @auth.login_required
-def modify_participant(urlsafe_experiment_id, participant_id):
+def modify_participant(experiment_id, participant_id):
 	pass
 
 
-
-####################################################
+#######################################################################################
+#######################################################################################
+# 
 # PARTICIPANT API 
-####################################################
-
+# 
+#######################################################################################
+#######################################################################################
 
 # Register a new participant
-@app.route('/psycloud/api/experiment/<urlsafe_experiment_id>/participants/register',
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/register',
 	methods=['POST'])
-@auth.login_required
-def register_participant(urlsafe_experiment_id):
+def register_participant(experiment_id):
+# returns a participant_id
 	pass
 
 # Register a new participant with registration code
-@app.route('/psycloud/api/experiment/<urlsafe_experiment_id>/participants/register/<registration_code>',
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/register/<registration_code>',
 	methods=['POST'])
-@auth.login_required
-def register_participant_with_code(urlsafe_experiment_id, registration_code):
+def register_participant_with_code(experiment_id, registration_code):
+# returns a participant_id
+# registration_code might be a mechanical turk id, for example.
 	pass
 
-# PARTICIPANT API TODO
-# POST		/participants/register												Register a new participant
-# POST		/participants/register/[registration_code]							Register a new participant
+# Retrieve a participant
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>',
+	methods=['GET'])
+def get_participant(experiment_id, participant_id):
+	pass
 
-# GET		/participants/[participant_id]										Retrieve a participant
+# Retrieve a list of stimuli
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli',
+	methods=['GET'])
+def get_stimuli_list(experiment_id, participant_id):
+	pass
+
+# Save a list of stimuli
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli',
+	methods=['POST'])
+def save_stimuli_list(experiment_id, participant_id):
+	pass
+
+# Retrieve the current stimulus
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/current',
+	methods=['GET'])
+def get_current_stimulus(experiment_id, participant_id):
+	pass
+
+# Save the current stimulus
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/current',
+	methods=['POST'])
+def save_current_stimulus(experiment_id, participant_id):
+	pass
+
+# Retrieve a specific stimulus
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/<stimulus_number>',
+	methods=['GET'])
+def get_stimulus_by_number(experiment_id, participant_id, stimulus_number):
+	pass
+
+# Save a specific stimulus
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/<stimulus_number>',
+	methods=['POST'])
+def save_stimulus_by_number(experiment_id, participant_id, stimulus_number):
+	pass
+
+# Increment current stimulus index and retrieve the next stimulus
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/next',
+	methods=['PUT'])
+def increment_and_get_next_stimulus(experiment_id, participant_id):
+	pass
+
+# Retrieve a list of responses
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses',
+	methods=['GET'])
+def get_response_list(experiment_id, participant_id):
+	pass
+
+# Retrieve the previous N responses
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses/previous/<n_previous>',
+	methods=['GET'])
+def get_previous_responses(experiment_id, participant_id, n_previous):
+	pass
+
+# Save a list of responses
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses',
+	methods=['POST'])
+def save_response_list(experiment_id, participant_id):
+	pass
+
+# Save the current response
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses/current',
+	methods=['POST'])
+def save_current_response(experiment_id, participant_id):
+	pass
+
+# Retrieve list of all stimuli and response data
+@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/data',
+	methods=['GET'])
+def get_participant_data(experiment_id, participant_id):
+	pass
 
 
-# GET		/participants/[participant_id]/stimuli								Retrieve list of stimuli
-# GET		/participants/[participant_id]/stimuli/current						Retrieve the current stimulus
-# GET		/participants/[participant_id]/stimuli/[stimulus_number]			Retrieve a specific stimulus
 
-# POST		/participants/[participant_id]/stimuli								Save a list of stimuli
-# POST		/participants/[participant_id]/stimuli/current						Save the current stimulus
-# POST		/participants/[participant_id]/stimuli/[stimulus_number]			Save a specific stimulus
-
-# PUT		/participants/[participant_id]/stimuli/increment					Increment stimulus index and return next stimulus
-
-
-# GET		/participants/[participant_id]/responses							Retrieve list of responses
-# GET		/participants/[participant_id]/responses/previous					Retrieve previous response
-# GET		/participants/[participant_id]/responses/previous/[n]				Retrieve list of previous [n] responses
-# GET		/participants/[participant_id]/responses/[stimulus_id]				Retrieve the response for a specific stimulus
-
-# POST		/participants/[participant_id]/responses							Save a list of responses
-# POST		/participants/[participant_id]/responses/current					Save a response for the current stimuli
-# PUT		/participants/[participant_id]/responses/[stimulus_id]				Update the response for a specific stimulus
-
-# GET		/participants/[participant_id]/data									Retrieve list of stimuli and response data
+#######################################################################################
+#######################################################################################
 
 
 @app.errorhandler(404)

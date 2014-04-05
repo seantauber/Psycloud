@@ -30,7 +30,7 @@ class ExperimentDatastoreGoogleNDB():
 	def __init__(self):
 		pass
 
-	def upload_experiment(self, experiment_data_dict):
+	def upload_experiment_data(self, experiment_data_dict):
 		d = experiment_data_dict
 		experiment = Experiment(
 			experiment_name=d['experiment_id'],
