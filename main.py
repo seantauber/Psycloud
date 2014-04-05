@@ -30,7 +30,7 @@ def unauthorized():
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
 # how to upload a Json experiment file:
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/v0.1/upload_experiment
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/upload_experiment
 @app.route('/psycloud/admin/api/upload_experiment',
 	methods=['POST'])
 @auth.login_required
@@ -43,7 +43,7 @@ def upload_experiment():
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
-# curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/v0.1/experiment/<experiment_id>
+# curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/experiment/<experiment_id>
 @app.route('/psycloud/admin/api/experiment/<urlsafe_experiment_id>',
 	methods=['DELETE'])
 @auth.login_required
