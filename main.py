@@ -20,7 +20,7 @@ def get_password(username):
  
 @auth.error_handler
 def unauthorized():
-    return make_response(jsonify( { 'message': 'Unauthorized access' } ), 403)
+    return make_response(jsonify( { 'status':403, 'message': 'Unauthorized' } ), 403)
     # return 403 instead of 401 to prevent browsers from displaying the default auth dialog
 
 
@@ -34,8 +34,8 @@ def unauthorized():
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
 # how to upload a Json experiment file:
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/upload_experiment
-@app.route('/psycloud/admin/api/upload_experiment',
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/expriments/upload_all_data
+@app.route('/psycloud/admin/api/experiments/upload_all_data',
 	methods=['POST'])
 @auth.login_required
 def upload_experiment_data():
@@ -46,8 +46,8 @@ def upload_experiment_data():
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
-# curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/experiment/<experiment_id>
-@app.route('/psycloud/admin/api/experiment/<experiment_id>',
+# curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>
+@app.route('/psycloud/admin/api/experiments/<experiment_id>',
 	methods=['DELETE'])
 @auth.login_required
 def remove_experiment(experiment_id):
@@ -58,63 +58,63 @@ def remove_experiment(experiment_id):
 		return jsonify({ 'result': 'failed' })
 
 # Retrieve all experiment data
-@app.route('/psycloud/admin/api/experiment/<experiment_id>/data',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/data',
 	methods=['GET'])
 @auth.login_required
 def get_experiment_data(experiment_id, participant_id):
 	pass
 
 # Create a new experiment
-@app.route('/psycloud/admin/api/experiment',
+@app.route('/psycloud/admin/api/experiments',
 	methods=['POST'])
 @auth.login_required
 def create_experiment():
 	pass
 
 # Retrieve a list of experiments
-@app.route('/psycloud/admin/api/experiment',
+@app.route('/psycloud/admin/api/experiments',
 	methods=['GET'])
 @auth.login_required
 def get_experiment_list():
 	pass
 
 # Retrieve an experiment
-@app.route('/psycloud/admin/api/experiment/<experiment_id>',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>',
 	methods=['GET'])
 @auth.login_required
 def get_experiment(experiment_id):
 	pass
 
 # Modify an experiment
-@app.route('/psycloud/admin/api/experiment/<experiment_id>',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>',
 	methods=['PUT'])
 @auth.login_required
 def modify_experiment(experiment_id):
 	pass
 
 # Retrieve a list of participants
-@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/participants',
 	methods=['GET'])
 @auth.login_required
 def get_participant_list(experiment_id):
 	pass
 
 # Save a list of participants
-@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/participants',
 	methods=['POST'])
 @auth.login_required
 def save_participant_list(experiment_id):
 	pass
 
 # Save a participant
-@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants<participant_id>',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/participants/<participant_id>',
 	methods=['POST'])
 @auth.login_required
 def save_participant(experiment_id, participant_id):
 	pass
 
 # Modify a participant
-@app.route('/psycloud/admin/api/experiment/<experiment_id>/participants<participant_id>',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/participants/<participant_id>',
 	methods=['PUT'])
 @auth.login_required
 def modify_participant(experiment_id, participant_id):
@@ -130,14 +130,14 @@ def modify_participant(experiment_id, participant_id):
 #######################################################################################
 
 # Register a new participant
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/register',
+@app.route('/psycloud/api/experiment/<experiment_id>/register',
 	methods=['POST'])
 def register_participant(experiment_id):
 # returns a participant_id
 	pass
 
 # Register a new participant with registration code
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/register/<registration_code>',
+@app.route('/psycloud/api/experiment/<experiment_id>/register/<registration_code>',
 	methods=['POST'])
 def register_participant_with_code(experiment_id, registration_code):
 # returns a participant_id
@@ -145,81 +145,89 @@ def register_participant_with_code(experiment_id, registration_code):
 	pass
 
 # Retrieve a participant
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>',
+@app.route('/psycloud/api/participants/<participant_id>',
 	methods=['GET'])
-def get_participant(experiment_id, participant_id):
-	pass
+def get_participant(participant_id):
+	participant = datastore.get_participant(participant_id)
+	if participant is not None:
+		return valid_request('participant', participant)
+	else:
+		abort(404)
 
 # Retrieve a list of stimuli
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli',
 	methods=['GET'])
-def get_stimuli_list(experiment_id, participant_id):
-	pass
+def get_stimuli_list(participant_id):
+	stimuli_list = datastore.get_stimuli(participant_id)
+	if stimuli_list is not None:
+		return valid_request('stimuli', stimuli_list)
+	else:
+		abort(404)
 
 # Save a list of stimuli
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli',
 	methods=['POST'])
-def save_stimuli_list(experiment_id, participant_id):
+def save_stimuli_list(participant_id):
 	pass
 
 # Retrieve the current stimulus
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/current',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/current',
 	methods=['GET'])
-def get_current_stimulus(experiment_id, participant_id):
+def get_current_stimulus(participant_id):
 	pass
 
 # Save the current stimulus
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/current',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/current',
 	methods=['POST'])
-def save_current_stimulus(experiment_id, participant_id):
+def save_current_stimulus(participant_id):
 	pass
 
 # Retrieve a specific stimulus
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/<stimulus_number>',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/<stimulus_number>',
 	methods=['GET'])
-def get_stimulus_by_number(experiment_id, participant_id, stimulus_number):
+def get_stimulus_by_number(participant_id, stimulus_number):
 	pass
 
 # Save a specific stimulus
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/<stimulus_number>',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/<stimulus_number>',
 	methods=['POST'])
-def save_stimulus_by_number(experiment_id, participant_id, stimulus_number):
+def save_stimulus_by_number(participant_id, stimulus_number):
 	pass
 
 # Increment current stimulus index and retrieve the next stimulus
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/stimuli/next',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/next',
 	methods=['PUT'])
-def increment_and_get_next_stimulus(experiment_id, participant_id):
+def increment_and_get_next_stimulus(participant_id):
 	pass
 
 # Retrieve a list of responses
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses',
+@app.route('/psycloud/api/participants/<participant_id>/responses',
 	methods=['GET'])
-def get_response_list(experiment_id, participant_id):
+def get_response_list(participant_id):
 	pass
 
 # Retrieve the previous N responses
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses/previous/<n_previous>',
+@app.route('/psycloud/api/participants/<participant_id>/responses/previous/<n_previous>',
 	methods=['GET'])
-def get_previous_responses(experiment_id, participant_id, n_previous):
+def get_previous_responses(participant_id, n_previous):
 	pass
 
 # Save a list of responses
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses',
+@app.route('/psycloud/api/participants/<participant_id>/responses',
 	methods=['POST'])
-def save_response_list(experiment_id, participant_id):
+def save_response_list(participant_id):
 	pass
 
 # Save the current response
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/responses/current',
+@app.route('/psycloud/api/participants/<participant_id>/responses/current',
 	methods=['POST'])
-def save_current_response(experiment_id, participant_id):
+def save_current_response(participant_id):
 	pass
 
-# Retrieve list of all stimuli and response data
-@app.route('/psycloud/api/experiment/<experiment_id>/participants/<participant_id>/data',
+# Retrieve list of all stimuli and response data for a participant
+@app.route('/psycloud/api/participants/<participant_id>/data',
 	methods=['GET'])
-def get_participant_data(experiment_id, participant_id):
+def get_participant_data(participant_id):
 	pass
 
 
@@ -227,11 +235,13 @@ def get_participant_data(experiment_id, participant_id):
 #######################################################################################
 #######################################################################################
 
+
+def valid_request(kind_of_data, data):
+	return jsonify({'status':200, 'message':'OK', 'result':{kind_of_data:data}}), 200
 
 @app.errorhandler(404)
 def page_not_found(e):
-    """Return a custom 404 error."""
-    return 'Sorry, Nothing at this URL.', 404
+    return jsonify( {'status':404, 'message':'Not Found'}), 404
 
 
 @app.errorhandler(500)

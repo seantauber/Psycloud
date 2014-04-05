@@ -22,6 +22,7 @@ class Stimuli(ndb.Model):
 	stimuli_type = ndb.StringProperty()
 
 class Response(ndb.Model):
+	stimuli_index = ndb.IntegerProperty()
 	variables = ndb.JsonProperty()
 
 
@@ -79,6 +80,31 @@ class ExperimentDatastoreGoogleNDB():
 		experiment_key = ndb.Key(urlsafe=urlsafe_experiment_id)
 		experiment = experiment_key.get()
 		return experiment
+
+	def get_participant(self, participant_id):
+		try:
+			participant_key = ndb.Key(urlsafe=participant_id)
+		except:
+			return None
+		participant = participant_key.get()
+		if participant is not None:
+			return participant.to_dict()
+		else:
+			return None
+
+	def get_stimuli(self, participant_id):
+		try:
+			participant_key = ndb.Key(urlsafe=participant_id)
+		except:
+			return None
+
+		q = ndb.Query(kind='Stimuli', ancestor=participant_key)
+		
+		stimuli_list = []
+		for stim in q.iter():
+			stimuli_list.append(stim.to_dict())
+		return stimuli_list
+		
 
 
 
