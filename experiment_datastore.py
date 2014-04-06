@@ -136,32 +136,6 @@ class ExperimentDatastoreGoogleNDB():
 		else:
 			return{'status':400, 'e':"no more stimuli"}
 
-	# def save_current_response(self, participant_id, data):
-
-	# 	try:
-	# 		participant_key = ndb.Key(urlsafe=participant_id)
-	# 	except:
-	# 		return None
-
-	# 	valid_response, result = self.validate_response(data)
-	# 	if not valid_response:
-	# 		return result
-
-	# 	participant = participant_key.get()
-	# 	q = Response.query(Response.stimulus_index == participant.current_stimulus, ancestor=participant_key)
-	# 	existing_responses = [r for r in q.iter()]
-	# 	if len(existing_responses) > 0:
-	# 		return{'status':400, 'e':"response already exists."}
-	# 	else:
-	# 		response = Response(parent=participant_key,
-	# 		stimulus_index=participant.current_stimulus,
-	# 		variables=data['variables'])
-	# 	response.put()
-	# 	participant.last_completed_stimulus = participant.current_stimulus
-	# 	participant.put()
-
-	# 	return{'status':200, 'response':response.to_dict()}
-
 	def save_response(self, participant_id, data, current_only=False, stimulus_index=None):
 
 		try:
