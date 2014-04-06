@@ -14,15 +14,16 @@ class Participant(ndb.Model):
 	end_time = ndb.DateTimeProperty()
 	
 	stimuli_count = ndb.IntegerProperty()
-	last_completed_stimuli = ndb.IntegerProperty()
+	last_completed_stimulus = ndb.IntegerProperty()
+	current_stimulus = ndb.IntegerProperty()
 
-class Stimuli(ndb.Model):
-	stimuli_index = ndb.IntegerProperty()
+class Stimulus(ndb.Model):
+	stimulus_index = ndb.IntegerProperty()
 	variables = ndb.JsonProperty()
-	stimuli_type = ndb.StringProperty()
+	stimulus_type = ndb.StringProperty()
 
 class Response(ndb.Model):
-	stimuli_index = ndb.IntegerProperty()
+	stimulus_index = ndb.IntegerProperty()
 	variables = ndb.JsonProperty()
 
 
@@ -47,23 +48,24 @@ class ExperimentDatastoreGoogleNDB():
 				parent=experiment_key,
 				participant_index=p['participant_index'],
 				stimuli_count=p['stimuli_count'],
-				last_completed_stimuli=-1)
+				current_stimulus=0,
+				last_completed_stimulus=None)
 			
 			participant_key = participant.put()
 
 			stimuli_list = p['stimuli']
 			for s in stimuli_list:
-				stimuli = Stimuli(
+				stimulus = Stimulus(
 					parent=participant_key,
-					stimuli_index=s['stimuli_index'],
+					stimulus_index=s['stimulus_index'],
 					variables=s['variables'],
-					stimuli_type=s['html_template'])
+					stimulus_type=s['html_template'])
 
-				stimuli_key = stimuli.put()
+				stimulus_key = stimulus.put()
 
-				response = Response(parent=stimuli_key)
+				# response = Response(parent=stimulus_key)
 
-				response.put()
+				# response.put()
 
 		return experiment_key
 
@@ -92,18 +94,79 @@ class ExperimentDatastoreGoogleNDB():
 		else:
 			return None
 
-	def get_stimuli(self, participant_id):
+	def get_stimuli(self, participant_id, current_only=False, stimulus_number=None):
 		try:
 			participant_key = ndb.Key(urlsafe=participant_id)
 		except:
 			return None
 
-		q = ndb.Query(kind='Stimuli', ancestor=participant_key)
+		if current_only:
+			stimulus_number = participant_key.get().current_stimulus
 		
-		stimuli_list = []
-		for stim in q.iter():
-			stimuli_list.append(stim.to_dict())
+		if stimulus_number is not None:
+			if stimulus_number >= 0 and stimulus_number < participant_key.get().stimuli_count:
+				q = Stimulus.query(Stimulus.stimulus_index == stimulus_number, ancestor=participant_key)
+			else:
+				return None
+		else:
+			q = ndb.Query(kind='Stimulus', ancestor=participant_key)
+
+		stimuli_list = [stimulus.to_dict() for stimulus in q.iter()]
 		return stimuli_list
+
+	def increment_and_get_next_stimulus(self, participant_id):
+		try:
+			participant_key = ndb.Key(urlsafe=participant_id)
+		except:
+			return None
+
+		participant = participant_key.get()
+
+		if participant.current_stimulus < (participant.stimuli_count - 1):
+			participant.current_stimulus += 1
+			participant.put()
+			# if participant.current_stimulus < participant.stimuli_count:
+			q = Stimulus.query(Stimulus.stimulus_index == participant.current_stimulus, ancestor=participant_key)
+			# else:
+				# return None
+			
+			stimuli_list = [stimulus.to_dict() for stimulus in q.iter()]
+			return{'status':200, 'stimuli':stimuli_list}
+		
+		else:
+			return{'status':400, 'e':"no more stimuli"}
+
+	def save_current_response(self, participant_id, data):
+
+		try:
+			participant_key = ndb.Key(urlsafe=participant_id)
+		except:
+			return None
+
+		if not 'variables' in data:
+			return{'status':400, 'e':"response entry must contain a 'variables' field"}
+		if not type(data['variables']) == list:
+			return{'status':400, 'e':"response['variables'] must be a list of variables"}
+		for variable in data['variables']:
+			if not 'name' in variable:
+				return{'status':400, 'e':"variables must contain a 'name' field"}
+			if not 'value' in variable:
+				return{'status':400, 'e':"variables must contain a 'value' field"}
+
+		participant = participant_key.get()
+		q = Response.query(Response.stimulus_index == participant.current_stimulus, ancestor=participant_key)
+		existing_responses = [r for r in q.iter()]
+		if len(existing_responses) > 0:
+			return{'status':400, 'e':"response already exists."}
+		else:
+			response = Response(parent=participant_key,
+			stimulus_index=participant.current_stimulus,
+			variables=data['variables'])
+		response.put()
+		participant.last_completed_stimulus = participant.current_stimulus
+		participant.put()
+
+		return{'status':200, 'response':response.to_dict()}
 		
 
 

@@ -34,15 +34,15 @@ def unauthorized():
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
 # how to upload a Json experiment file:
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/expriments/upload_all_data
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/experiments/upload_all_data
 @app.route('/psycloud/admin/api/experiments/upload_all_data',
 	methods=['POST'])
 @auth.login_required
 def upload_experiment_data():
 	data = request.get_json()
 	experiment_key = datastore.upload_experiment_data(data)
-	response = {'experiment_id': experiment_key.urlsafe()}
-	return jsonify(response)
+	result = {'experiment_id': experiment_key.urlsafe()}
+	return jsonify(result)
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
@@ -174,7 +174,11 @@ def save_stimuli_list(participant_id):
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/current',
 	methods=['GET'])
 def get_current_stimulus(participant_id):
-	pass
+	stimuli_list = datastore.get_stimuli(participant_id, current_only=True)
+	if stimuli_list is not None:
+		return valid_request('stimuli', stimuli_list)
+	else:
+		abort(404)
 
 # Save the current stimulus
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/current',
@@ -183,10 +187,14 @@ def save_current_stimulus(participant_id):
 	pass
 
 # Retrieve a specific stimulus
-@app.route('/psycloud/api/participants/<participant_id>/stimuli/<stimulus_number>',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['GET'])
 def get_stimulus_by_number(participant_id, stimulus_number):
-	pass
+	stimuli_list = datastore.get_stimuli(participant_id, stimulus_number=stimulus_number)
+	if stimuli_list is not None:
+		return valid_request('stimuli', stimuli_list)
+	else:
+		abort(404)
 
 # Save a specific stimulus
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/<stimulus_number>',
@@ -198,7 +206,14 @@ def save_stimulus_by_number(participant_id, stimulus_number):
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/next',
 	methods=['PUT'])
 def increment_and_get_next_stimulus(participant_id):
-	pass
+	result = datastore.increment_and_get_next_stimulus(participant_id)
+	if result is not None:
+		if result['status'] == 200:
+			return valid_request('stimuli', result['stimuli'])
+		elif result['status'] == 400:
+			return bad_request(result['e'])
+	else:
+		abort(404)
 
 # Retrieve a list of responses
 @app.route('/psycloud/api/participants/<participant_id>/responses',
@@ -222,7 +237,15 @@ def save_response_list(participant_id):
 @app.route('/psycloud/api/participants/<participant_id>/responses/current',
 	methods=['POST'])
 def save_current_response(participant_id):
-	pass
+	data = request.get_json()
+	result = datastore.save_current_response(participant_id, data)
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return valid_request('response', result['response'])
+	else:
+		abort(404)
 
 # Retrieve list of all stimuli and response data for a participant
 @app.route('/psycloud/api/participants/<participant_id>/data',
@@ -239,10 +262,12 @@ def get_participant_data(participant_id):
 def valid_request(kind_of_data, data):
 	return jsonify({'status':200, 'message':'OK', 'result':{kind_of_data:data}}), 200
 
+def bad_request(e):
+    return jsonify( {'status':400, 'message':'Bad Request', 'result':e}), 400
+
 @app.errorhandler(404)
 def page_not_found(e):
     return jsonify( {'status':404, 'message':'Not Found'}), 404
-
 
 @app.errorhandler(500)
 def page_not_found(e):

@@ -4,7 +4,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -39,7 +39,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -83,7 +83,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -118,7 +118,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -162,7 +162,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -197,7 +197,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -241,7 +241,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -276,7 +276,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -320,7 +320,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -355,7 +355,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -399,7 +399,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -434,7 +434,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -478,7 +478,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -513,7 +513,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -557,7 +557,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -592,7 +592,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -636,7 +636,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -671,7 +671,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -715,7 +715,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -750,7 +750,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -794,7 +794,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -829,7 +829,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -873,7 +873,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -908,7 +908,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -952,7 +952,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -987,7 +987,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1031,7 +1031,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1066,7 +1066,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1110,7 +1110,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1145,7 +1145,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1189,7 +1189,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1224,7 +1224,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1268,7 +1268,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1303,7 +1303,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1347,7 +1347,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1382,7 +1382,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1426,7 +1426,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1461,7 +1461,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1505,7 +1505,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1540,7 +1540,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1584,7 +1584,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1619,7 +1619,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1663,7 +1663,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1698,7 +1698,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1742,7 +1742,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1777,7 +1777,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1821,7 +1821,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1856,7 +1856,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1900,7 +1900,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1935,7 +1935,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -1979,7 +1979,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2014,7 +2014,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2058,7 +2058,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2093,7 +2093,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2137,7 +2137,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2172,7 +2172,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2216,7 +2216,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2251,7 +2251,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2295,7 +2295,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2330,7 +2330,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2374,7 +2374,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2409,7 +2409,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2453,7 +2453,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2488,7 +2488,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2532,7 +2532,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2567,7 +2567,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2611,7 +2611,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2646,7 +2646,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2690,7 +2690,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2725,7 +2725,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2769,7 +2769,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2804,7 +2804,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2848,7 +2848,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2883,7 +2883,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2927,7 +2927,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -2962,7 +2962,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3006,7 +3006,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3041,7 +3041,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3085,7 +3085,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3120,7 +3120,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3164,7 +3164,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3199,7 +3199,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3243,7 +3243,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3278,7 +3278,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3322,7 +3322,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3357,7 +3357,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3401,7 +3401,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3436,7 +3436,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3480,7 +3480,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3515,7 +3515,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3559,7 +3559,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3594,7 +3594,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3638,7 +3638,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3673,7 +3673,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3717,7 +3717,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3752,7 +3752,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3796,7 +3796,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3831,7 +3831,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3875,7 +3875,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3910,7 +3910,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3954,7 +3954,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -3989,7 +3989,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4033,7 +4033,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4068,7 +4068,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4112,7 +4112,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4147,7 +4147,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4191,7 +4191,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4226,7 +4226,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4270,7 +4270,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4305,7 +4305,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4349,7 +4349,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4384,7 +4384,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4428,7 +4428,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4463,7 +4463,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4507,7 +4507,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4542,7 +4542,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4586,7 +4586,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4621,7 +4621,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4665,7 +4665,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4700,7 +4700,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4744,7 +4744,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4779,7 +4779,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4823,7 +4823,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4858,7 +4858,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4902,7 +4902,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4937,7 +4937,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -4981,7 +4981,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5016,7 +5016,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5060,7 +5060,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5095,7 +5095,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5139,7 +5139,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5174,7 +5174,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5218,7 +5218,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5253,7 +5253,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5297,7 +5297,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5332,7 +5332,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5376,7 +5376,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5411,7 +5411,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5455,7 +5455,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5490,7 +5490,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5534,7 +5534,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5569,7 +5569,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5613,7 +5613,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5648,7 +5648,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5692,7 +5692,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5727,7 +5727,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5771,7 +5771,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5806,7 +5806,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5850,7 +5850,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5885,7 +5885,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5929,7 +5929,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -5964,7 +5964,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6008,7 +6008,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6043,7 +6043,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6087,7 +6087,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6122,7 +6122,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6166,7 +6166,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6201,7 +6201,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6245,7 +6245,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6280,7 +6280,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6324,7 +6324,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6359,7 +6359,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6403,7 +6403,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6438,7 +6438,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6482,7 +6482,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6517,7 +6517,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6561,7 +6561,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6596,7 +6596,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6640,7 +6640,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6675,7 +6675,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6719,7 +6719,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6754,7 +6754,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6798,7 +6798,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6833,7 +6833,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6877,7 +6877,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6912,7 +6912,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6956,7 +6956,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -6991,7 +6991,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7035,7 +7035,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7070,7 +7070,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7114,7 +7114,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7149,7 +7149,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7193,7 +7193,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7228,7 +7228,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7272,7 +7272,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7307,7 +7307,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7351,7 +7351,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7386,7 +7386,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7430,7 +7430,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7465,7 +7465,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7509,7 +7509,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7544,7 +7544,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7588,7 +7588,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7623,7 +7623,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7667,7 +7667,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7702,7 +7702,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7746,7 +7746,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7781,7 +7781,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7825,7 +7825,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7860,7 +7860,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7904,7 +7904,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7939,7 +7939,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -7983,7 +7983,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8018,7 +8018,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8062,7 +8062,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8097,7 +8097,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8141,7 +8141,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8176,7 +8176,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8220,7 +8220,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8255,7 +8255,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8299,7 +8299,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8334,7 +8334,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8378,7 +8378,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8413,7 +8413,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8457,7 +8457,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8492,7 +8492,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8536,7 +8536,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8571,7 +8571,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8615,7 +8615,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8650,7 +8650,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8694,7 +8694,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8729,7 +8729,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8773,7 +8773,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8808,7 +8808,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8852,7 +8852,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8887,7 +8887,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8931,7 +8931,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -8966,7 +8966,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9010,7 +9010,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9045,7 +9045,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9089,7 +9089,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9124,7 +9124,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9168,7 +9168,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9203,7 +9203,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9247,7 +9247,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9282,7 +9282,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9326,7 +9326,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9361,7 +9361,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9405,7 +9405,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9440,7 +9440,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9484,7 +9484,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9519,7 +9519,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9563,7 +9563,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9598,7 +9598,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9642,7 +9642,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9677,7 +9677,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9721,7 +9721,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9756,7 +9756,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9800,7 +9800,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9835,7 +9835,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9879,7 +9879,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9914,7 +9914,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9958,7 +9958,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -9993,7 +9993,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10037,7 +10037,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10072,7 +10072,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10116,7 +10116,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10151,7 +10151,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10195,7 +10195,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10230,7 +10230,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10274,7 +10274,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10309,7 +10309,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10353,7 +10353,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10388,7 +10388,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10432,7 +10432,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10467,7 +10467,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10511,7 +10511,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10546,7 +10546,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10590,7 +10590,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10625,7 +10625,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10669,7 +10669,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10704,7 +10704,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10748,7 +10748,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10783,7 +10783,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10827,7 +10827,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10862,7 +10862,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10906,7 +10906,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10941,7 +10941,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -10985,7 +10985,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11020,7 +11020,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11064,7 +11064,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11099,7 +11099,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11143,7 +11143,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11178,7 +11178,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11222,7 +11222,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11257,7 +11257,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11301,7 +11301,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11336,7 +11336,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11380,7 +11380,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11415,7 +11415,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11459,7 +11459,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11494,7 +11494,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11538,7 +11538,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11573,7 +11573,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11617,7 +11617,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11652,7 +11652,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11696,7 +11696,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11731,7 +11731,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11775,7 +11775,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11810,7 +11810,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11854,7 +11854,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11889,7 +11889,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11933,7 +11933,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -11968,7 +11968,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12012,7 +12012,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12047,7 +12047,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12091,7 +12091,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12126,7 +12126,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12170,7 +12170,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12205,7 +12205,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12249,7 +12249,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12284,7 +12284,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12328,7 +12328,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12363,7 +12363,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12407,7 +12407,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12442,7 +12442,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12486,7 +12486,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12521,7 +12521,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12565,7 +12565,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12600,7 +12600,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12644,7 +12644,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12679,7 +12679,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12723,7 +12723,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12758,7 +12758,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12802,7 +12802,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12837,7 +12837,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12881,7 +12881,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12916,7 +12916,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12960,7 +12960,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -12995,7 +12995,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13039,7 +13039,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13074,7 +13074,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13118,7 +13118,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13153,7 +13153,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13197,7 +13197,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13232,7 +13232,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13276,7 +13276,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13311,7 +13311,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13355,7 +13355,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13390,7 +13390,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13434,7 +13434,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13469,7 +13469,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13513,7 +13513,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13548,7 +13548,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13592,7 +13592,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13627,7 +13627,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13671,7 +13671,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13706,7 +13706,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13750,7 +13750,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13785,7 +13785,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13829,7 +13829,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13864,7 +13864,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13908,7 +13908,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13943,7 +13943,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -13987,7 +13987,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14022,7 +14022,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14066,7 +14066,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14101,7 +14101,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14145,7 +14145,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14180,7 +14180,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14224,7 +14224,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14259,7 +14259,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14303,7 +14303,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14338,7 +14338,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14382,7 +14382,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14417,7 +14417,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14461,7 +14461,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14496,7 +14496,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14540,7 +14540,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14575,7 +14575,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14619,7 +14619,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14654,7 +14654,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14698,7 +14698,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14733,7 +14733,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14777,7 +14777,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14812,7 +14812,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14856,7 +14856,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14891,7 +14891,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14935,7 +14935,7 @@
             "stimuli_count": 2, 
             "stimuli": [
                 {
-                    "stimuli_index": 0, 
+                    "stimulus_index": 0, 
                     "variables": [
                         {
                             "name": "X", 
@@ -14970,7 +14970,7 @@
                     "html_template": "one_item_generalization"
                 }, 
                 {
-                    "stimuli_index": 1, 
+                    "stimulus_index": 1, 
                     "variables": [
                         {
                             "name": "X", 
