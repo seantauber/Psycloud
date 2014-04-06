@@ -197,7 +197,7 @@ def get_stimulus_by_number(participant_id, stimulus_number):
 		abort(404)
 
 # Save a specific stimulus
-@app.route('/psycloud/api/participants/<participant_id>/stimuli/<stimulus_number>',
+@app.route('/psycloud/api/participants/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['POST'])
 def save_stimulus_by_number(participant_id, stimulus_number):
 	pass
@@ -222,7 +222,7 @@ def get_response_list(participant_id):
 	pass
 
 # Retrieve the previous N responses
-@app.route('/psycloud/api/participants/<participant_id>/responses/previous/<n_previous>',
+@app.route('/psycloud/api/participants/<participant_id>/responses/previous/<int:n_previous>',
 	methods=['GET'])
 def get_previous_responses(participant_id, n_previous):
 	pass
@@ -233,12 +233,26 @@ def get_previous_responses(participant_id, n_previous):
 def save_response_list(participant_id):
 	pass
 
+# Save a specific response
+@app.route('/psycloud/api/participants/<participant_id>/responses/<int:stimulus_number>',
+	methods=['POST'])
+def save_response(participant_id, stimulus_number):
+	data = request.get_json()
+	result = datastore.save_response(participant_id, data, stimulus_index=stimulus_number)
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return valid_request('response', result['response'])
+	else:
+		abort(404)
+
 # Save the current response
 @app.route('/psycloud/api/participants/<participant_id>/responses/current',
 	methods=['POST'])
 def save_current_response(participant_id):
 	data = request.get_json()
-	result = datastore.save_current_response(participant_id, data)
+	result = datastore.save_response(participant_id, data, current_only=True)
 	if result is not None:
 		if result['status'] == 400:
 			return bad_request(result['e'])

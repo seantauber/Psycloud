@@ -136,37 +136,77 @@ class ExperimentDatastoreGoogleNDB():
 		else:
 			return{'status':400, 'e':"no more stimuli"}
 
-	def save_current_response(self, participant_id, data):
+	# def save_current_response(self, participant_id, data):
+
+	# 	try:
+	# 		participant_key = ndb.Key(urlsafe=participant_id)
+	# 	except:
+	# 		return None
+
+	# 	valid_response, result = self.validate_response(data)
+	# 	if not valid_response:
+	# 		return result
+
+	# 	participant = participant_key.get()
+	# 	q = Response.query(Response.stimulus_index == participant.current_stimulus, ancestor=participant_key)
+	# 	existing_responses = [r for r in q.iter()]
+	# 	if len(existing_responses) > 0:
+	# 		return{'status':400, 'e':"response already exists."}
+	# 	else:
+	# 		response = Response(parent=participant_key,
+	# 		stimulus_index=participant.current_stimulus,
+	# 		variables=data['variables'])
+	# 	response.put()
+	# 	participant.last_completed_stimulus = participant.current_stimulus
+	# 	participant.put()
+
+	# 	return{'status':200, 'response':response.to_dict()}
+
+	def save_response(self, participant_id, data, current_only=False, stimulus_index=None):
 
 		try:
 			participant_key = ndb.Key(urlsafe=participant_id)
 		except:
 			return None
 
-		if not 'variables' in data:
-			return{'status':400, 'e':"response entry must contain a 'variables' field"}
-		if not type(data['variables']) == list:
-			return{'status':400, 'e':"response['variables'] must be a list of variables"}
-		for variable in data['variables']:
-			if not 'name' in variable:
-				return{'status':400, 'e':"variables must contain a 'name' field"}
-			if not 'value' in variable:
-				return{'status':400, 'e':"variables must contain a 'value' field"}
+		valid_response, result = self.validate_response(data)
+		if not valid_response:
+			return result
 
 		participant = participant_key.get()
-		q = Response.query(Response.stimulus_index == participant.current_stimulus, ancestor=participant_key)
+		if current_only:
+			stimulus_index = participant.current_stimulus
+		elif not stimulus_index < participant.stimuli_count:
+				return {'status':400, 'e':"stimulus_index %s is out of bounds. Participant has %s stimuli."%(stimulus_index,participant.stimuli_count)}
+
+		q = Response.query(Response.stimulus_index == stimulus_index, ancestor=participant_key)
 		existing_responses = [r for r in q.iter()]
 		if len(existing_responses) > 0:
 			return{'status':400, 'e':"response already exists."}
 		else:
 			response = Response(parent=participant_key,
-			stimulus_index=participant.current_stimulus,
+			stimulus_index=stimulus_index,
 			variables=data['variables'])
 		response.put()
 		participant.last_completed_stimulus = participant.current_stimulus
 		participant.put()
 
 		return{'status':200, 'response':response.to_dict()}
+
+	def validate_response_list(self, data):
+		pass
+
+	def validate_response(self, data):
+		if not 'variables' in data:
+			return False, {'status':400, 'e':"response entry must contain a 'variables' field"}
+		if not type(data['variables']) == list:
+			return False, {'status':400, 'e':"response['variables'] must be a list of variables"}
+		for variable in data['variables']:
+			if not 'name' in variable:
+				return False, {'status':400, 'e':"variables must contain a 'name' field"}
+			if not 'value' in variable:
+				return False, {'status':400, 'e':"variables must contain a 'value' field"}
+		return True, None
 		
 
 
