@@ -1,4 +1,5 @@
 from google.appengine.ext import ndb
+from datetime import datetime
 
 class Experiment(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
@@ -17,6 +18,8 @@ class Participant(ndb.Model):
 	end_time = ndb.DateTimeProperty()	
 	stimuli_count = ndb.IntegerProperty()
 	current_stimulus = ndb.IntegerProperty()
+	registration_code = ndb.JsonProperty()
+	details = ndb.JsonProperty()
 
 class Stimulus(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
@@ -40,7 +43,7 @@ class ExperimentDatastoreGoogleNDB():
 		experiment = Experiment(
 			experiment_name=d['experiment_id'],
 			num_participants=d['num_participants'],
-			available_participants=range(d['num_participants']),
+			available_participants=range(d['num_participants'])[::-1],
 			active_participants=[],
 			completed_participants=[],
 			stalled_participants=[])
@@ -101,6 +104,40 @@ class ExperimentDatastoreGoogleNDB():
 				return None
 		return experiment_list
 
+
+	def register(self, experiment_id):
+		try:
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+			experiment = experiment_key.get()
+		except:
+			return None
+		try:
+			particpant_index = experiment.available_participants.pop()
+			experiment.put()
+		except IndexError:
+			return {'status':400, 'e':"No available participants"}
+
+		try:
+			q = Participant.query(Participant.participant_index==particpant_index, ancestor=experiment_key).fetch()
+			participant = q[0]
+			# participant = participant_key.get()
+
+			participant.status = 'ACTIVE'
+			participant.start_time = datetime.now()
+			participant.put()
+			
+			p = participant.to_dict()
+			p.update({'id':participant.key.urlsafe()})
+		except:
+			# Something went wrong. Undo participant activation
+			experiment.available_participants.append(particpant_index)
+			experiment.put()
+			return {'status':400, 'e':"Unable to activate participant"}
+
+		experiment.active_participants.append(particpant_index)
+		experiment.put()
+
+		return {'status':200, 'participant':p}
 
 
 	def get_participant(self, participant_id):

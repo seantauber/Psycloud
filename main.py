@@ -137,11 +137,19 @@ def modify_participant(experiment_id, participant_id):
 #######################################################################################
 
 # Register a new participant
+# curl -XPOST http://localhost:8080/psycloud/api/experiment/<experiment_id>/register
 @app.route('/psycloud/api/experiment/<experiment_id>/register',
 	methods=['POST'])
 def register_participant(experiment_id):
 # returns a participant_id
-	pass
+	result = datastore.register(experiment_id)
+	if result is not None:
+		if result['status'] == 200:
+			return valid_request('participant', result['participant'])
+		elif result['status'] == 400:
+			return bad_request(result['e'])
+	else:
+		abort(404)
 
 # Register a new participant with registration code
 @app.route('/psycloud/api/experiment/<experiment_id>/register/<registration_code>',
