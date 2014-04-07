@@ -1,28 +1,31 @@
 from google.appengine.ext import ndb
 
 class Experiment(ndb.Model):
-	experiment_name = ndb.StringProperty()
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
+	experiment_name = ndb.StringProperty()
 	num_participants = ndb.IntegerProperty()
-	num_participants_active = ndb.IntegerProperty()
-	num_participants_completed = ndb.IntegerProperty()
+	available_participants = ndb.JsonProperty()
+	active_participants = ndb.JsonProperty()
+	completed_participants = ndb.JsonProperty()
+	stalled_participants = ndb.JsonProperty()
 
 class Participant(ndb.Model):
+	creation_time = ndb.DateTimeProperty(auto_now_add=True)
 	participant_index = ndb.IntegerProperty()
 	status = ndb.StringProperty()
 	start_time = ndb.DateTimeProperty()
-	end_time = ndb.DateTimeProperty()
-	
+	end_time = ndb.DateTimeProperty()	
 	stimuli_count = ndb.IntegerProperty()
-	last_completed_stimulus = ndb.IntegerProperty()
 	current_stimulus = ndb.IntegerProperty()
 
 class Stimulus(ndb.Model):
+	creation_time = ndb.DateTimeProperty(auto_now_add=True)
 	stimulus_index = ndb.IntegerProperty()
 	variables = ndb.JsonProperty()
 	stimulus_type = ndb.StringProperty()
 
 class Response(ndb.Model):
+	creation_time = ndb.DateTimeProperty(auto_now_add=True)
 	stimulus_index = ndb.IntegerProperty()
 	variables = ndb.JsonProperty()
 
@@ -37,8 +40,10 @@ class ExperimentDatastoreGoogleNDB():
 		experiment = Experiment(
 			experiment_name=d['experiment_id'],
 			num_participants=d['num_participants'],
-			num_participants_active=0,
-			num_participants_completed=0)
+			available_participants=range(d['num_participants']),
+			active_participants=[],
+			completed_participants=[],
+			stalled_participants=[])
 		
 		experiment_key = experiment.put()
 
@@ -49,7 +54,7 @@ class ExperimentDatastoreGoogleNDB():
 				participant_index=p['participant_index'],
 				stimuli_count=p['stimuli_count'],
 				current_stimulus=0,
-				last_completed_stimulus=None)
+				status='AVAILABLE')
 			
 			participant_key = participant.put()
 
@@ -82,6 +87,14 @@ class ExperimentDatastoreGoogleNDB():
 		experiment_key = ndb.Key(urlsafe=urlsafe_experiment_id)
 		experiment = experiment_key.get()
 		return experiment
+
+	def get_experiments(self):
+		q = ndb.Query(kind='Experiment')
+		experiment_list = [dict( {'id':i.key.urlsafe()}.items() + i.to_dict().items() ) for i in q.iter()]
+		# experiment_list = [experiment.to_dict() for experiment in q.iter()]
+		return experiment_list
+
+
 
 	def get_participant(self, participant_id):
 		try:

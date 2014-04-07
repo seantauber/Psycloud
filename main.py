@@ -76,7 +76,8 @@ def create_experiment():
 	methods=['GET'])
 @auth.login_required
 def get_experiment_list():
-	pass
+	experiment_list = datastore.get_experiments()
+	return valid_request('experiments', experiment_list)
 
 # Retrieve an experiment
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
