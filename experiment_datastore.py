@@ -88,10 +88,17 @@ class ExperimentDatastoreGoogleNDB():
 		experiment = experiment_key.get()
 		return experiment
 
-	def get_experiments(self):
-		q = ndb.Query(kind='Experiment')
-		experiment_list = [dict( {'id':i.key.urlsafe()}.items() + i.to_dict().items() ) for i in q.iter()]
-		# experiment_list = [experiment.to_dict() for experiment in q.iter()]
+	def get_experiments(self, experiment_id=None):
+		if experiment_id is None:
+			q = ndb.Query(kind='Experiment')
+			experiment_list = [dict( {'id':i.key.urlsafe()}.items() + i.to_dict().items() ) for i in q.iter()]
+		else:
+			try:
+				experiment_key = ndb.Key(urlsafe=experiment_id)
+				experiment = experiment_key.get()
+				experiment_list = [ experiment.to_dict() ]
+			except:
+				return None
 		return experiment_list
 
 

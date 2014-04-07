@@ -72,6 +72,7 @@ def create_experiment():
 	pass
 
 # Retrieve a list of experiments
+# curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments
 @app.route('/psycloud/admin/api/experiments',
 	methods=['GET'])
 @auth.login_required
@@ -80,11 +81,16 @@ def get_experiment_list():
 	return valid_request('experiments', experiment_list)
 
 # Retrieve an experiment
+# curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
 	methods=['GET'])
 @auth.login_required
 def get_experiment(experiment_id):
-	pass
+	experiment_list = datastore.get_experiments(experiment_id=experiment_id)
+	if experiment_list is not None:
+		return valid_request('experiments', experiment_list)
+	else:
+		abort(404)
 
 # Modify an experiment
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
