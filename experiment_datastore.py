@@ -105,12 +105,18 @@ class ExperimentDatastoreGoogleNDB():
 		return experiment_list
 
 
-	def register(self, experiment_id):
+	def register(self, experiment_id, registration_code=None):
 		try:
 			experiment_key = ndb.Key(urlsafe=experiment_id)
 			experiment = experiment_key.get()
 		except:
 			return None
+
+		if registration_code is not None:
+			q = Participant.query(Participant.registration_code==registration_code, ancestor=experiment_key).fetch()
+			if len(q) != 0:
+				return {'status':400, 'e':"Duplicate registration code"}
+
 		try:
 			particpant_index = experiment.available_participants.pop()
 			experiment.put()
@@ -124,6 +130,8 @@ class ExperimentDatastoreGoogleNDB():
 
 			participant.status = 'ACTIVE'
 			participant.start_time = datetime.now()
+			if registration_code is not None:
+				participant.registration_code = registration_code
 			participant.put()
 			
 			p = participant.to_dict()

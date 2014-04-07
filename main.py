@@ -157,7 +157,14 @@ def register_participant(experiment_id):
 def register_participant_with_code(experiment_id, registration_code):
 # returns a participant_id
 # registration_code might be a mechanical turk id, for example.
-	pass
+	result = datastore.register(experiment_id, registration_code=registration_code)
+	if result is not None:
+		if result['status'] == 200:
+			return valid_request('participant', result['participant'])
+		elif result['status'] == 400:
+			return bad_request(result['e'])
+	else:
+		abort(404)
 
 # Retrieve a participant
 @app.route('/psycloud/api/participants/<participant_id>',
