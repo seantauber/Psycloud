@@ -11,17 +11,7 @@ app = Flask(__name__, static_url_path = "")
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 auth = HTTPBasicAuth()
- 
-@auth.get_password
-def get_password(username):
-    if username == 'username':
-        return 'password'
-    return None
- 
-@auth.error_handler
-def unauthorized():
-    return make_response(jsonify( { 'status':403, 'message': 'Unauthorized' } ), 403)
-    # return 403 instead of 401 to prevent browsers from displaying the default auth dialog
+
 
 
 #######################################################################################
@@ -179,6 +169,7 @@ def register_participant(experiment_id):
 		abort(404)
 
 # Register a new participant with registration coupon
+# curl -XPOST http://localhost:8080/psycloud/api/experiment/<experiment_id>/register/<registration_coupon>
 @app.route('/psycloud/api/experiment/<experiment_id>/register/<registration_coupon>',
 	methods=['POST'])
 def register_participant_with_coupon(experiment_id, registration_coupon):
@@ -194,6 +185,7 @@ def register_participant_with_coupon(experiment_id, registration_coupon):
 		abort(404)
 
 # Retrieve a participant
+# curl -XGET http://localhost:8080/psycloud/api/participants/<participant_id>
 @app.route('/psycloud/api/participants/<participant_id>',
 	methods=['GET'])
 def get_participant(participant_id):
@@ -204,6 +196,7 @@ def get_participant(participant_id):
 		abort(404)
 
 # Retrieve a list of stimuli
+# curl -XGET http://localhost:8080/psycloud/api/participants/<participant_id>/stimuli
 @app.route('/psycloud/api/participants/<participant_id>/stimuli',
 	methods=['GET'])
 def get_stimuli_list(participant_id):
@@ -220,6 +213,7 @@ def save_stimuli_list(participant_id):
 	pass
 
 # Retrieve the current stimulus
+# curl -XGET http://localhost:8080/psycloud/api/participants/<participant_id>/stimuli/current
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/current',
 	methods=['GET'])
 def get_current_stimulus(participant_id):
@@ -236,6 +230,7 @@ def save_current_stimulus(participant_id):
 	pass
 
 # Retrieve a specific stimulus
+# curl -XGET http://localhost:8080/psycloud/api/participants/<participant_id>/stimuli/<stimulus_number>
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['GET'])
 def get_stimulus_by_number(participant_id, stimulus_number):
@@ -252,6 +247,7 @@ def save_stimulus_by_number(participant_id, stimulus_number):
 	pass
 
 # Increment current stimulus index and retrieve the next stimulus
+# curl -XPUT http://localhost:8080/psycloud/api/participants/<participant_id>/stimuli/next
 @app.route('/psycloud/api/participants/<participant_id>/stimuli/next',
 	methods=['PUT'])
 def increment_and_get_next_stimulus(participant_id):
@@ -283,6 +279,7 @@ def save_response_list(participant_id):
 	pass
 
 # Save a specific response
+# curl -XPOST http://localhost:8080/psycloud/api/participants/<participant_id>/response/<stimulus_number>
 @app.route('/psycloud/api/participants/<participant_id>/responses/<int:stimulus_number>',
 	methods=['POST'])
 def save_response(participant_id, stimulus_number):
@@ -297,6 +294,7 @@ def save_response(participant_id, stimulus_number):
 		abort(404)
 
 # Save the current response
+# curl -XPOST http://localhost:8080/psycloud/api/participants/<participant_id>/response/current
 @app.route('/psycloud/api/participants/<participant_id>/responses/current',
 	methods=['POST'])
 def save_current_response(participant_id):
@@ -321,6 +319,17 @@ def get_participant_data(participant_id):
 #######################################################################################
 #######################################################################################
 
+
+@auth.get_password
+def get_password(username):
+    if username == 'username':
+        return 'password'
+    return None
+ 
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify( { 'status':403, 'message': 'Unauthorized' } ), 403)
+    # return 403 instead of 401 to prevent browsers from displaying the default auth dialog
 
 def valid_request(kind_of_data, data):
 	return jsonify({'status':200, 'message':'OK', 'result':{kind_of_data:data}}), 200
