@@ -36,7 +36,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -74,7 +74,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 113
@@ -115,7 +115,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -153,7 +153,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 47
@@ -194,7 +194,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -232,7 +232,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 79
@@ -273,7 +273,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -311,7 +311,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 80
@@ -352,7 +352,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -390,7 +390,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 9
@@ -431,7 +431,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -469,7 +469,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 186
@@ -510,7 +510,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -548,7 +548,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 32
@@ -589,7 +589,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -627,7 +627,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 109
@@ -668,7 +668,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -706,7 +706,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 135
@@ -747,7 +747,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -785,7 +785,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 14
@@ -826,7 +826,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -864,7 +864,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 156
@@ -905,7 +905,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -943,7 +943,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 172
@@ -984,7 +984,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1022,7 +1022,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 139
@@ -1063,7 +1063,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1101,7 +1101,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 86
@@ -1142,7 +1142,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1180,7 +1180,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 147
@@ -1221,7 +1221,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1259,7 +1259,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 165
@@ -1300,7 +1300,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1338,7 +1338,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 88
@@ -1379,7 +1379,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1417,7 +1417,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 51
@@ -1458,7 +1458,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1496,7 +1496,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 13
@@ -1537,7 +1537,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1575,7 +1575,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 67
@@ -1616,7 +1616,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1654,7 +1654,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 178
@@ -1695,7 +1695,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1733,7 +1733,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 48
@@ -1774,7 +1774,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1812,7 +1812,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 119
@@ -1853,7 +1853,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1891,7 +1891,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 22
@@ -1932,7 +1932,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -1970,7 +1970,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 137
@@ -2011,7 +2011,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2049,7 +2049,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 120
@@ -2090,7 +2090,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2128,7 +2128,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 69
@@ -2169,7 +2169,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2207,7 +2207,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 8
@@ -2248,7 +2248,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2286,7 +2286,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 154
@@ -2327,7 +2327,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2365,7 +2365,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 94
@@ -2406,7 +2406,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2444,7 +2444,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 115
@@ -2485,7 +2485,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2523,7 +2523,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 70
@@ -2564,7 +2564,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2602,7 +2602,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 10
@@ -2643,7 +2643,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2681,7 +2681,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 3
@@ -2722,7 +2722,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2760,7 +2760,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 168
@@ -2801,7 +2801,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2839,7 +2839,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 160
@@ -2880,7 +2880,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2918,7 +2918,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 26
@@ -2959,7 +2959,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -2997,7 +2997,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 20
@@ -3038,7 +3038,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3076,7 +3076,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 102
@@ -3117,7 +3117,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3155,7 +3155,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 134
@@ -3196,7 +3196,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3234,7 +3234,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 64
@@ -3275,7 +3275,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3313,7 +3313,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 78
@@ -3354,7 +3354,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3392,7 +3392,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 167
@@ -3433,7 +3433,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3471,7 +3471,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 52
@@ -3512,7 +3512,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3550,7 +3550,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 145
@@ -3591,7 +3591,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3629,7 +3629,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 130
@@ -3670,7 +3670,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3708,7 +3708,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 46
@@ -3749,7 +3749,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3787,7 +3787,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 107
@@ -3828,7 +3828,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3866,7 +3866,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 95
@@ -3907,7 +3907,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -3945,7 +3945,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 61
@@ -3986,7 +3986,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4024,7 +4024,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 142
@@ -4065,7 +4065,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4103,7 +4103,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 106
@@ -4144,7 +4144,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4182,7 +4182,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 30
@@ -4223,7 +4223,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4261,7 +4261,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 87
@@ -4302,7 +4302,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4340,7 +4340,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 182
@@ -4381,7 +4381,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4419,7 +4419,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 127
@@ -4460,7 +4460,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4498,7 +4498,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 19
@@ -4539,7 +4539,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4577,7 +4577,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 116
@@ -4618,7 +4618,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4656,7 +4656,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 37
@@ -4697,7 +4697,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4735,7 +4735,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 7
@@ -4776,7 +4776,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4814,7 +4814,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 66
@@ -4855,7 +4855,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4893,7 +4893,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 18
@@ -4934,7 +4934,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -4972,7 +4972,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 77
@@ -5013,7 +5013,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5051,7 +5051,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 133
@@ -5092,7 +5092,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5130,7 +5130,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 176
@@ -5171,7 +5171,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5209,7 +5209,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 57
@@ -5250,7 +5250,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5288,7 +5288,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 55
@@ -5329,7 +5329,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5367,7 +5367,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 41
@@ -5408,7 +5408,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5446,7 +5446,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 125
@@ -5487,7 +5487,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5525,7 +5525,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 99
@@ -5566,7 +5566,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5604,7 +5604,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 40
@@ -5645,7 +5645,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5683,7 +5683,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 28
@@ -5724,7 +5724,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5762,7 +5762,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 53
@@ -5803,7 +5803,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5841,7 +5841,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 153
@@ -5882,7 +5882,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5920,7 +5920,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 152
@@ -5961,7 +5961,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -5999,7 +5999,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 63
@@ -6040,7 +6040,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6078,7 +6078,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 0
@@ -6119,7 +6119,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6157,7 +6157,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 189
@@ -6198,7 +6198,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6236,7 +6236,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 146
@@ -6277,7 +6277,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6315,7 +6315,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 29
@@ -6356,7 +6356,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6394,7 +6394,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 162
@@ -6435,7 +6435,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6473,7 +6473,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 171
@@ -6514,7 +6514,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6552,7 +6552,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 150
@@ -6593,7 +6593,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6631,7 +6631,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 174
@@ -6672,7 +6672,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6710,7 +6710,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 175
@@ -6751,7 +6751,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6789,7 +6789,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 54
@@ -6830,7 +6830,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6868,7 +6868,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 81
@@ -6909,7 +6909,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -6947,7 +6947,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 144
@@ -6988,7 +6988,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7026,7 +7026,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 82
@@ -7067,7 +7067,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7105,7 +7105,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 97
@@ -7146,7 +7146,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7184,7 +7184,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 187
@@ -7225,7 +7225,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7263,7 +7263,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 124
@@ -7304,7 +7304,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7342,7 +7342,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 111
@@ -7383,7 +7383,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7421,7 +7421,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 65
@@ -7462,7 +7462,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7500,7 +7500,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 76
@@ -7541,7 +7541,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7579,7 +7579,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 170
@@ -7620,7 +7620,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7658,7 +7658,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 59
@@ -7699,7 +7699,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7737,7 +7737,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 60
@@ -7778,7 +7778,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7816,7 +7816,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 74
@@ -7857,7 +7857,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7895,7 +7895,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 149
@@ -7936,7 +7936,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -7974,7 +7974,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 4
@@ -8015,7 +8015,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8053,7 +8053,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 181
@@ -8094,7 +8094,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8132,7 +8132,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 166
@@ -8173,7 +8173,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8211,7 +8211,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 140
@@ -8252,7 +8252,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8290,7 +8290,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 96
@@ -8331,7 +8331,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8369,7 +8369,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 123
@@ -8410,7 +8410,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8448,7 +8448,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 161
@@ -8489,7 +8489,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8527,7 +8527,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 129
@@ -8568,7 +8568,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8606,7 +8606,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 2
@@ -8647,7 +8647,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8685,7 +8685,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 89
@@ -8726,7 +8726,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8764,7 +8764,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 68
@@ -8805,7 +8805,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8843,7 +8843,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 114
@@ -8884,7 +8884,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -8922,7 +8922,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 110
@@ -8963,7 +8963,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9001,7 +9001,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 126
@@ -9042,7 +9042,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9080,7 +9080,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 21
@@ -9121,7 +9121,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9159,7 +9159,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 73
@@ -9200,7 +9200,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9238,7 +9238,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 44
@@ -9279,7 +9279,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9317,7 +9317,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 169
@@ -9358,7 +9358,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9396,7 +9396,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 34
@@ -9437,7 +9437,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9475,7 +9475,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 72
@@ -9516,7 +9516,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9554,7 +9554,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 188
@@ -9595,7 +9595,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9633,7 +9633,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 85
@@ -9674,7 +9674,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9712,7 +9712,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 100
@@ -9753,7 +9753,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9791,7 +9791,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 157
@@ -9832,7 +9832,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9870,7 +9870,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 141
@@ -9911,7 +9911,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -9949,7 +9949,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 27
@@ -9990,7 +9990,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10028,7 +10028,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 104
@@ -10069,7 +10069,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10107,7 +10107,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 90
@@ -10148,7 +10148,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10186,7 +10186,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 11
@@ -10227,7 +10227,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10265,7 +10265,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 49
@@ -10306,7 +10306,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10344,7 +10344,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 118
@@ -10385,7 +10385,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10423,7 +10423,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 143
@@ -10464,7 +10464,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10502,7 +10502,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 1
@@ -10543,7 +10543,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10581,7 +10581,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 180
@@ -10622,7 +10622,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10660,7 +10660,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 138
@@ -10701,7 +10701,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10739,7 +10739,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 91
@@ -10780,7 +10780,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10818,7 +10818,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 98
@@ -10859,7 +10859,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10897,7 +10897,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 121
@@ -10938,7 +10938,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -10976,7 +10976,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 173
@@ -11017,7 +11017,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11055,7 +11055,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 38
@@ -11096,7 +11096,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11134,7 +11134,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 177
@@ -11175,7 +11175,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11213,7 +11213,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 84
@@ -11254,7 +11254,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11292,7 +11292,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 24
@@ -11333,7 +11333,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11371,7 +11371,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 31
@@ -11412,7 +11412,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11450,7 +11450,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 12
@@ -11491,7 +11491,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11529,7 +11529,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 45
@@ -11570,7 +11570,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11608,7 +11608,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 128
@@ -11649,7 +11649,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11687,7 +11687,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 39
@@ -11728,7 +11728,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11766,7 +11766,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 108
@@ -11807,7 +11807,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11845,7 +11845,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 36
@@ -11886,7 +11886,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -11924,7 +11924,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 112
@@ -11965,7 +11965,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12003,7 +12003,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 185
@@ -12044,7 +12044,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12082,7 +12082,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 35
@@ -12123,7 +12123,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12161,7 +12161,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 184
@@ -12202,7 +12202,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12240,7 +12240,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 33
@@ -12281,7 +12281,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12319,7 +12319,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 17
@@ -12360,7 +12360,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12398,7 +12398,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 50
@@ -12439,7 +12439,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12477,7 +12477,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 92
@@ -12518,7 +12518,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12556,7 +12556,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 83
@@ -12597,7 +12597,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12635,7 +12635,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 136
@@ -12676,7 +12676,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12714,7 +12714,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 164
@@ -12755,7 +12755,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12793,7 +12793,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 15
@@ -12834,7 +12834,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12872,7 +12872,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 42
@@ -12913,7 +12913,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -12951,7 +12951,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 148
@@ -12992,7 +12992,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13030,7 +13030,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 62
@@ -13071,7 +13071,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13109,7 +13109,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 93
@@ -13150,7 +13150,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13188,7 +13188,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 132
@@ -13229,7 +13229,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13267,7 +13267,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 58
@@ -13308,7 +13308,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13346,7 +13346,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 43
@@ -13387,7 +13387,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13425,7 +13425,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 105
@@ -13466,7 +13466,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13504,7 +13504,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 151
@@ -13545,7 +13545,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13583,7 +13583,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 158
@@ -13624,7 +13624,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13662,7 +13662,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 23
@@ -13703,7 +13703,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13741,7 +13741,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 5
@@ -13782,7 +13782,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13820,7 +13820,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 101
@@ -13861,7 +13861,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13899,7 +13899,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 122
@@ -13940,7 +13940,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -13978,7 +13978,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 6
@@ -14019,7 +14019,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14057,7 +14057,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 103
@@ -14098,7 +14098,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14136,7 +14136,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 25
@@ -14177,7 +14177,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14215,7 +14215,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 75
@@ -14256,7 +14256,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14294,7 +14294,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 131
@@ -14335,7 +14335,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14373,7 +14373,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 163
@@ -14414,7 +14414,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14452,7 +14452,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 117
@@ -14493,7 +14493,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14531,7 +14531,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 71
@@ -14572,7 +14572,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14610,7 +14610,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 56
@@ -14651,7 +14651,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14689,7 +14689,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 179
@@ -14730,7 +14730,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14768,7 +14768,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 155
@@ -14809,7 +14809,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14847,7 +14847,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 159
@@ -14888,7 +14888,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -14926,7 +14926,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 16
@@ -14967,7 +14967,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "one_item_generalization"
+                    "stimulus_type": "one_item_generalization"
                 }, 
                 {
                     "stimulus_index": 1, 
@@ -15005,7 +15005,7 @@
                             ]
                         }
                     ], 
-                    "html_template": "two_item_generalization"
+                    "stimulus_type": "two_item_generalization"
                 }
             ], 
             "participant_index": 183

@@ -67,7 +67,7 @@ class ExperimentDatastoreGoogleNDB():
 					parent=participant_key,
 					stimulus_index=s['stimulus_index'],
 					variables=s['variables'],
-					stimulus_type=s['html_template'])
+					stimulus_type=s['stimulus_type'])
 
 				stimulus_key = stimulus.put()
 
