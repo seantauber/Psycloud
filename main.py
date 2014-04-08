@@ -127,6 +127,33 @@ def save_participant(experiment_id, participant_id):
 def modify_participant(experiment_id, participant_id):
 	pass
 
+# Save coupons
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @reg_coupons.json http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/coupons',
+	methods=['POST'])
+@auth.login_required
+def save_coupons(experiment_id):
+	data = request.get_json()
+	result = datastore.save_coupons(experiment_id, data)
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return valid_request('coupons', result['result'])
+	else:
+		abort(404)
+
+# Retrieve coupons
+# curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/coupons',
+	methods=['GET'])
+@auth.login_required
+def get_coupons(experiment_id):
+	coupon_list = datastore.get_coupons(experiment_id)
+	if coupon_list is not None:
+		return valid_request('coupons', coupon_list)
+	else:
+		abort(404)
 
 #######################################################################################
 #######################################################################################
@@ -151,13 +178,13 @@ def register_participant(experiment_id):
 	else:
 		abort(404)
 
-# Register a new participant with registration code
-@app.route('/psycloud/api/experiment/<experiment_id>/register/<registration_code>',
+# Register a new participant with registration coupon
+@app.route('/psycloud/api/experiment/<experiment_id>/register/<registration_coupon>',
 	methods=['POST'])
-def register_participant_with_code(experiment_id, registration_code):
+def register_participant_with_coupon(experiment_id, registration_coupon):
 # returns a participant_id
 # registration_code might be a mechanical turk id, for example.
-	result = datastore.register(experiment_id, registration_code=registration_code)
+	result = datastore.register(experiment_id, registration_coupon=registration_coupon)
 	if result is not None:
 		if result['status'] == 200:
 			return valid_request('participant', result['participant'])

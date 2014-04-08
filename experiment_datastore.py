@@ -18,7 +18,7 @@ class Participant(ndb.Model):
 	end_time = ndb.DateTimeProperty()	
 	stimuli_count = ndb.IntegerProperty()
 	current_stimulus = ndb.IntegerProperty()
-	registration_code = ndb.JsonProperty()
+	registration_coupon = ndb.JsonProperty()
 	details = ndb.JsonProperty()
 
 class Stimulus(ndb.Model):
@@ -31,6 +31,11 @@ class Response(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
 	stimulus_index = ndb.IntegerProperty()
 	variables = ndb.JsonProperty()
+
+class RegistrationCoupon(ndb.Model):
+	creation_time = ndb.DateTimeProperty(auto_now_add=True)
+	coupon_type = ndb.StringProperty()
+	coupon_value = ndb.StringProperty()
 
 
 class ExperimentDatastoreGoogleNDB():
@@ -71,10 +76,6 @@ class ExperimentDatastoreGoogleNDB():
 
 				stimulus_key = stimulus.put()
 
-				# response = Response(parent=stimulus_key)
-
-				# response.put()
-
 		return experiment_key
 
 	def remove_experiment(self, urlsafe_experiment_id):
@@ -105,17 +106,43 @@ class ExperimentDatastoreGoogleNDB():
 		return experiment_list
 
 
-	def register(self, experiment_id, registration_code=None):
+	def save_coupons(self, experiment_id, data):
+		try:
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+		except:
+			return None
+
+		try:
+			for c in data['coupons']:
+				coupon = RegistrationCoupon(
+					parent=experiment_key,
+					coupon_type=c['coupon_type'],
+					coupon_value=c['coupon_value'])
+				coupon.put()
+		except:
+			return {'status':400, 'e':"Something went wrong"}
+		return {'status':200, 'result':self.get_coupons(experiment_id)}
+
+	def get_coupons(self, experiment_id):
+		try:
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+		except:
+			return None
+		q = RegistrationCoupon.query(ancestor=experiment_key)
+		coupon_list = [coupon.to_dict() for coupon in q.iter()]
+		return coupon_list
+	
+	def register(self, experiment_id, registration_coupon=None):
 		try:
 			experiment_key = ndb.Key(urlsafe=experiment_id)
 			experiment = experiment_key.get()
 		except:
 			return None
 
-		if registration_code is not None:
-			q = Participant.query(Participant.registration_code==registration_code, ancestor=experiment_key).fetch()
+		if registration_coupon is not None:
+			q = RegistrationCoupon.query(RegistrationCoupon.coupon_value==registration_coupon, ancestor=experiment_key).fetch()
 			if len(q) != 0:
-				return {'status':400, 'e':"Duplicate registration code"}
+				return {'status':400, 'e':"Duplicate registration coupon"}
 
 		try:
 			particpant_index = experiment.available_participants.pop()
@@ -130,9 +157,12 @@ class ExperimentDatastoreGoogleNDB():
 
 			participant.status = 'ACTIVE'
 			participant.start_time = datetime.now()
-			if registration_code is not None:
-				participant.registration_code = registration_code
+			if registration_coupon is not None:
+				participant.registration_coupon = registration_coupon
 			participant.put()
+
+			coupon = RegistrationCoupon(parent=experiment_key, coupon_value=registration_coupon)
+			coupon.put()
 			
 			p = participant.to_dict()
 			p.update({'id':participant.key.urlsafe()})

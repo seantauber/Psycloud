@@ -1,0 +1,12 @@
+{
+    "coupons": [
+        {
+            "coupon_type": "turk-id", 
+            "coupon_value": "turk001"
+        },
+        {
+            "coupon_type": "turk-id", 
+            "coupon_value": "turk002"
+        }
+    ]
+}
