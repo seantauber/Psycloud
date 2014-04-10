@@ -31,8 +31,7 @@ auth = HTTPBasicAuth()
 def upload_experiment_data():
 	data = request.get_json()
 	experiment_key = datastore.upload_experiment_data(data)
-	result = {'experiment_id': experiment_key.urlsafe()}
-	return jsonify(result)
+	return valid_request('experiment_id', experiment_key.urlsafe())
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
@@ -343,5 +342,5 @@ def page_not_found(e):
 
 @app.errorhandler(500)
 def page_not_found(e):
-    """Return a custom 500 error."""
-    return 'Sorry, unexpected error: {}'.format(e), 500
+    # return 'Sorry, unexpected error: {}'.format(e), 500
+    return jsonify( {'status':500, 'message':'Unexpected Error', 'result':e}), 500
