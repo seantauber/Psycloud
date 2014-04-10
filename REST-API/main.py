@@ -24,7 +24,7 @@ auth = HTTPBasicAuth()
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
 # how to upload a Json experiment file:
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/experiments/upload_all_data
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @../sample_data/mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/experiments/upload_all_data
 @app.route('/psycloud/admin/api/experiments/upload_all_data',
 	methods=['POST'])
 @auth.login_required
@@ -104,10 +104,10 @@ def save_participant_list(experiment_id):
 	pass
 
 # Save a participant
-@app.route('/psycloud/admin/api/experiments/<experiment_id>/participants/<participant_id>',
+@app.route('/psycloud/admin/api/experiments/<experiment_id>/participants/<participant_index>',
 	methods=['POST'])
 @auth.login_required
-def save_participant(experiment_id, participant_id):
+def save_participant(experiment_id, participant_index):
 	pass
 
 # Modify a participant
@@ -118,7 +118,7 @@ def modify_participant(experiment_id, participant_id):
 	pass
 
 # Save coupons
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @reg_coupons.json http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
+# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @../sample_data/reg_coupons.json http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/coupons',
 	methods=['POST'])
 @auth.login_required
