@@ -41,10 +41,13 @@ def upload_experiment_data():
 @auth.login_required
 def remove_experiment(experiment_id):
 	result = datastore.remove_experiment(experiment_id)
-	if result:
-		return jsonify({ 'result': 'success' })
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return valid_request('deleted', result['experiment_name'])
 	else:
-		return jsonify({ 'result': 'failed' })
+		abort(404)
 
 # Retrieve all experiment data
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/data',

@@ -78,7 +78,7 @@ class PsycloudAdminClient():
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
 		r = requests.delete(url, auth=(self.username, self.password))
 		if r.ok:
-			return r.json()
+			return r.json()['result']
 		else:
 			throw_exception(r.json())
 
@@ -106,7 +106,6 @@ class PsycloudAdminClient():
 			throw_exception(r.json())
 
 
-# TODO: Implement Psycloud Client
 class PsycloudClient():
 	def __init__(self, base_url):
 		self.base_url = base_url

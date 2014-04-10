@@ -78,14 +78,21 @@ class ExperimentDatastoreGoogleNDB():
 
 		return experiment_key
 
-	def remove_experiment(self, urlsafe_experiment_id):
-		experiment_key = ndb.Key(urlsafe=urlsafe_experiment_id)
+	def remove_experiment(self, experiment_id):
+		try:
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+		except:
+			return None
+
+		experiment = experiment_key.get()
+		experiment_name = experiment.experiment_name
+
 		try:
 			ndb.delete_multi(ndb.Query(ancestor=experiment_key).iter(keys_only = True))
 			experiment_key.delete()
-			return True
+			return {'status':200, 'experiment_name':experiment_name}
 		except:
-			return False
+			return {'status':400, 'e':"Unable to delete experiment"}
 
 	def get_experiment_from_urlsafe_id(self, urlsafe_experiment_id):
 		experiment_key = ndb.Key(urlsafe=urlsafe_experiment_id)
