@@ -17,26 +17,6 @@ endpoint['responses'] = '/psycloud/api/participants/%s/responses'
 endpoint['data'] = '/psycloud/api/participants/%s/data'
 
 
-class BadRequest(Exception):
-	pass
-class UrlNotFound(Exception):
-	pass
-class UnexpectedError(Exception):
-	pass
-class Unauthorized(Exception):
-	pass
-
-def throw_exception(m):
-	if m['status'] == 400:
-		raise BadRequest(m['result'])
-	elif m['status'] == 403:
-		raise Unauthorized()
-	elif m['status'] == 404:
-		raise UrlNotFound()
-	else:
-		raise UnexpectedError(m['result'])
-
-
 class PsycloudAdminClient():
 	def __init__(self, base_url, username, password):
 		self.base_url = base_url
@@ -120,6 +100,64 @@ class PsycloudClient():
 		else:
 			throw_exception(r.json())
 
+	def get_participant(self, participant_id):
+		url = self.base_url + endpoint['participant']%participant_id
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['participant']
+		else:
+			throw_exception(r.json())
+
+	def get_stimuli_list(self, participant_id):
+		url = self.base_url + endpoint['stimuli']%participant_id
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['stimuli']
+		else:
+			throw_exception(r.json())
+
+	def get_current_stimulus(self, participant_id):
+		url = self.base_url + endpoint['stimuli']%participant_id + '/current'
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['stimuli']
+		else:
+			throw_exception(r.json())
+
+	def get_stimulus(self, participant_id, stimulus_number):
+		url = self.base_url + endpoint['stimuli']%participant_id + '/%s'%stimulus_number
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['stimuli']
+		else:
+			throw_exception(r.json())
+
+	def increment_and_get_next_stimulus(self, participant_id):
+		url = self.base_url + endpoint['stimuli']%participant_id + '/next'
+		r = requests.put(url)
+		if r.ok:
+			return r.json()['result']['stimuli']
+		else:
+			throw_exception(r.json())
 
 
 
+
+class BadRequest(Exception):
+	pass
+class UrlNotFound(Exception):
+	pass
+class UnexpectedError(Exception):
+	pass
+class Unauthorized(Exception):
+	pass
+
+def throw_exception(m):
+	if m['status'] == 400:
+		raise BadRequest(m['result'])
+	elif m['status'] == 403:
+		raise Unauthorized()
+	elif m['status'] == 404:
+		raise UrlNotFound()
+	else:
+		raise UnexpectedError(m['result'])
