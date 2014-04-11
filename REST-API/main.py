@@ -266,13 +266,31 @@ def increment_and_get_next_stimulus(participant_id):
 @app.route('/psycloud/api/participants/<participant_id>/responses',
 	methods=['GET'])
 def get_response_list(participant_id):
-	pass
+	response_list = datastore.get_responses(participant_id)
+	if response_list is not None:
+		return valid_request('responses', response_list)
+	else:
+		abort(404)
 
-# Retrieve the previous N responses
-@app.route('/psycloud/api/participants/<participant_id>/responses/previous/<int:n_previous>',
+# Retrieve a specific response
+@app.route('/psycloud/api/participants/<participant_id>/responses/<int:stimulus_number>',
 	methods=['GET'])
-def get_previous_responses(participant_id, n_previous):
-	pass
+def get_response(participant_id, stimulus_number):
+	response_list = datastore.get_responses(participant_id, stimulus_number=stimulus_number)
+	if response_list is not None:
+		return valid_request('responses', response_list)
+	else:
+		abort(404)
+
+# Retrieve the previous response
+@app.route('/psycloud/api/participants/<participant_id>/responses/previous',
+	methods=['GET'])
+def get_previous_response(participant_id):
+	response_list = datastore.get_responses(participant_id, previous_only=True)
+	if response_list is not None:
+		return valid_request('responses', response_list)
+	else:
+		abort(404)
 
 # Save a list of responses
 @app.route('/psycloud/api/participants/<participant_id>/responses',

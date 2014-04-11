@@ -140,6 +140,49 @@ class PsycloudClient():
 		else:
 			throw_exception(r.json())
 
+	def save_current_response(self, participant_id, data_dict):
+		url = self.base_url + endpoint['responses']%participant_id + '/current'
+		headers = {'content-type': 'application/json'}
+		r = requests.post(url, data=json.dumps(data_dict), headers=headers)
+		if r.ok:
+			return r.json()['result']['response']
+		else:
+			throw_exception(r.json())
+
+	def save_response(self, participant_id, stimulus_number, data_dict):
+		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
+		headers = {'content-type': 'application/json'}
+		r = requests.post(url, data=json.dumps(data_dict), headers=headers)
+		if r.ok:
+			return r.json()['result']['response']
+		else:
+			throw_exception(r.json())
+
+	def get_response_list(self, participant_id):
+		url = self.base_url + endpoint['responses']%participant_id
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['responses']
+		else:
+			throw_exception(r.json())
+
+	def get_previous_response(self, participant_id):
+		url = self.base_url + endpoint['responses']%participant_id + '/previous'
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['responses']
+		else:
+			throw_exception(r.json())
+
+	def get_response(self, participant_id, stimulus_number):
+		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
+		r = requests.get(url)
+		if r.ok:
+			return r.json()['result']['responses']
+		else:
+			throw_exception(r.json())
+
+
 
 
 

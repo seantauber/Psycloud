@@ -269,8 +269,37 @@ class ExperimentDatastoreGoogleNDB():
 
 		return{'status':200, 'response':response.to_dict()}
 
-	def validate_response_list(self, data):
-		pass
+	def get_responses(self, participant_id, previous_only=False, stimulus_number=None):
+		try:
+			participant_key = ndb.Key(urlsafe=participant_id)
+		except:
+			return None
+
+		if previous_only:
+			previous_stimuli_number = participant_key.get().current_stimulus - 1
+			if previous_stimuli_number >= 0:
+				q = Response.query(Response.stimulus_index == previous_stimuli_number, ancestor=participant_key).fetch()
+				if len(q) == 1:
+					response_list = [q[0].to_dict()]
+					return response_list
+				else:
+					return None
+			else:
+				return None
+		
+		if stimulus_number is not None:
+			if stimulus_number >= 0 and stimulus_number < participant_key.get().stimuli_count:
+				q = Response.query(Response.stimulus_index == stimulus_number, ancestor=participant_key)
+			else:
+				return None
+		else:
+			q = ndb.Query(kind='Response', ancestor=participant_key)
+
+		response_list = [response.to_dict() for response in q.iter()]
+		return response_list
+
+	# def validate_response_list(self, data):
+	# 	pass
 
 	def validate_response(self, data):
 		if not 'variables' in data:
