@@ -120,7 +120,7 @@ class PsycloudClient():
 		url = self.base_url + endpoint['stimuli']%participant_id + '/current'
 		r = requests.get(url)
 		if r.ok:
-			return r.json()['result']['stimuli']
+			return r.json()['result']['stimuli'][0]
 		else:
 			throw_exception(r.json())
 
@@ -128,7 +128,7 @@ class PsycloudClient():
 		url = self.base_url + endpoint['stimuli']%participant_id + '/%s'%stimulus_number
 		r = requests.get(url)
 		if r.ok:
-			return r.json()['result']['stimuli']
+			return r.json()['result']['stimuli'][0]
 		else:
 			throw_exception(r.json())
 
@@ -136,7 +136,7 @@ class PsycloudClient():
 		url = self.base_url + endpoint['stimuli']%participant_id + '/next'
 		r = requests.put(url)
 		if r.ok:
-			return r.json()['result']['stimuli']
+			return r.json()['result']['stimuli'][0]
 		else:
 			throw_exception(r.json())
 
@@ -184,23 +184,24 @@ class PsycloudClient():
 
 
 
-
-
-class BadRequest(Exception):
-	pass
-class UrlNotFound(Exception):
-	pass
-class UnexpectedError(Exception):
-	pass
-class Unauthorized(Exception):
-	pass
-
 def throw_exception(m):
-	if m['status'] == 400:
-		raise BadRequest(m['result'])
-	elif m['status'] == 403:
-		raise Unauthorized()
-	elif m['status'] == 404:
-		raise UrlNotFound()
-	else:
-		raise UnexpectedError(m['result'])
+	return m
+
+# class BadRequest(Exception):
+# 	pass
+# class UrlNotFound(Exception):
+# 	pass
+# class UnexpectedError(Exception):
+# 	pass
+# class Unauthorized(Exception):
+# 	pass
+
+# def throw_exception(m):
+# 	if m['status'] == 400:
+# 		raise BadRequest(m['result'])
+# 	elif m['status'] == 403:
+# 		raise Unauthorized()
+# 	elif m['status'] == 404:
+# 		raise UrlNotFound()
+# 	else:
+# 		raise UnexpectedError(m['result'])

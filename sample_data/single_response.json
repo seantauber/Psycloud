@@ -1,8 +1,7 @@
 {
     "variables": [
         {
-            "name": "R", 
-            "value": [
+            "response": [
                 10, 
                 20, 
                 30, 

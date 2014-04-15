@@ -4,8 +4,7 @@
             "stimulus_index": 0, 
             "variables": [
                 {
-                    "name": "R", 
-                    "value": [
+                    "response": [
                         10, 
                         20, 
                         30, 
@@ -34,8 +33,7 @@
             "stimulus_index": 1, 
             "variables": [
                 {
-                    "name": "R", 
-                    "value": [
+                    "response": [
                         10, 
                         20, 
                         30, 

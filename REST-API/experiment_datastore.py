@@ -306,11 +306,11 @@ class ExperimentDatastoreGoogleNDB():
 			return False, {'status':400, 'e':"response entry must contain a 'variables' field"}
 		if not type(data['variables']) == list:
 			return False, {'status':400, 'e':"response['variables'] must be a list of variables"}
-		for variable in data['variables']:
-			if not 'name' in variable:
-				return False, {'status':400, 'e':"variables must contain a 'name' field"}
-			if not 'value' in variable:
-				return False, {'status':400, 'e':"variables must contain a 'value' field"}
+		# for variable in data['variables']:
+		# 	if not 'name' in variable:
+		# 		return False, {'status':400, 'e':"variables must contain a 'name' field"}
+		# 	if not 'value' in variable:
+		# 		return False, {'status':400, 'e':"variables must contain a 'value' field"}
 		return True, None
 		
 
