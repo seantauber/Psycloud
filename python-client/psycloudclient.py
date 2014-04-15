@@ -36,7 +36,7 @@ class PsycloudAdminClient():
 		if r.ok:
 			return r.json()
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_experiment_list(self):
 		url = self.base_url + admin_endpoint['experiments']
@@ -44,7 +44,7 @@ class PsycloudAdminClient():
 		if r.ok:
 			return r.json()['result']['experiments']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_experiment(self, experiment_id):
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
@@ -52,7 +52,7 @@ class PsycloudAdminClient():
 		if r.ok:
 			return r.json()['result']['experiments']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def delete_experiment(self, experiment_id):
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
@@ -60,7 +60,7 @@ class PsycloudAdminClient():
 		if r.ok:
 			return r.json()['result']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def save_coupons(self, experiment_id,  data_dict=None, json_filename=None):
 		url = self.base_url + admin_endpoint['coupons']%experiment_id
@@ -75,7 +75,7 @@ class PsycloudAdminClient():
 		if r.ok:
 			return r.json()
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_coupons(self, experiment_id):
 		url = self.base_url + admin_endpoint['coupons']%experiment_id
@@ -83,7 +83,7 @@ class PsycloudAdminClient():
 		if r.ok:
 			return r.json()['result']['coupons']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 
 class PsycloudClient():
@@ -98,7 +98,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['participant']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_participant(self, participant_id):
 		url = self.base_url + endpoint['participant']%participant_id
@@ -106,7 +106,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['participant']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_stimuli_list(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id
@@ -114,7 +114,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['stimuli']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_current_stimulus(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/current'
@@ -122,7 +122,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['stimuli'][0]
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_stimulus(self, participant_id, stimulus_number):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/%s'%stimulus_number
@@ -130,7 +130,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['stimuli'][0]
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def increment_and_get_next_stimulus(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/next'
@@ -138,7 +138,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['stimuli'][0]
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def save_current_response(self, participant_id, data_dict):
 		url = self.base_url + endpoint['responses']%participant_id + '/current'
@@ -147,7 +147,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['response']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def save_response(self, participant_id, stimulus_number, data_dict):
 		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
@@ -156,7 +156,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['response']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_response_list(self, participant_id):
 		url = self.base_url + endpoint['responses']%participant_id
@@ -164,7 +164,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['responses']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_previous_response(self, participant_id):
 		url = self.base_url + endpoint['responses']%participant_id + '/previous'
@@ -172,7 +172,7 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['responses']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
 	def get_response(self, participant_id, stimulus_number):
 		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
@@ -180,28 +180,5 @@ class PsycloudClient():
 		if r.ok:
 			return r.json()['result']['responses']
 		else:
-			throw_exception(r.json())
+			return r.json()
 
-
-
-def throw_exception(m):
-	return m
-
-# class BadRequest(Exception):
-# 	pass
-# class UrlNotFound(Exception):
-# 	pass
-# class UnexpectedError(Exception):
-# 	pass
-# class Unauthorized(Exception):
-# 	pass
-
-# def throw_exception(m):
-# 	if m['status'] == 400:
-# 		raise BadRequest(m['result'])
-# 	elif m['status'] == 403:
-# 		raise Unauthorized()
-# 	elif m['status'] == 404:
-# 		raise UrlNotFound()
-# 	else:
-# 		raise UnexpectedError(m['result'])
