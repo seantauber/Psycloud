@@ -46,7 +46,7 @@ class ExperimentDatastoreGoogleNDB():
 	def upload_experiment_data(self, experiment_data_dict):
 		d = experiment_data_dict
 		experiment = Experiment(
-			experiment_name=d['experiment_id'],
+			experiment_name=d['experiment_name'],
 			num_participants=d['num_participants'],
 			available_participants=range(d['num_participants'])[::-1],
 			active_participants=[],
