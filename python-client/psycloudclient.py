@@ -33,34 +33,22 @@ class PsycloudAdminClient():
 			data = json.load(f)
 			f.close()
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		if r.ok:
-			return r.json()
-		else:
-			return r.json()
+		return r.json()
 
 	def get_experiment_list(self):
 		url = self.base_url + admin_endpoint['experiments']
 		r = requests.get(url, auth=(self.username, self.password))
-		if r.ok:
-			return r.json()['result']['experiments']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_experiment(self, experiment_id):
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
 		r = requests.get(url, auth=(self.username, self.password))
-		if r.ok:
-			return r.json()['result']['experiments']
-		else:
-			return r.json()
+		return r.json()
 
 	def delete_experiment(self, experiment_id):
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
 		r = requests.delete(url, auth=(self.username, self.password))
-		if r.ok:
-			return r.json()['result']
-		else:
-			return r.json()
+		return r.json()
 
 	def save_coupons(self, experiment_id,  data_dict=None, json_filename=None):
 		url = self.base_url + admin_endpoint['coupons']%experiment_id
@@ -72,18 +60,12 @@ class PsycloudAdminClient():
 			data = json.load(f)
 			f.close()
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		if r.ok:
-			return r.json()
-		else:
-			return r.json()
+		return r.json()
 
 	def get_coupons(self, experiment_id):
 		url = self.base_url + admin_endpoint['coupons']%experiment_id
 		r = requests.get(url, auth=(self.username, self.password))
-		if r.ok:
-			return r.json()['result']['coupons']
-		else:
-			return r.json()
+		return r.json()
 
 
 class PsycloudClient():
@@ -95,90 +77,57 @@ class PsycloudClient():
 		if registration_coupon is not None:
 			url = url + '/%s'%registration_coupon
 		r = requests.post(url)
-		if r.ok:
-			return r.json()['result']['participant']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_participant(self, participant_id):
 		url = self.base_url + endpoint['participant']%participant_id
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['participant']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_stimuli_list(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['stimuli']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_current_stimulus(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/current'
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['stimuli'][0]
-		else:
-			return r.json()
+		return r.json()
 
 	def get_stimulus(self, participant_id, stimulus_number):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/%s'%stimulus_number
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['stimuli'][0]
-		else:
-			return r.json()
+		return r.json()
 
 	def increment_and_get_next_stimulus(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/next'
 		r = requests.put(url)
-		if r.ok:
-			return r.json()['result']['stimuli'][0]
-		else:
-			return r.json()
+		return r.json()
 
 	def save_current_response(self, participant_id, data_dict):
 		url = self.base_url + endpoint['responses']%participant_id + '/current'
 		headers = {'content-type': 'application/json'}
 		r = requests.post(url, data=json.dumps(data_dict), headers=headers)
-		if r.ok:
-			return r.json()['result']['response']
-		else:
-			return r.json()
+		return r.json()
 
 	def save_response(self, participant_id, stimulus_number, data_dict):
 		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
 		headers = {'content-type': 'application/json'}
 		r = requests.post(url, data=json.dumps(data_dict), headers=headers)
-		if r.ok:
-			return r.json()['result']['response']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_response_list(self, participant_id):
 		url = self.base_url + endpoint['responses']%participant_id
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['responses']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_previous_response(self, participant_id):
 		url = self.base_url + endpoint['responses']%participant_id + '/previous'
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['responses']
-		else:
-			return r.json()
+		return r.json()
 
 	def get_response(self, participant_id, stimulus_number):
 		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
 		r = requests.get(url)
-		if r.ok:
-			return r.json()['result']['responses']
-		else:
-			return r.json()
+		return r.json()
 
