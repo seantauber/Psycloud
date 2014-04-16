@@ -298,14 +298,38 @@ class ExperimentDatastoreGoogleNDB():
 		response_list = [response.to_dict() for response in q.iter()]
 		return response_list
 
+	def record_as_completed(self, participant_id):
+		try:
+			participant_key = ndb.Key(urlsafe=participant_id)
+		except:
+			return None
+
+		participant = participant_key.get()
+		if participant.status != 'ACTIVE':
+			return{'status':400, 'e':"Participant not active."}
+
+		response_list = self.get_responses(participant_id)
+
+		if len(response_list) == participant.stimuli_count:
+			participant.status = 'COMPLETED'
+			participant.end_time = datetime.now()
+			experiment = participant_key.parent().get()
+			experiment.completed_participants.append(participant.participant_index)
+			experiment.active_participants.remove(participant.participant_index)
+			experiment.put()
+			participant.put()
+			return{'status':200, 'participant':participant.to_dict()}
+		else:
+			return{'status':400, 'e':"All responses have not been recorded for this participant."}
+
 	# def validate_response_list(self, data):
 	# 	pass
 
 	def validate_response(self, data):
 		if not 'variables' in data:
 			return False, {'status':400, 'e':"response entry must contain a 'variables' field"}
-		if not type(data['variables']) == list:
-			return False, {'status':400, 'e':"response['variables'] must be a list of variables"}
+		# if not type(data['variables']) == dict:
+		# 	return False, {'status':400, 'e':"response['variables'] must be a dictionary of variables"}
 		# for variable in data['variables']:
 		# 	if not 'name' in variable:
 		# 		return False, {'status':400, 'e':"variables must contain a 'name' field"}

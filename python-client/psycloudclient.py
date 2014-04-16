@@ -131,3 +131,8 @@ class PsycloudClient():
 		r = requests.get(url)
 		return r.json()
 
+	def completed(self, participant_id):
+		url = self.base_url + endpoint['participant']%participant_id + '/completed'
+		r = requests.post(url)
+		return r.json()
+

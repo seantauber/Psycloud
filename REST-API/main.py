@@ -328,6 +328,18 @@ def save_current_response(participant_id):
 	else:
 		abort(404)
 
+@app.route('/psycloud/api/participants/<participant_id>/completed',
+	methods=['POST'])
+def record_as_completed(participant_id):
+	result = datastore.record_as_completed(participant_id)
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return valid_request('participant', result['participant'])
+	else:
+		abort(404)
+
 # Retrieve list of all stimuli and response data for a participant
 @app.route('/psycloud/api/participants/<participant_id>/data',
 	methods=['GET'])
