@@ -45,7 +45,7 @@ else:
 #### Getting a list of experiments:
 You can request a list of experiments and associated experiment info like this
 ```python
-req = admin_client.get_experiment(expid)
+req = admin_client.get_experiment_list()
 if req['status'] == 200:
 	exp_info = req['result']['experiments'] #this is a list of experiments
 else:
