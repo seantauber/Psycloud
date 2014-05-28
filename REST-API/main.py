@@ -53,7 +53,7 @@ def remove_experiment(experiment_id):
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/data',
 	methods=['GET'])
 @auth.login_required
-def get_experiment_data(experiment_id, participant_id):
+def get_experiment_data(experiment_id):
 	pass
 
 # Create a new experiment
@@ -96,7 +96,22 @@ def modify_experiment(experiment_id):
 	methods=['GET'])
 @auth.login_required
 def get_participant_list(experiment_id):
-	pass
+	keys_only = False
+	filter_status = None
+	args = request.args
+	if 'keys_only' in args:
+		keys_only = bool(args['keys_only'])
+	if 'status' in args:
+		filter_status = args['status']
+	result = datastore.get_experiment_participants(experiment_id, keys_only=keys_only, status=filter_status)
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return valid_request('participants', result['result'])
+	else:
+		abort(404)
+
 
 # Save a list of participants
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/participants',

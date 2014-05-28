@@ -31,7 +31,7 @@ This will return a JSON formatted response object which is assigned to *req*:
 ```python
 > req
 {u'message': u'OK',
- u'result': {u'experiment_id': u'ag1zfnBzeWNsb3VkYXBpchcLEgpFeHBlcmltZW50GICAgICA8ogKDA'},
+ u'result': {u'experiment_id': u'MDAyNjBkNTEtNzU4OS00MjhmLWE5YmEtNDg5M2Q0ZjAyNGNi'},
  u'status': 200}
 ```
 The request object contains the http status --- 200 indicates that everything went OK, otherwise the message will contain more details. If everything went ok, the result field will contain the id for the experiment you just created and can be accessed from the request object like this

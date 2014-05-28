@@ -67,6 +67,17 @@ class PsycloudAdminClient():
 		r = requests.get(url, auth=(self.username, self.password))
 		return r.json()
 
+	def get_participant_list(self, experiment_id, keys_only=False, status=None):
+		url = self.base_url + admin_endpoint['participants']%experiment_id
+		d = {}
+		if keys_only:
+			d.update({'keys_only':True})
+		if status is not None:
+			d.update({'status':status})
+		r = requests.get(url, params=d, auth=(self.username, self.password))
+		return r.json()
+
+
 
 class PsycloudClient():
 	def __init__(self, base_url):

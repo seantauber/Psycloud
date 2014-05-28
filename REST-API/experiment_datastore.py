@@ -117,6 +117,30 @@ class ExperimentDatastoreGoogleNDB():
 				return None
 		return experiment_list
 
+	def get_experiment_participants(self, experiment_id, keys_only=False, status=None):
+		try:
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+		except:
+			return None
+
+		try:
+			if status is None:
+				q = Participant.query(ancestor=experiment_key).fetch(keys_only=keys_only)
+			else:
+				q = Participant.query(Participant.status == status, ancestor=experiment_key).fetch(keys_only=keys_only)
+		except:
+			return {'status':400, 'e':"Something went wrong"}
+
+		if keys_only:
+			participants = [p.urlsafe() for p in q]
+		else:
+			participants = [p.to_dict() for p in q]
+			for i,qi in enumerate(q):
+				participants[i].update({'id':qi.key.urlsafe()})
+
+		return {'status':200, 'result':participants}
+
+
 
 	def save_coupons(self, experiment_id, data):
 		try:
