@@ -56,25 +56,30 @@ class ExperimentDatastoreGoogleNDB():
 		experiment_key = experiment.put()
 
 		participant_list = d['participants']
+		participant_entities = []
 		for p in participant_list:
-			participant = Participant(
+			participant_entities.append(
+				Participant(
 				parent=experiment_key,
 				participant_index=p['participant_index'],
 				stimuli_count=p['stimuli_count'],
 				current_stimulus=0,
-				status='AVAILABLE')
+				status='AVAILABLE'))
 			
-			participant_key = participant.put()
+		participant_keys = ndb.put_multi(participant_entities)
 
-			stimuli_list = p['stimuli']
-			for s in stimuli_list:
-				stimulus = Stimulus(
-					parent=participant_key,
+		stimulus_entities = []
+		for i,p in enumerate(participant_list):
+			stimuli = p['stimuli']
+			for s in stimuli:
+				stimulus_entities.append(
+					Stimulus(
+					parent=participant_keys[i],
 					stimulus_index=s['stimulus_index'],
 					variables=s['variables'],
-					stimulus_type=s['stimulus_type'])
+					stimulus_type=s['stimulus_type']))
 
-				stimulus_key = stimulus.put()
+		ndb.put_multi(stimulus_entities)
 
 		return experiment_key
 
