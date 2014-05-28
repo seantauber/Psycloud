@@ -1,9 +1,10 @@
 # Psycloud
 
-## Deploying the server to Google App Engine
+### Deploying the server to Google App Engine
 To launch the REST-API server locally on Google App Engine development server:
 
 ```
+$ cd Psycloud
 $ dev_appserver.py REST-API
 ```
 
