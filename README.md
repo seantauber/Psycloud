@@ -42,6 +42,46 @@ else:
 	# there was a problem with the request
 ```
 
+An alternative to uploading a json file is to pass a dictionary object containing the information in the json file.
+```python
+req = admin_client.upload_data(data_dict=experiment_data)
+```
+
+#### Format of experiment data dictionary/json
+The *experiment_data* dictionary should be a set of nested dictionaries. The top level dictionary has the following format:
+```python
+{
+'experiment_name': experiment_name,
+'num_participants': number_of_participants,
+'participants': list_of_participants
+}
+```
+Each item in the list_of_participants is a dictionary with the format:
+```python
+{
+'participant_index': participant_index,
+'stimuli_count': number_stimuli,
+'stimuli': list_of_stimuli
+}
+```
+Each item in the list_of_stimuli is a dictionary with the format:
+```python
+{
+'stimulus_index': stimulus_index,
+'stimulus_type': stimulus_type_label,
+'variables': list_of_variables
+}
+```
+Each stimulus_type can correspond to an html template or javascript that renders that stimuli. This allows for a mixture of stimulus types within an experiment and provides a great deal of flexibility when implementing new experiments.
+ 
+Each item in the list_of_variables is a dictionary where each key is the name of a variable. The value for each key corresponds to the variable's value and can be scalar or a list. There can be any number of key value pairs, each representing a variable. In the example below there are two variables, X and Y, where Y is a vector and X is scalar. The variables can be anything, it's up to you to handle them properly with your web based experiment.
+```python
+{
+'Y': [1,2,3,4,5,'six'],
+'X': 'scalarvalue'
+}
+```
+
 #### Getting a list of experiments:
 You can request a list of experiments and associated experiment info like this
 ```python
