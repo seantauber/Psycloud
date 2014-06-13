@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Completed</title>
+
+    <!-- Bootstrap -->
+    <link href="{{url_for('.static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <h2>Completed participants</h2>
+            </div>
+
+            <!-- <h2 class="sub-header">Section title</h2> -->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th>Reg Coupon</th>
+                      <th style="text-align:center">Index</th>
+                      <th>Start</th>
+                      <th>End</th>
+                      <th>Duration</th>
+                      <th>Conf Code</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sub in subs %}
+                        <tr>
+                            <td><a href="{{ url_for('view_participant', uid=sub.short_id) }}">{{ sub.registration_coupon }}</a></td>
+                            <td style="text-align:center">{{ sub.participant_index }}</td>
+                            <td>{{ sub.start_time }}</td>
+                            <td>{{ sub.end_time }}</td>
+                            <td></td>
+                            <td>{{ sub.conf_code }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{{url_for('.static', filename='js/bootstrap.min.js')}}"></script>
+        
+    </body>
+</html>
+    

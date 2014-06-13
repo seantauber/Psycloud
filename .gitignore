@@ -1,4 +1,5 @@
 *.pyc
+
 # don't include third-party dependencies.
 lib/
 !lib/README.md
@@ -6,3 +7,5 @@ lib/
 
 # don't include appengine configuration file
 REST-API/app.yaml
+*.yaml
+
