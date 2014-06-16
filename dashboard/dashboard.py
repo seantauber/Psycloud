@@ -50,7 +50,7 @@ def view_completed(exp_id):
 	for sub in sublist:
 		if sub['status'] == 'COMPLETED':
 			completed.append(sub)
-	return render_template('completed_dash.html', subs=completed)
+	return render_template('completed_dash.html', subs=completed, exp_id=exp_id)
 
 @app.route('/participant/<uid>', methods=['GET'])
 @auth.login_required
@@ -61,6 +61,14 @@ def view_participant(uid):
 	sub['stimuli'] = stim_list
 	sub['responses'] = resp_list
 	return jsonify(sub)
+
+@app.route('/experiment/<exp_id>/completed/download_data', methods=['GET'])
+@auth.login_required
+def download_completed_participant_data(exp_id):
+	sublist = psycloud_aclient.get_experiment_data(exp_id, status='COMPLETED')['result']
+	return jsonify(sublist)
+	
+
 
 
 

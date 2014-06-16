@@ -77,6 +77,14 @@ class PsycloudAdminClient():
 		r = requests.get(url, params=d, auth=(self.username, self.password))
 		return r.json()
 
+	def get_experiment_data(self, experiment_id, status=None):
+		url = self.base_url + admin_endpoint['experiment_data']%experiment_id
+		d = {}
+		if status is not None:
+			d.update({'status':status})
+		r = requests.get(url, params=d, auth=(self.username, self.password), timeout=60.)
+		return r.json()
+
 
 
 class PsycloudClient():

@@ -150,17 +150,17 @@ class ExperimentDatastoreGoogleNDB():
 				return None
 		return experiment_list
 
-	def get_experiment_participants(self, experiment_id, keys_only=False, status=None):
+	def get_experiment_participants(self, experiment_id, keys_only=False, status_filter=None, get_data=False):
 		try:
 			experiment_key = ndb.Key(urlsafe=experiment_id)
 		except:
 			return None
 
 		try:
-			if status is None:
+			if status_filter is None:
 				q = Participant.query(ancestor=experiment_key).fetch(keys_only=keys_only)
 			else:
-				q = Participant.query(Participant.status == status, ancestor=experiment_key).fetch(keys_only=keys_only)
+				q = Participant.query(Participant.status == status_filter, ancestor=experiment_key).fetch(keys_only=keys_only)
 		except:
 			return {'status':400, 'e':"Something went wrong"}
 
@@ -172,6 +172,47 @@ class ExperimentDatastoreGoogleNDB():
 				participants[i].update({'id':qi.key.urlsafe()})
 
 		return {'status':200, 'result':participants}
+
+	
+	def get_experiment_data(self, experiment_id, status_filter=None):
+		try:
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+		except:
+			return None
+
+		try:
+			if status_filter is None:
+				q_part = Participant.query(ancestor=experiment_key)
+			else:
+				q_part = Participant.query(Participant.status == status_filter, ancestor=experiment_key)
+		except:
+			return {'status':400, 'e':"Something went wrong while fetching participants"}
+
+		try:
+			q_stim = Stimulus.query(ancestor=experiment_key)
+		except:
+			return {'status':400, 'e':"Something went wrong while fetching stimuli"}
+		try:
+			q_resp = Response.query(ancestor=experiment_key)
+		except:
+			return {'status':400, 'e':"Something went wrong while fetching responses"}
+
+		#build participant hashtable
+		participants = {}
+		for p in q_part:
+			participants[p.key.urlsafe()] = p.to_dict()
+			participants[p.key.urlsafe()]['stimuli'] = []
+			participants[p.key.urlsafe()]['responses'] = []
+
+		#merge experiment data with participant data
+		for s in q_stim:
+			if participants.has_key(s.key.parent().urlsafe()):
+				participants[s.key.parent().urlsafe()]['stimuli'].append(s.to_dict())
+		for r in q_resp:
+			if participants.has_key(r.key.parent().urlsafe()):
+				participants[r.key.parent().urlsafe()]['responses'].append(r.to_dict())
+
+		return {'status':200, 'result':participants.values()}
 
 
 
