@@ -182,15 +182,11 @@ def get_coupons(experiment_id):
 #######################################################################################
 #######################################################################################
 
-from psycloudclient import PsycloudClient, PsycloudAdminClient
-psycloud_client = PsycloudClient("http://psycloud-server-1.appspot.com")
-psycloud_aclient = PsycloudAdminClient("http://psycloud-server-1.appspot.com", "username", "password")
-
 
 @app.route('/psycloud/admin/dashboard', methods=['GET'])
 @auth.login_required
-def main_dashboard():
-	exp_list = psycloud_aclient.get_experiment_list()['result']['experiments']
+def dashboard_main():
+	experiment_list = datastore.get_experiments()
 	exps = []
 	for exp in exp_list:
 		exps.append({'name':exp['experiment_name'], 'id':exp['id'],
@@ -200,49 +196,63 @@ def main_dashboard():
 			'num_participants':exp['num_participants']})
 	return render_template('main_dashboard.html', params=exps)
 
+
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>', methods=['GET'])
 @auth.login_required
-def view_experiment(exp_id):
-	exp = psycloud_aclient.get_experiment(exp_id)['result']['experiments'][0]
-	return jsonify(exp)
+def dashboard_view_experiment(exp_id):
+	experiment_list = datastore.get_experiments(experiment_id=experiment_id)
+	if experiment_list is not None:
+		return jsonify(exp)
+	else:
+		abort(404)
+
+
+def dashboard_view_participant_list(exp_id, status=None):
+	result = datastore.get_experiment_participants(experiment_id, keys_only=False, status_filter=status)
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return render_template('active_dash.html', subs=result['result'])
+	else:
+		abort(404)
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/active', methods=['GET'])
 @auth.login_required
-def view_active(exp_id):
-	sublist = psycloud_aclient.get_participant_list(exp_id)['result']['participants']
-	active = []
-	for sub in sublist:
-		if sub['status'] == 'ACTIVE':
-			active.append(sub)
-	return render_template('active_dash.html', subs=active)
+def dashboard_view_active(exp_id):
+	return dashboard_view_participant_list(exp_id, status='ACTIVE')
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/completed', methods=['GET'])
 @auth.login_required
-def view_completed(exp_id):
-	sublist = psycloud_aclient.get_participant_list(exp_id)['result']['participants']
-	completed = []
-	for sub in sublist:
-		if sub['status'] == 'COMPLETED':
-			completed.append(sub)
-	return render_template('completed_dash.html', subs=completed, exp_id=exp_id)
+def dashboard_view_completed(exp_id):
+	return dashboard_view_participant_list(exp_id, status='COMPLETED')
 
-@app.route('/psycloud/admin/dashboard/participant/<uid>', methods=['GET'])
+
+@app.route('/psycloud/admin/dashboard/participant/<participant_id>', methods=['GET'])
 @auth.login_required
-def view_participant(uid):
-	sub = psycloud_client.get_participant(uid)['result']['participant']
-	stim_list = psycloud_client.get_stimuli_list(uid)['result']['stimuli']
-	resp_list = psycloud_client.get_response_list(uid)['result']['responses']
-	sub['stimuli'] = stim_list
-	sub['responses'] = resp_list
-	return jsonify(sub)
+def dashboard_view_participant(participant_id):
+	participant = datastore.get_participant(participant_id)
+	if participant is not None:
+		stimuli_list = datastore.get_stimuli(participant_id)
+		response_list = datastore.get_responses(participant_id)
+		participant['stimuli'] = stimuli_list
+		participant['responses'] = response_list
+		return jsonify(participant)
+	else:
+		abort(404)
+
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/completed/download_data', methods=['GET'])
 @auth.login_required
-def download_completed_participant_data(exp_id):
-	sublist = psycloud_aclient.get_experiment_data(exp_id, status='COMPLETED')['result']
-	return jsonify(sublist)
-
-
+def dashboard_download_completed_participant_data(exp_id):
+	result = datastore.get_experiment_data(experiment_id, status_filter='COMPLETED')
+	if result is not None:
+		if result['status'] == 400:
+			return bad_request(result['e'])
+		else:
+			return jsonify(result['result'])
+	else:
+		abort(404)
 
 
 
