@@ -73,7 +73,16 @@ def get_experiment_data(experiment_id):
 	methods=['POST'])
 @auth.login_required
 def create_experiment():
-	pass
+	data = request.get_json()
+	if 'experiment_name' in data:
+		experiment_name = data['experiment_name']
+		try:
+			experiment_key = datastore.create_experiment(experiment_name)
+			return valid_request('experiment_id', experiment_key.urlsafe())
+		except:
+			abort(500)
+	else:
+		return bad_request('experiment_name was not provided.')
 
 # Retrieve a list of experiments
 # curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments
@@ -477,10 +486,15 @@ def get_participant_data(participant_id):
 
 
 @auth.get_password
+def get_password(username):
+    if username == 'psycloud':
+        return 'psycloud'
+    return None
+
 @dashauth.get_password
 def get_password(username):
-    if username == 'username':
-        return 'password'
+    if username == 'dashboard':
+        return 'dashboard'
     return None
  
 @auth.error_handler

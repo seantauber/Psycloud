@@ -73,6 +73,24 @@ class ExperimentDatastoreGoogleNDB():
 			return None
 		return participant_key
 
+	def create_experiment(self, experiment_name):
+		'''
+		Create a new experiment with the specified experiment_name.
+		The new experiment is empty: i.e. contains no participants.
+		'''
+		experiment = Experiment(
+			experiment_name=experiment_name,
+			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
+			num_participants=0,
+			available_participants=[],
+			active_participants=[],
+			completed_participants=[],
+			stalled_participants=[])]
+
+		experiment_key = experiment.put()
+		return experiment_key
+
+
 	def upload_experiment_data(self, experiment_data_dict):
 		d = experiment_data_dict
 		experiment = Experiment(
