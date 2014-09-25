@@ -4,13 +4,14 @@ from experiment_datastore import ExperimentDatastoreGoogleNDB
 
 datastore = ExperimentDatastoreGoogleNDB()
 
-from flask import Flask, jsonify, abort, request, make_response, url_for
+from flask import Flask, jsonify, abort, request, make_response, url_for, render_template
 from flask.ext.httpauth import HTTPBasicAuth
  
 app = Flask(__name__, static_url_path = "")
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 auth = HTTPBasicAuth()
+dashauth = HTTPBasicAuth()
 
 
 
@@ -184,11 +185,11 @@ def get_coupons(experiment_id):
 
 
 @app.route('/psycloud/admin/dashboard', methods=['GET'])
-@auth.login_required
+@dashauth.login_required
 def dashboard_main():
 	experiment_list = datastore.get_experiments()
 	exps = []
-	for exp in exp_list:
+	for exp in experiment_list:
 		exps.append({'name':exp['experiment_name'], 'id':exp['id'],
 			'num_available':len(exp['available_participants']),
 			'num_active':len(exp['active_participants']),
@@ -198,43 +199,45 @@ def dashboard_main():
 
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>', methods=['GET'])
-@auth.login_required
+@dashauth.login_required
 def dashboard_view_experiment(exp_id):
-	experiment_list = datastore.get_experiments(experiment_id=experiment_id)
+	experiment_list = datastore.get_experiments(experiment_id=exp_id)
 	if experiment_list is not None:
-		return jsonify(exp)
+		experiment = experiment_list[0]
+		return jsonify(experiment)
 	else:
 		abort(404)
 
 
-def dashboard_view_participant_list(exp_id, status=None):
-	result = datastore.get_experiment_participants(experiment_id, keys_only=False, status_filter=status)
+def dashboard_view_participant_list(exp_id, status='COMPLETED'):
+	templates = {'ACTIVE': 'active_dash.html', 'COMPLETED': 'completed_dash.html'}
+	result = datastore.get_experiment_participants(exp_id, keys_only=False, status_filter=status)
 	if result is not None:
 		if result['status'] == 400:
 			return bad_request(result['e'])
 		else:
-			return render_template('active_dash.html', subs=result['result'])
+			return render_template(templates[status], exp_id=exp_id, subs=result['result'])
 	else:
 		abort(404)
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/active', methods=['GET'])
-@auth.login_required
+@dashauth.login_required
 def dashboard_view_active(exp_id):
 	return dashboard_view_participant_list(exp_id, status='ACTIVE')
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/completed', methods=['GET'])
-@auth.login_required
+@dashauth.login_required
 def dashboard_view_completed(exp_id):
 	return dashboard_view_participant_list(exp_id, status='COMPLETED')
 
 
-@app.route('/psycloud/admin/dashboard/participant/<participant_id>', methods=['GET'])
-@auth.login_required
-def dashboard_view_participant(participant_id):
-	participant = datastore.get_participant(participant_id)
+@app.route('/psycloud/admin/dashboard/participant/<uid>', methods=['GET'])
+@dashauth.login_required
+def dashboard_view_participant(uid):
+	participant = datastore.get_participant(uid)
 	if participant is not None:
-		stimuli_list = datastore.get_stimuli(participant_id)
-		response_list = datastore.get_responses(participant_id)
+		stimuli_list = datastore.get_stimuli(uid)
+		response_list = datastore.get_responses(uid)
 		participant['stimuli'] = stimuli_list
 		participant['responses'] = response_list
 		return jsonify(participant)
@@ -243,14 +246,23 @@ def dashboard_view_participant(participant_id):
 
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/completed/download_data', methods=['GET'])
-@auth.login_required
+@dashauth.login_required
 def dashboard_download_completed_participant_data(exp_id):
-	result = datastore.get_experiment_data(experiment_id, status_filter='COMPLETED')
+	result = datastore.get_experiment_data(exp_id, status_filter='COMPLETED')
+	# if result is not None:
+	# 	if result['status'] == 400:
+	# 		return bad_request(result['e'])
+	# 	else:
+	# 		return jsonify(result['result'])
+	# else:
+	# 	abort(404)
+
 	if result is not None:
 		if result['status'] == 400:
 			return bad_request(result['e'])
 		else:
-			return jsonify(result['result'])
+			# return valid_request('participants', result['result'])
+			return jsonify({'participants': result['result']})
 	else:
 		abort(404)
 
@@ -465,6 +477,7 @@ def get_participant_data(participant_id):
 
 
 @auth.get_password
+@dashauth.get_password
 def get_password(username):
     if username == 'username':
         return 'password'

@@ -32,9 +32,9 @@
                     <tbody>
                     {% for exp in params %}
                         <tr>
-                            <td><a href="{{ url_for('view_experiment', exp_id=exp.id) }}">{{ exp.name }}</a></td>
-                            <td style="text-align:center"><a href="{{ url_for('view_active', exp_id=exp.id) }}">{{ exp.num_active }}</a></td>
-                            <td style="text-align:center"><a href="{{ url_for('view_completed', exp_id=exp.id) }}">{{ exp.num_completed }}</a></td>
+                            <td><a href="{{ url_for('dashboard_view_experiment', exp_id=exp.id) }}">{{ exp.name }}</a></td>
+                            <td style="text-align:center"><a href="{{ url_for('dashboard_view_active', exp_id=exp.id) }}">{{ exp.num_active }}</a></td>
+                            <td style="text-align:center"><a href="{{ url_for('dashboard_view_completed', exp_id=exp.id) }}">{{ exp.num_completed }}</a></td>
                             <td style="text-align:center">{{ exp.num_available }}</td>
                             <td style="text-align:center">{{ exp.num_participants }}</td>
                         </tr>

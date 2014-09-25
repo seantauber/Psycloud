@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Completed</title>
+    <title>Active Participants</title>
 
     <!-- Bootstrap -->
     <link href="{{url_for('.static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
@@ -33,7 +33,7 @@
                     <tbody>
                     {% for sub in subs %}
                         <tr>
-                            <td><a href="{{ url_for('view_participant', uid=sub.short_id) }}">{{ sub.registration_coupon }}</a></td>
+                            <td><a href="{{ url_for('dashboard_view_participant', uid=sub.short_id) }}">{{ sub.registration_coupon }}</a></td>
                             <td style="text-align:center">{{ sub.participant_index }}</td>
                             <td>{{ sub.start_time }}</td>
                             <td>{{ sub.end_time }}</td>
