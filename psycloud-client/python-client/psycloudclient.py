@@ -28,7 +28,8 @@ class PsycloudAdminClient():
 		headers = {'content-type': 'application/json'}
 		data = {'experiment_name': experiment_name}
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		return r.json()
+		# return r.json()
+		return r
 
 	def upload_data(self, data_dict=None, json_filename=None):
 		url = self.base_url + admin_endpoint['experiment_upload']

@@ -85,8 +85,7 @@ class ExperimentDatastoreGoogleNDB():
 			available_participants=[],
 			active_participants=[],
 			completed_participants=[],
-			stalled_participants=[])]
-
+			stalled_participants=[])
 		experiment_key = experiment.put()
 		return experiment_key
 
