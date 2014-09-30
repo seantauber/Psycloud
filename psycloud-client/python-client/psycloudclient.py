@@ -23,13 +23,12 @@ class PsycloudAdminClient():
 		self.username = username
 		self.password = password
 
-	def create_experiment(self, experiment_name):
+	def create_experiment(self, experiment_name, num_participants):
 		url = self.base_url + admin_endpoint['experiments']
 		headers = {'content-type': 'application/json'}
-		data = {'experiment_name': experiment_name}
+		data = {'experiment_name': experiment_name, 'num_participants': num_participants}
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		# return r.json()
-		return r
+		return r.json()
 
 	def upload_data(self, data_dict=None, json_filename=None):
 		url = self.base_url + admin_endpoint['experiment_upload']
@@ -162,4 +161,28 @@ class PsycloudClient():
 		url = self.base_url + endpoint['participant']%participant_id + '/completed'
 		r = requests.post(url)
 		return r.json()
+
+
+
+
+# class ExperimentParticipant():
+# 	def __init__(self, experiment_url, experiment_id):
+# 		self.id = None
+# 		self.stimuli = []
+# 		self.responses = []
+# 		self.current_stimulus = 0
+# 		self.experiment_url = url
+# 		self.experiment_id = experiment_id
+# 		self._client = PsycloudClient(self.experiment_url)
+
+# 	def register(self):
+# 		pass
+
+# 	def register(self, registration_coupon):
+# 		pass
+
+
+
+
+
 

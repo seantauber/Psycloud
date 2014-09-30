@@ -73,20 +73,37 @@ class ExperimentDatastoreGoogleNDB():
 			return None
 		return participant_key
 
-	def create_experiment(self, experiment_name):
+	def create_experiment(self, experiment_name, num_participants):
 		'''
 		Create a new experiment with the specified experiment_name.
-		The new experiment is empty: i.e. contains no participants.
+		The new experiment contains num_participants participants, each
+		with no stimuli and set to ACTIVE status.
 		'''
 		experiment = Experiment(
 			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=0,
-			available_participants=[],
+			num_participants=num_participants,
+			available_participants=range(num_participants)[::-1],
 			active_participants=[],
 			completed_participants=[],
 			stalled_participants=[])
+
 		experiment_key = experiment.put()
+
+		participant_entities = []
+		for i in range(num_participants):
+			participant_entities.append(
+				Participant(
+				parent=experiment_key,
+				short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
+				conf_code=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
+				participant_index=i,
+				stimuli_count=0,
+				current_stimulus=0,
+				status='AVAILABLE'))
+			
+		participant_keys = ndb.put_multi(participant_entities)
+
 		return experiment_key
 
 
@@ -260,16 +277,6 @@ class ExperimentDatastoreGoogleNDB():
 		return coupon_list
 	
 	def register(self, experiment_short_id, registration_coupon=None):
-		# try:
-		# 	q = Experiment.query(short_id=experiment_short_id).fetch(keys_only=True)
-		# 	if len(q) != 0:
-		# 		# experiment_key = ndb.Key(urlsafe=experiment_id)
-		# 		experiment_key = q[0].key
-		# 		experiment = experiment_key.get()
-		# 	else:
-		# 		return None
-		# except:
-		# 	return None
 
 		experiment_key = self.lookup_experiment(experiment_short_id)
 		if experiment_key is None:
@@ -322,25 +329,12 @@ class ExperimentDatastoreGoogleNDB():
 			return None
 		participant = participant_key.get()
 		return participant.to_dict()
-		# try:
-		# 	participant_key = ndb.Key(urlsafe=participant_id)
-		# except:
-		# 	return None
-		# participant = participant_key.get()
-		# if participant is not None:
-		# 	return participant.to_dict()
-		# else:
-		# 	return None
+		
 
 	def get_stimuli(self, participant_short_id, current_only=False, stimulus_number=None):
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
 			return None
-
-		# try:
-		# 	participant_key = ndb.Key(urlsafe=participant_id)
-		# except:
-		# 	return None
 
 		if current_only:
 			stimulus_number = participant_key.get().current_stimulus
@@ -360,10 +354,6 @@ class ExperimentDatastoreGoogleNDB():
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
 			return None
-		# try:
-		# 	participant_key = ndb.Key(urlsafe=participant_id)
-		# except:
-		# 	return None
 
 		participant = participant_key.get()
 
@@ -386,11 +376,6 @@ class ExperimentDatastoreGoogleNDB():
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
 			return None
-
-		# try:
-		# 	participant_key = ndb.Key(urlsafe=participant_id)
-		# except:
-		# 	return None
 
 		valid_response, result = self.validate_response(data)
 		if not valid_response:
@@ -421,11 +406,6 @@ class ExperimentDatastoreGoogleNDB():
 		if participant_key is None:
 			return None
 
-		# try:
-		# 	participant_key = ndb.Key(urlsafe=participant_id)
-		# except:
-		# 	return None
-
 		if previous_only:
 			previous_stimuli_number = participant_key.get().current_stimulus - 1
 			if previous_stimuli_number >= 0:
@@ -453,11 +433,6 @@ class ExperimentDatastoreGoogleNDB():
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
 			return None
-
-		# try:
-		# 	participant_key = ndb.Key(urlsafe=participant_id)
-		# except:
-		# 	return None
 
 		participant = participant_key.get()
 		if participant.status != 'ACTIVE':
