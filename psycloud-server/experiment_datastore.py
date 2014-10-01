@@ -22,6 +22,7 @@ class Participant(ndb.Model):
 	start_time = ndb.DateTimeProperty()
 	end_time = ndb.DateTimeProperty()	
 	stimuli_count = ndb.IntegerProperty()
+	max_number_stimuli = ndb.IntegerProperty()
 	current_stimulus = ndb.IntegerProperty()
 	registration_coupon = ndb.JsonProperty()
 	details = ndb.JsonProperty()
@@ -401,6 +402,55 @@ class ExperimentDatastoreGoogleNDB():
 
 		return{'status':200, 'response':response.to_dict()}
 
+
+	def save_responses(self, participant_short_id, data):
+		'''
+		** NEW VERSION **
+		Saves a list of responses.
+
+		Assumes data contains a list of responses, where each response is
+		a dictionary with the following items:
+		
+		stimulus_index: the stimulus index for the response
+		variables: a dictionary where each key-value pair is a variable name and value.
+		
+		Returns an error if any of the stimulus_index of any of the responses already exists.
+		'''
+
+		# Check if the participant exists
+		participant_key = self.lookup_participant(participant_short_id)
+		if participant_key is None:
+			raise LookupError('Participant not found.')
+
+		# Check if any of the stimulus indices are out of range
+		participant = participant_key.get()
+		for ind in response_indices:
+			if not ind in range(0, participant.max_number_stimuli):
+				raise IndexError('Stimulus index out of range.')
+
+		# Check if any of the responses already exist
+		response_indices = [response['stimulus_index'] for response in data]
+		q = Response.query(Response.stimulus_index.IN(response_indices), ancestor=participant_key)
+		existing_responses = [r for r in q.iter()]
+		if len(existing_responses) > 0:
+			raise DuplicateEntryError('One or more responses already exists. Nothing was saved.')
+
+		# Create a list of new Response entities for datastore
+		response_entities = []
+		for response in data:
+			response_entities.append(
+				Response(
+				parent=participant_key,
+				stimulus_index=response['stimulus_index'],
+				variables=response['variables']))
+
+		# Save the list of responses to the datastore
+		ndb.put_multi(response_entities)
+
+		# Return a list of saved responses
+		return [response.to_dict() for response in response_entities]
+
+
 	def get_responses(self, participant_short_id, previous_only=False, stimulus_number=None):
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
@@ -468,5 +518,15 @@ class ExperimentDatastoreGoogleNDB():
 		return True, None
 		
 
+class DuplicateEntryError(Exception):
+    def __init__(self, value):
+        self.parameter = value
+    def __str__(self):
+        return repr(self.parameter)
 
+class DataFormatError(Exception):
+    def __init__(self, value):
+        self.parameter = value
+    def __str__(self):
+        return repr(self.parameter)
 
