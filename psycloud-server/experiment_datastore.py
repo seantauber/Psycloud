@@ -369,6 +369,10 @@ class ExperimentDatastoreGoogleNDB():
 		
 		participant = participant_key.get()
 
+		# Make sure index is in bounds
+		if current_stimulus not in range(0, participant.max_number_stimuli):
+			raise IndexError('Stimulus index out of range.')
+
 		participant.current_stimulus = current_stimulus
 		participant.put()
 		return True
@@ -388,7 +392,7 @@ class ExperimentDatastoreGoogleNDB():
 		
 		if stimulus_number is not None:
 			# Check if the stimulus number is out of range
-			if stimulus_number < 0 or stimulus_number >= participant_key.get().max_number_stimuli:
+			if stimulus_numberl not in range(0, participant_key.get().max_number_stimuli):
 				raise IndexError('Stimulus index out of range.')
 
 			# Query the database to get the stimulus
@@ -424,7 +428,7 @@ class ExperimentDatastoreGoogleNDB():
 		
 		if stimulus_number is not None:
 			# Check if the stimulus number is out of range
-			if stimulus_number < 0 or stimulus_number >= participant_key.get().max_number_stimuli:
+			if stimulus_number not in range(0, participant_key.get().max_number_stimuli):
 				raise IndexError('Stimulus index out of range.')
 
 			# Query the database to get the response
