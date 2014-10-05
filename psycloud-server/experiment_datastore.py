@@ -74,11 +74,11 @@ class ExperimentDatastoreGoogleNDB():
 			return None
 		return participant_key
 
-	def create_experiment(self, experiment_name, num_participants):
+	def create_experiment(self, experiment_name, num_participants, max_number_stimuli):
 		'''
 		Create a new experiment with the specified experiment_name.
 		The new experiment contains num_participants participants, each
-		with no stimuli and set to ACTIVE status.
+		with no stimuli and set to AVAILABLE status.
 		'''
 		experiment = Experiment(
 			experiment_name=experiment_name,
@@ -101,6 +101,7 @@ class ExperimentDatastoreGoogleNDB():
 				participant_index=i,
 				stimuli_count=0,
 				current_stimulus=0,
+				max_number_stimuli=max_number_stimuli,
 				status='AVAILABLE'))
 			
 		participant_keys = ndb.put_multi(participant_entities)
@@ -132,6 +133,7 @@ class ExperimentDatastoreGoogleNDB():
 				participant_index=p['participant_index'],
 				stimuli_count=p['stimuli_count'],
 				current_stimulus=0,
+				max_number_stimuli=p['stimuli_count']
 				status='AVAILABLE'))
 			
 		participant_keys = ndb.put_multi(participant_entities)
