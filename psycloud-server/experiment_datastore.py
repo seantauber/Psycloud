@@ -332,24 +332,41 @@ class ExperimentDatastoreGoogleNDB():
 		return participant.to_dict()
 		
 
-	def get_stimuli(self, participant_short_id, current_only=False, stimulus_number=None):
+	def get_stimuli(self, participant_short_id, stimulus_number=None):
+		'''
+		Returns a list of stimuli.
+		List contains all existing stimuli if stimulus_number is None.
+		Otherwise list contains one stimulus specified by stimulus_number. 
+		'''
+
+		# Check if the participant exists
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
-			return None
-
-		if current_only:
-			stimulus_number = participant_key.get().current_stimulus
+			raise LookupError('Participant not found.')
 		
 		if stimulus_number is not None:
-			if stimulus_number >= 0 and stimulus_number < participant_key.get().stimuli_count:
-				q = Stimulus.query(Stimulus.stimulus_index == stimulus_number, ancestor=participant_key)
-			else:
-				return None
+			# Check if the stimulus number is out of range
+			if stimulus_number < 0 or stimulus_number >= participant_key.get().max_number_stimuli:
+				raise IndexError('Stimulus index out of range.')
+
+			# Query the database to get the stimulus
+			q = Stimulus.query(Stimulus.stimulus_index == stimulus_number, ancestor=participant_key)
+
 		else:
+			# Query the database to get all stimuli
 			q = ndb.Query(kind='Stimulus', ancestor=participant_key)
 
+		# Convert the stimuli returned by the query to a list of dictionaries
 		stimuli_list = [stimulus.to_dict() for stimulus in q.iter()]
-		return stimuli_list
+
+		# Check if we are getting all stimuli or if the list of stimuli is not empty
+		if stimulus_number is None or len(stimuli_list) > 0:
+			# It's ok to return an empty list if we were getting all stimuli
+			return stimuli_list
+		else:
+			# If we were getting a specific stimulus, then returning an empty list not allowed
+			raise LookupError('Stimulus %s not found.' % stimulus_number)
+
 
 	def increment_and_get_next_stimulus(self, participant_short_id):
 		participant_key = self.lookup_participant(participant_short_id)
@@ -372,35 +389,35 @@ class ExperimentDatastoreGoogleNDB():
 		else:
 			return{'status':400, 'e':"no more stimuli"}
 
-	def save_response(self, participant_short_id, data, current_only=False, stimulus_index=None):
+	# def save_response(self, participant_short_id, data, current_only=False, stimulus_index=None):
 
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			return None
+	# 	participant_key = self.lookup_participant(participant_short_id)
+	# 	if participant_key is None:
+	# 		return None
 
-		valid_response, result = self.validate_response(data)
-		if not valid_response:
-			return result
+	# 	valid_response, result = self.validate_response(data)
+	# 	if not valid_response:
+	# 		return result
 
-		participant = participant_key.get()
-		if current_only:
-			stimulus_index = participant.current_stimulus
-		elif not stimulus_index < participant.stimuli_count:
-				return {'status':400, 'e':"stimulus_index %s is out of bounds. Participant has %s stimuli."%(stimulus_index,participant.stimuli_count)}
+	# 	participant = participant_key.get()
+	# 	if current_only:
+	# 		stimulus_index = participant.current_stimulus
+	# 	elif not stimulus_index < participant.stimuli_count:
+	# 			return {'status':400, 'e':"stimulus_index %s is out of bounds. Participant has %s stimuli."%(stimulus_index,participant.stimuli_count)}
 
-		q = Response.query(Response.stimulus_index == stimulus_index, ancestor=participant_key)
-		existing_responses = [r for r in q.iter()]
-		if len(existing_responses) > 0:
-			return{'status':400, 'e':"response already exists."}
-		else:
-			response = Response(parent=participant_key,
-			stimulus_index=stimulus_index,
-			variables=data['variables'])
-		response.put()
-		participant.last_completed_stimulus = participant.current_stimulus
-		participant.put()
+	# 	q = Response.query(Response.stimulus_index == stimulus_index, ancestor=participant_key)
+	# 	existing_responses = [r for r in q.iter()]
+	# 	if len(existing_responses) > 0:
+	# 		return{'status':400, 'e':"response already exists."}
+	# 	else:
+	# 		response = Response(parent=participant_key,
+	# 		stimulus_index=stimulus_index,
+	# 		variables=data['variables'])
+	# 	response.put()
+	# 	participant.last_completed_stimulus = participant.current_stimulus
+	# 	participant.put()
 
-		return{'status':200, 'response':response.to_dict()}
+	# 	return{'status':200, 'response':response.to_dict()}
 
 
 	def save_responses(self, participant_short_id, data):
