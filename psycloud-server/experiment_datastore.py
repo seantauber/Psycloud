@@ -341,6 +341,13 @@ class ExperimentDatastoreGoogleNDB():
 		return participant_key.get()
 
 
+	def get_status(self, participant_short_id):
+		'''
+		Returns the participant's current status.
+		'''
+		return self.get_participant(participant_short_id).status
+
+
 	def get_max_number_stimuli(self, participant_short_id):
 		'''
 		Returns the maximum number of stimuli for the participant.
@@ -353,6 +360,13 @@ class ExperimentDatastoreGoogleNDB():
 		Returns the current stimulus number for the participant.
 		'''
 		return self.get_participant(participant_short_id).current_stimulus
+
+
+	def get_confirmation_code(self, participant_short_id):
+		'''
+		Returns the participant's confirmation code.
+		'''
+		return self.get_participant(participant_short_id).conf_code
 
 
 	def set_current_stimulus(self, participant_short_id, current_stimulus):
@@ -375,13 +389,6 @@ class ExperimentDatastoreGoogleNDB():
 		participant.put()
 		return True
 
-
-	def get_status(self, participant_short_id):
-		'''
-		Returns the participant's current status.
-		'''
-		return self.get_participant(participant_short_id).status
-		
 
 	def set_status(self, participant_short_id, new_status):
 		'''
