@@ -368,26 +368,63 @@ class ExperimentDatastoreGoogleNDB():
 			raise LookupError('Stimulus %s not found.' % stimulus_number)
 
 
-	def increment_and_get_next_stimulus(self, participant_short_id):
+	def get_responses(self, participant_short_id, stimulus_number=None):
+		'''
+		Returns a list of responses.
+		List contains all existing responses if stimulus_number is None.
+		Otherwise list contains one response specified by stimulus_number. 
+		'''
+
+		# Check if the participant exists
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
-			return None
-
-		participant = participant_key.get()
-
-		if participant.current_stimulus < (participant.stimuli_count - 1):
-			participant.current_stimulus += 1
-			participant.put()
-			# if participant.current_stimulus < participant.stimuli_count:
-			q = Stimulus.query(Stimulus.stimulus_index == participant.current_stimulus, ancestor=participant_key)
-			# else:
-				# return None
-			
-			stimuli_list = [stimulus.to_dict() for stimulus in q.iter()]
-			return{'status':200, 'stimuli':stimuli_list}
+			raise LookupError('Participant not found.')
 		
+		if stimulus_number is not None:
+			# Check if the stimulus number is out of range
+			if stimulus_number < 0 or stimulus_number >= participant_key.get().max_number_stimuli:
+				raise IndexError('Stimulus index out of range.')
+
+			# Query the database to get the response
+			q = Response.query(Response.stimulus_index == stimulus_number, ancestor=participant_key)
+
 		else:
-			return{'status':400, 'e':"no more stimuli"}
+			# Query the database to get all responses
+			q = ndb.Query(kind='Response', ancestor=participant_key)
+
+		# Convert the responses returned by the query to a list of dictionaries
+		response_list = [response.to_dict() for response in q.iter()]
+
+		# Check if we are getting all responses or if the list of responses is not empty
+		if stimulus_number is None or len(response_list) > 0:
+			# It's ok to return an empty list if we were getting all responses
+			return response_list
+		else:
+			# If we were getting a specific response, then returning an empty list not allowed
+			raise LookupError('Response %s not found.' % stimulus_number)
+
+
+	# def increment_and_get_next_stimulus(self, participant_short_id):
+	# 	participant_key = self.lookup_participant(participant_short_id)
+	# 	if participant_key is None:
+	# 		return None
+
+	# 	participant = participant_key.get()
+
+	# 	if participant.current_stimulus < (participant.stimuli_count - 1):
+	# 		participant.current_stimulus += 1
+	# 		participant.put()
+	# 		# if participant.current_stimulus < participant.stimuli_count:
+	# 		q = Stimulus.query(Stimulus.stimulus_index == participant.current_stimulus, ancestor=participant_key)
+	# 		# else:
+	# 			# return None
+			
+	# 		stimuli_list = [stimulus.to_dict() for stimulus in q.iter()]
+	# 		return{'status':200, 'stimuli':stimuli_list}
+		
+	# 	else:
+	# 		return{'status':400, 'e':"no more stimuli"}
+
 
 	# def save_response(self, participant_short_id, data, current_only=False, stimulus_index=None):
 
@@ -500,10 +537,10 @@ class ExperimentDatastoreGoogleNDB():
 				raise IndexError('Stimulus index out of range.')
 
 		# Check if any of the stimuli already exist
-		q = Response.query(Stimulus.stimulus_index.IN(new_stimulus_indices), ancestor=participant_key)
-		existing_responses = [r for r in q.iter()]
-		if len(existing_responses) > 0:
-			raise DuplicateEntryError('One or more responses with the specified stimulus index already exists. Nothing was saved.')
+		q = Stimulus.query(Stimulus.stimulus_index.IN(new_stimulus_indices), ancestor=participant_key)
+		existing_stimuli = [r for r in q.iter()]
+		if len(existing_stimuli) > 0:
+			raise DuplicateEntryError('One or more stimuli with the specified stimulus index already exists. Nothing was saved.')
 
 		# Create a list of new Stimulus entities for datastore
 		stimulus_entities = []
@@ -522,33 +559,33 @@ class ExperimentDatastoreGoogleNDB():
 		return [stimulus.to_dict() for stimulus in stimulus_entities]
 
 
-	def get_responses(self, participant_short_id, previous_only=False, stimulus_number=None):
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			return None
+	# def get_responses(self, participant_short_id, previous_only=False, stimulus_number=None):
+	# 	participant_key = self.lookup_participant(participant_short_id)
+	# 	if participant_key is None:
+	# 		return None
 
-		if previous_only:
-			previous_stimuli_number = participant_key.get().current_stimulus - 1
-			if previous_stimuli_number >= 0:
-				q = Response.query(Response.stimulus_index == previous_stimuli_number, ancestor=participant_key).fetch()
-				if len(q) == 1:
-					response_list = [q[0].to_dict()]
-					return response_list
-				else:
-					return None
-			else:
-				return None
+	# 	if previous_only:
+	# 		previous_stimuli_number = participant_key.get().current_stimulus - 1
+	# 		if previous_stimuli_number >= 0:
+	# 			q = Response.query(Response.stimulus_index == previous_stimuli_number, ancestor=participant_key).fetch()
+	# 			if len(q) == 1:
+	# 				response_list = [q[0].to_dict()]
+	# 				return response_list
+	# 			else:
+	# 				return None
+	# 		else:
+	# 			return None
 		
-		if stimulus_number is not None:
-			if stimulus_number >= 0 and stimulus_number < participant_key.get().stimuli_count:
-				q = Response.query(Response.stimulus_index == stimulus_number, ancestor=participant_key)
-			else:
-				return None
-		else:
-			q = ndb.Query(kind='Response', ancestor=participant_key)
+	# 	if stimulus_number is not None:
+	# 		if stimulus_number >= 0 and stimulus_number < participant_key.get().stimuli_count:
+	# 			q = Response.query(Response.stimulus_index == stimulus_number, ancestor=participant_key)
+	# 		else:
+	# 			return None
+	# 	else:
+	# 		q = ndb.Query(kind='Response', ancestor=participant_key)
 
-		response_list = [response.to_dict() for response in q.iter()]
-		return response_list
+	# 	response_list = [response.to_dict() for response in q.iter()]
+	# 	return response_list
 
 	def record_as_completed(self, participant_short_id):
 		participant_key = self.lookup_participant(participant_short_id)
