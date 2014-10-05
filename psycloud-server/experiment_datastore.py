@@ -333,7 +333,7 @@ class ExperimentDatastoreGoogleNDB():
 		'''
 		Gets a participant.
 		'''
-		
+
 		# Check if the participant exists
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
@@ -345,24 +345,15 @@ class ExperimentDatastoreGoogleNDB():
 		'''
 		Returns the maximum number of stimuli for the participant.
 		'''
-
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
-		return participant_key.get().max_number_stimuli
+		return self.get_participant(participant_short_id).max_number_stimuli
 
 
 	def get_current_stimulus(self, participant_short_id):
 		'''
 		Returns the current stimulus number for the participant.
 		'''
+		return self.get_participant(participant_short_id).current_stimulus
 
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
-		return participant_key.get().current_stimulus
 
 	def set_current_stimulus(self, participant_short_id, current_stimulus):
 		'''
@@ -389,12 +380,8 @@ class ExperimentDatastoreGoogleNDB():
 		'''
 		Returns the participant's current status.
 		'''
-
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
-		return participant_key.get().status
+		return self.get_participant(participant_short_id).status
+		
 
 	def set_status(self, participant_short_id, new_status):
 		'''
