@@ -329,16 +329,23 @@ class ExperimentDatastoreGoogleNDB():
 		return {'status':200, 'participant':p}
 
 
-	def get_participant(self, participant_short_id):
+	def get_participant_key(self, participant_short_id):
 		'''
-		Gets a participant.
+		Gets a participant key.
 		'''
 
 		# Check if the participant exists
 		participant_key = self.lookup_participant(participant_short_id)
 		if participant_key is None:
 			raise LookupError('Participant not found.')
-		return participant_key.get()
+		return participant_key
+
+	def get_participant(self, participant_short_id):
+		'''
+		Gets a participant.
+		'''
+		# Get the participant key and then load using the get method
+		return get_participant_key(participant_short_id).get()
 
 
 	def get_status(self, participant_short_id):
@@ -374,12 +381,8 @@ class ExperimentDatastoreGoogleNDB():
 		Sets the current stimulus number for the participant.
 		'''
 
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
-		
-		participant = participant_key.get()
+		# Load the participant
+		participant = self.get_participant(participant_short_id)
 
 		# Make sure index is in bounds
 		if current_stimulus not in range(0, participant.max_number_stimuli):
@@ -400,13 +403,8 @@ class ExperimentDatastoreGoogleNDB():
 		if new_status not in self.VALID_STATUS_LIST:
 			raise ValueError('%s is not a valid status.' % new_status)
 
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
-		
 		# Load the participant
-		participant = participant_key.get()
+		participant = self.get_participant(participant_short_id)
 
 		# Record the start time if this is the participant's initial activation
 		if participant.status == 'AVAILABLE' and new_status == 'ACTIVE':
@@ -419,7 +417,7 @@ class ExperimentDatastoreGoogleNDB():
 		# Save the new status
 		participant.status = new_status
 		participant.put()
-
+		return True
 
 		
 
@@ -430,14 +428,11 @@ class ExperimentDatastoreGoogleNDB():
 		Otherwise list contains one stimulus specified by stimulus_number. 
 		'''
 
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
+		participant_key = self.get_participant_key(participant_short_id)
 		
 		if stimulus_number is not None:
 			# Check if the stimulus number is out of range
-			if stimulus_numberl not in range(0, participant_key.get().max_number_stimuli):
+			if stimulus_number not in range(0, participant_key.get().max_number_stimuli):
 				raise IndexError('Stimulus index out of range.')
 
 			# Query the database to get the stimulus
@@ -466,10 +461,7 @@ class ExperimentDatastoreGoogleNDB():
 		Otherwise list contains one response specified by stimulus_number. 
 		'''
 
-		# Check if the participant exists
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
+		participant_key = self.get_participant_key(participant_short_id)
 		
 		if stimulus_number is not None:
 			# Check if the stimulus number is out of range
