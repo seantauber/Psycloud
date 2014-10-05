@@ -46,8 +46,11 @@ class RegistrationCoupon(ndb.Model):
 
 class ExperimentDatastoreGoogleNDB():
 	
+	VALID_STATUS_LIST = ['AVAILABLE', 'ACTIVE', 'COMPLETED', 'STALLED']
+	SHORT_CODE_LENGTH = 16
+
 	def __init__(self):
-		self.SHORT_CODE_LENGTH = 16
+		pass
 
 	def lookup_experiment(self, short_id):
 		try:
@@ -376,6 +379,50 @@ class ExperimentDatastoreGoogleNDB():
 		participant.current_stimulus = current_stimulus
 		participant.put()
 		return True
+
+
+	def get_status(self, participant_short_id):
+		'''
+		Returns the participant's current status.
+		'''
+
+		# Check if the participant exists
+		participant_key = self.lookup_participant(participant_short_id)
+		if participant_key is None:
+			raise LookupError('Participant not found.')
+		return participant_key.get().status
+
+	def set_status(self, participant_short_id, new_status):
+		'''
+		Sets the participant's current status and moves the participant number to the
+		appropriate status list for the experiment.
+		'''
+
+		# Make sure the new status is valid
+		if new_status not in self.VALID_STATUS_LIST:
+			raise ValueError('%s is not a valid status.' % new_status)
+
+		# Check if the participant exists
+		participant_key = self.lookup_participant(participant_short_id)
+		if participant_key is None:
+			raise LookupError('Participant not found.')
+		
+		# Load the participant
+		participant = participant_key.get()
+
+		# Record the start time if this is the participant's initial activation
+		if participant.status == 'AVAILABLE' and new_status == 'ACTIVE':
+			participant.start_time = datetime.now()
+
+		# Record the end time if the participant is complete
+		elif participant.status == 'COMPLETED':
+			participant.end_time = datetime.now()
+		
+		# Save the new status
+		participant.status = new_status
+		participant.put()
+
+
 		
 
 	def get_stimuli(self, participant_short_id, stimulus_number=None):
