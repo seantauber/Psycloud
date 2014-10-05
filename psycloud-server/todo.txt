@@ -6,12 +6,10 @@ Planned REST API Endpoints for participant client
 
 [GET, POST]				/participant/<participant_id>/stimuli
 [GET, POST]				/participant/<participant_id>/stimuli/<int:stimulus_number>
-[GET]					/participant/<participant_id>/stimuli/count
 [GET]					/participant/<participant_id>/stimuli/max_count
 
 [GET, POST]				/participant/<participant_id>/responses
 [GET, POST]				/participant/<participant_id>/responses/<int:stimulus_number>
-[GET]					/participant/<participant_id>/responses/count
 
 [GET, PUT]				/participant/<participant_id>/stimuli/current
 [GET, PUT]				/participant/<participant_id>/status
