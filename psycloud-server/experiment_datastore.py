@@ -414,7 +414,7 @@ class ExperimentDatastoreGoogleNDB():
 		stimulus_index: the stimulus index for the response
 		variables: a dictionary where each key-value pair is a variable name and value.
 		
-		Returns an error if any of the stimulus_index of any of the responses already exists.
+		Raises an exception if the stimulus_index of any of the responses already exists.
 		'''
 
 		# Check if the participant exists
@@ -422,18 +422,20 @@ class ExperimentDatastoreGoogleNDB():
 		if participant_key is None:
 			raise LookupError('Participant not found.')
 
+		# Get a list of the stimulus_index for each response to be saved
+		new_response_indices = [response['stimulus_index'] for response in data]
+
 		# Check if any of the stimulus indices are out of range
 		participant = participant_key.get()
-		for ind in response_indices:
+		for ind in new_response_indices:
 			if not ind in range(0, participant.max_number_stimuli):
 				raise IndexError('Stimulus index out of range.')
 
 		# Check if any of the responses already exist
-		response_indices = [response['stimulus_index'] for response in data]
-		q = Response.query(Response.stimulus_index.IN(response_indices), ancestor=participant_key)
+		q = Response.query(Response.stimulus_index.IN(new_response_indices), ancestor=participant_key)
 		existing_responses = [r for r in q.iter()]
 		if len(existing_responses) > 0:
-			raise DuplicateEntryError('One or more responses already exists. Nothing was saved.')
+			raise DuplicateEntryError('One or more responses with the specified stimulus index already exists. Nothing was saved.')
 
 		# Create a list of new Response entities for datastore
 		response_entities = []
@@ -449,6 +451,58 @@ class ExperimentDatastoreGoogleNDB():
 
 		# Return a list of saved responses
 		return [response.to_dict() for response in response_entities]
+
+
+	def save_stimuli(self, participant_short_id, data):
+		'''
+		** NEW VERSION **
+		Saves a list of stimuli.
+
+		Assumes data contains a list of stimuli, where each stimulus is
+		a dictionary with the following items:
+		
+		stimulus_index: the stimulus index for the response
+		variables: a dictionary where each key-value pair is a variable name and value.
+		stimulus_type: a string label indicating the type of stimulus
+		
+		Raises an exception if the stimulus_index of any of the stimuli already exists.
+		'''
+
+		# Check if the participant exists
+		participant_key = self.lookup_participant(participant_short_id)
+		if participant_key is None:
+			raise LookupError('Participant not found.')
+
+		# Get a list of the stimulus_index for each stimulus to be saved
+		new_stimulus_indices = [response['stimulus_index'] for response in data]
+
+		# Check if any of the stimulus indices are out of range
+		participant = participant_key.get()
+		for ind in new_stimulus_indices:
+			if not ind in range(0, participant.max_number_stimuli):
+				raise IndexError('Stimulus index out of range.')
+
+		# Check if any of the stimuli already exist
+		q = Response.query(Stimulus.stimulus_index.IN(new_stimulus_indices), ancestor=participant_key)
+		existing_responses = [r for r in q.iter()]
+		if len(existing_responses) > 0:
+			raise DuplicateEntryError('One or more responses with the specified stimulus index already exists. Nothing was saved.')
+
+		# Create a list of new Stimulus entities for datastore
+		stimulus_entities = []
+		for stimulus in data:
+			stimulus_entities.append(
+				Stimulus(
+				parent=participant_key,
+				stimulus_index=stimulus['stimulus_index'],
+				variables=stimulus['variables'],
+				stimulus_type=stimulus['stimulus_type']))
+
+		# Save the list of stimuli to the datastore
+		ndb.put_multi(stimulus_entities)
+
+		# Return a list of saved stimuli
+		return [stimulus.to_dict() for stimulus in stimulus_entities]
 
 
 	def get_responses(self, participant_short_id, previous_only=False, stimulus_number=None):
