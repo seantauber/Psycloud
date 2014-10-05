@@ -332,6 +332,18 @@ class ExperimentDatastoreGoogleNDB():
 			return None
 		participant = participant_key.get()
 		return participant.to_dict()
+
+
+	def get_max_number_stimuli(self, participant_short_id):
+		'''
+		Returns the maximum number of stimuli for the participant.
+		'''
+
+		# Check if the participant exists
+		participant_key = self.lookup_participant(participant_short_id)
+		if participant_key is None:
+			raise LookupError('Participant not found.')
+		return participant_key.get().max_number_stimuli
 		
 
 	def get_stimuli(self, participant_short_id, stimulus_number=None):
