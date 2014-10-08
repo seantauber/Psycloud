@@ -52,29 +52,36 @@ class ExperimentDatastoreGoogleNDB():
 	def __init__(self):
 		pass
 
+
 	def lookup_experiment(self, short_id):
-		try:
-			q = Experiment.query(Experiment.short_id==short_id).fetch(keys_only=True)
-			if len(q) != 0:
-				experiment_key = q[0]
-			else:
-				print "DEBUG: Experiment lookup returned no results"
-				return None
-		except:
-			print "DEBUG: Experiment lookup resulted in exception"
-			raise
-			return None
+
+		q = Experiment.query(Experiment.short_id==short_id).fetch(keys_only=True)
+		if len(q) != 0:
+			experiment_key = q[0]
+		else:
+			raise LookupError('Experiment not found.')
+
 		return experiment_key
 
+
 	def lookup_participant(self, short_id):
-		try:
-			q = Participant.query(Participant.short_id==short_id).fetch(keys_only=True)
-			if len(q) != 0:
-				participant_key = q[0]
-			else:
-				return None
-		except:
-			return None
+
+		q = Participant.query(Participant.short_id==short_id).fetch(keys_only=True)
+		if len(q) != 0:
+			participant_key = q[0]
+		else:
+			raise LookupError('Participant not found.')
+
+		return participant_key
+
+	def lookup_participant_by_index(self, participant_index):
+
+		q = Participant.query(Participant.participant_index==participant_index).fetch(keys_only=True)
+		if len(q) != 0:
+			participant_key = q[0]
+		else:
+			raise LookupError('Participant not found.')
+
 		return participant_key
 
 	def create_experiment(self, experiment_name, num_participants, max_number_stimuli):
@@ -156,53 +163,45 @@ class ExperimentDatastoreGoogleNDB():
 
 		return experiment_key
 
+
 	def remove_experiment(self, experiment_id):
-		try:
-			experiment_key = ndb.Key(urlsafe=experiment_id)
-		except:
-			return None
+
+		experiment_key = ndb.Key(urlsafe=experiment_id)
 
 		experiment = experiment_key.get()
 		experiment_name = experiment.experiment_name
 
-		try:
-			ndb.delete_multi(ndb.Query(ancestor=experiment_key).iter(keys_only = True))
-			experiment_key.delete()
-			return {'status':200, 'experiment_name':experiment_name}
-		except:
-			return {'status':400, 'e':"Unable to delete experiment"}
+		ndb.delete_multi(ndb.Query(ancestor=experiment_key).iter(keys_only = True))
+		experiment_key.delete()
+		return True
+
 
 	def get_experiment_from_urlsafe_id(self, urlsafe_experiment_id):
 		experiment_key = ndb.Key(urlsafe=urlsafe_experiment_id)
 		experiment = experiment_key.get()
 		return experiment
 
+
 	def get_experiments(self, experiment_id=None):
 		if experiment_id is None:
 			q = ndb.Query(kind='Experiment')
 			experiment_list = [dict( {'id':i.key.urlsafe()}.items() + i.to_dict().items() ) for i in q.iter()]
 		else:
-			try:
-				experiment_key = ndb.Key(urlsafe=experiment_id)
-				experiment = experiment_key.get()
-				experiment_list = [ experiment.to_dict() ]
-			except:
-				return None
+			experiment_key = ndb.Key(urlsafe=experiment_id)
+			experiment = experiment_key.get()
+			experiment_list = [ experiment.to_dict() ]
+
 		return experiment_list
 
-	def get_experiment_participants(self, experiment_id, keys_only=False, status_filter=None, get_data=False):
-		try:
-			experiment_key = ndb.Key(urlsafe=experiment_id)
-		except:
-			return None
 
-		try:
-			if status_filter is None:
-				q = Participant.query(ancestor=experiment_key).fetch(keys_only=keys_only)
-			else:
-				q = Participant.query(Participant.status == status_filter, ancestor=experiment_key).fetch(keys_only=keys_only)
-		except:
-			return {'status':400, 'e':"Something went wrong"}
+	def get_experiment_participants(self, experiment_id, keys_only=False, status_filter=None, get_data=False):
+
+		experiment_key = ndb.Key(urlsafe=experiment_id)
+
+		if status_filter is None:
+			q = Participant.query(ancestor=experiment_key).fetch(keys_only=keys_only)
+		else:
+			q = Participant.query(Participant.status == status_filter, ancestor=experiment_key).fetch(keys_only=keys_only)
 
 		if keys_only:
 			participants = [p.urlsafe() for p in q]
@@ -211,31 +210,42 @@ class ExperimentDatastoreGoogleNDB():
 			for i,qi in enumerate(q):
 				participants[i].update({'id':qi.key.urlsafe()})
 
-		return {'status':200, 'result':participants}
+		return participants
+
+
+	def get_participant_index_list_by_status(self, experiment_short_id, status_filter):
+
+		experiment_key = self.lookup_experiment(experiment_short_id)
+		q = Participant.query(Participant.status == status_filter, ancestor=experiment_key)
+		participant_index_list = [p.participant_index for p in q.iter()]
+		participant_index_list.sort()
+		return participant_index_list
+
+
+	def available_participant_indices(self, experiment_short_id):
+		return self.get_participant_index_list_by_status(experiment_short_id, 'AVAILABLE')
+
+	def active_participant_indices(self, experiment_short_id):
+		return self.get_participant_index_list_by_status(experiment_short_id, 'ACTIVE')
+
+	def completed_participant_indices(self, experiment_short_id):
+		return self.get_participant_index_list_by_status(experiment_short_id, 'COMPLETED')
+
+	def stalled_participant_indices(self, experiment_short_id):
+		return self.get_participant_index_list_by_status(experiment_short_id, 'STALLED')
 
 	
 	def get_experiment_data(self, experiment_id, status_filter=None):
-		try:
-			experiment_key = ndb.Key(urlsafe=experiment_id)
-		except:
-			return None
 
-		try:
-			if status_filter is None:
-				q_part = Participant.query(ancestor=experiment_key)
-			else:
-				q_part = Participant.query(Participant.status == status_filter, ancestor=experiment_key)
-		except:
-			return {'status':400, 'e':"Something went wrong while fetching participants"}
+		experiment_key = ndb.Key(urlsafe=experiment_id)
 
-		try:
-			q_stim = Stimulus.query(ancestor=experiment_key)
-		except:
-			return {'status':400, 'e':"Something went wrong while fetching stimuli"}
-		try:
-			q_resp = Response.query(ancestor=experiment_key)
-		except:
-			return {'status':400, 'e':"Something went wrong while fetching responses"}
+		if status_filter is None:
+			q_part = Participant.query(ancestor=experiment_key)
+		else:
+			q_part = Participant.query(Participant.status == status_filter, ancestor=experiment_key)
+
+		q_stim = Stimulus.query(ancestor=experiment_key)
+		q_resp = Response.query(ancestor=experiment_key)
 
 		#build participant hashtable
 		participants = {}
@@ -252,93 +262,82 @@ class ExperimentDatastoreGoogleNDB():
 			if participants.has_key(r.key.parent().urlsafe()):
 				participants[r.key.parent().urlsafe()]['responses'].append(r.to_dict())
 
-		return {'status':200, 'result':participants.values()}
-
+		# Return a list of dictionaries, each containing all data for a participant
+		return participants.values()
 
 
 	def save_coupons(self, experiment_id, data):
-		try:
-			experiment_key = ndb.Key(urlsafe=experiment_id)
-		except:
-			return None
 
-		try:
-			for c in data['coupons']:
-				coupon = RegistrationCoupon(
-					parent=experiment_key,
-					coupon_type=c['coupon_type'],
-					coupon_value=c['coupon_value'])
-				coupon.put()
-		except:
-			return {'status':400, 'e':"Something went wrong"}
-		return {'status':200, 'result':self.get_coupons(experiment_id)}
+		experiment_key = ndb.Key(urlsafe=experiment_id)
+
+		for c in data['coupons']:
+			coupon = RegistrationCoupon(
+				parent=experiment_key,
+				coupon_type=c['coupon_type'],
+				coupon_value=c['coupon_value'])
+			coupon.put()
+		
+		return self.get_coupons(experiment_id)
+
 
 	def get_coupons(self, experiment_id):
-		try:
-			experiment_key = ndb.Key(urlsafe=experiment_id)
-		except:
-			return None
+
+		experiment_key = ndb.Key(urlsafe=experiment_id)
+
 		q = RegistrationCoupon.query(ancestor=experiment_key)
 		coupon_list = [coupon.to_dict() for coupon in q.iter()]
 		return coupon_list
+
 	
 	def register(self, experiment_short_id, registration_coupon=None):
+		'''
+		Activate and return a participant from the list of available participants.
+		If registratin coupon is provided, it is registered with the experiment unless it
+		has previously been registered... in which case an exception is raised.
+		'''
 
 		experiment_key = self.lookup_experiment(experiment_short_id)
-		if experiment_key is None:
-			return None
-		else:
-			experiment = experiment_key.get()
+		experiment = experiment_key.get()
 
 		if registration_coupon is not None:
 			q = RegistrationCoupon.query(RegistrationCoupon.coupon_value==registration_coupon, ancestor=experiment_key).fetch()
 			if len(q) != 0:
-				return {'status':400, 'e':"Duplicate registration coupon"}
+				raise DuplicateEntryError('The registration coupon was already used.')
 
-		try:
-			particpant_index = experiment.available_participants.pop()
-			experiment.put()
-		except IndexError:
-			return {'status':400, 'e':"No available participants"}
+		# Get a list of available participant indices, and then take the first one
+		available_list = self.available_participant_indices(experiment_short_id)
+		if len(available_list):
+			particpant_index = available_list[0]
+		else:
+			raise ResourceError('The experiment is full. Registration failed.')
 
-		try:
-			q = Participant.query(Participant.participant_index==particpant_index, ancestor=experiment_key).fetch()
-			participant = q[0]
-			# participant = participant_key.get()
+		# Load the participant_key
+		participant = self.get_participant_by_index(particpant_index)
 
-			participant.status = 'ACTIVE'
-			participant.start_time = datetime.now()
-			if registration_coupon is not None:
-				participant.registration_coupon = registration_coupon
-			participant.put()
+		# Set participant status to active
+		self.update_participant_status(participant, 'ACTIVE')
 
-			coupon = RegistrationCoupon(parent=experiment_key, coupon_value=registration_coupon)
-			coupon.put()
-			
-			p = participant.to_dict()
-			# p.update({'id':participant.key.urlsafe()})
-		except:
-			# Something went wrong. Undo participant activation
-			experiment.available_participants.append(particpant_index)
-			experiment.put()
-			return {'status':400, 'e':"Unable to activate participant"}
+		if registration_coupon is not None:
+			# Set the participant registration coupon
+			self.update_participant_registration_coupon(participant, registration_coupon)
+			# Register and save the coupon with the experiment
+			experiment_key = participant.parent
+			self.register_coupon_to_experiment(experiment_key, coupon)
 
-		experiment.active_participants.append(particpant_index)
-		experiment.put()
+		# Save the participant entity
+		participant.put()
 
-		return {'status':200, 'participant':p}
+		# Return the updated participant as a dictionary
+		return participant.to_dict()
 
 
 	def get_participant_key(self, participant_short_id):
 		'''
 		Gets a participant key.
 		'''
-
-		# Check if the participant exists
 		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			raise LookupError('Participant not found.')
 		return participant_key
+
 
 	def get_participant(self, participant_short_id):
 		'''
@@ -346,6 +345,22 @@ class ExperimentDatastoreGoogleNDB():
 		'''
 		# Get the participant key and then load using the get method
 		return get_participant_key(participant_short_id).get()
+
+
+	def get_participant_key_by_index(self, participant_index):
+		'''
+		Gets a participant key based on the participant index.
+		'''
+		participant_key = self.lookup_participant_by_index(participant_index)
+		return participant_key
+
+
+	def get_participant_by_index(self, participant_index):
+		'''
+		Gets a participant based on the participant index.
+		'''
+		# Get the participant key and then load using the get method
+		return get_participant_key_by_index(participant_index).get()
 
 
 	def get_status(self, participant_short_id):
@@ -393,6 +408,25 @@ class ExperimentDatastoreGoogleNDB():
 		return True
 
 
+	def update_participant_status(self, participant, new_status):
+		'''
+		Assumes participant is a Participant entity and updates its status.
+		
+		DOES NOT save the participant to the database.
+
+		'''
+		# Record the start time if this is the participant's initial activation
+		if participant.status == 'AVAILABLE' and new_status == 'ACTIVE':
+			participant.start_time = datetime.now()
+
+		# Record the end time if the participant is complete
+		elif participant.status == 'COMPLETED':
+			participant.end_time = datetime.now()
+		
+		# Save the new status
+		participant.status = new_status
+
+	
 	def set_status(self, participant_short_id, new_status):
 		'''
 		Sets the participant's current status and moves the participant number to the
@@ -406,20 +440,48 @@ class ExperimentDatastoreGoogleNDB():
 		# Load the participant
 		participant = self.get_participant(participant_short_id)
 
-		# Record the start time if this is the participant's initial activation
-		if participant.status == 'AVAILABLE' and new_status == 'ACTIVE':
-			participant.start_time = datetime.now()
+		# Update the status and save
+		self.update_participant_status(participant, new_status)
 
-		# Record the end time if the participant is complete
-		elif participant.status == 'COMPLETED':
-			participant.end_time = datetime.now()
+
+	def update_participant_registration_coupon(self, participant, coupon):
+		'''
+		Assumes participant is a Participant entity and updates its registration coupon.
 		
-		# Save the new status
-		participant.status = new_status
+		DOES NOT save the participant to the database.
+		'''
+		# set the participants registratino coupon and save the participant
+		participant.registration_coupon = registration_coupon
+
+
+	def register_coupon_to_experiment(self, experiment_key, coupon):
+		'''
+		Create a new coupon entity for the experiment
+		'''
+		# Create a new coupon for the experiment and save
+		coupon = RegistrationCoupon(parent=experiment_key, coupon_value=coupon)
+		coupon.put()
+
+
+	def set_registration_coupon(self, participant_short_id, coupon):
+		'''
+		Sets the participant's registration coupon and saves the coupon to list
+		of all coupons for the experiment.
+		One of participant_short_id or participant_key must be passed in as a parameter.
+		'''
+		# Load the participant
+		participant = self.get_participant(participant_short_id)
+		
+		# set the participants registration coupon
+		self.update_participant_registration_coupon(participant, coupon)
+
+		# Save the participant
 		participant.put()
-		return True
 
-		
+		# Add the coupon to the experiment coupon list
+		experiment_key = participant.parent
+		self.register_coupon_to_experiment(experiment_key, coupon)
+
 
 	def get_stimuli(self, participant_short_id, stimulus_number=None):
 		'''
@@ -589,6 +651,12 @@ class ExperimentDatastoreGoogleNDB():
 		
 
 class DuplicateEntryError(Exception):
+    def __init__(self, value):
+        self.parameter = value
+    def __str__(self):
+        return repr(self.parameter)
+
+class ResourceError(Exception):
     def __init__(self, value):
         self.parameter = value
     def __str__(self):
