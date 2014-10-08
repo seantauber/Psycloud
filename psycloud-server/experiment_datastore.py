@@ -3,45 +3,8 @@ from datetime import datetime
 from uuid import uuid4
 from base64 import urlsafe_b64encode
 
-class Experiment(ndb.Model):
-	creation_time = ndb.DateTimeProperty(auto_now_add=True)
-	short_id = ndb.StringProperty()
-	experiment_name = ndb.StringProperty()
-	num_participants = ndb.IntegerProperty()
-	available_participants = ndb.JsonProperty()
-	active_participants = ndb.JsonProperty()
-	completed_participants = ndb.JsonProperty()
-	stalled_participants = ndb.JsonProperty()
-
-class Participant(ndb.Model):
-	creation_time = ndb.DateTimeProperty(auto_now_add=True)
-	short_id = ndb.StringProperty()
-	conf_code = ndb.StringProperty()
-	participant_index = ndb.IntegerProperty()
-	status = ndb.StringProperty()
-	start_time = ndb.DateTimeProperty()
-	end_time = ndb.DateTimeProperty()	
-	stimuli_count = ndb.IntegerProperty()
-	max_number_stimuli = ndb.IntegerProperty()
-	current_stimulus = ndb.IntegerProperty()
-	registration_coupon = ndb.JsonProperty()
-	details = ndb.JsonProperty()
-
-class Stimulus(ndb.Model):
-	creation_time = ndb.DateTimeProperty(auto_now_add=True)
-	stimulus_index = ndb.IntegerProperty()
-	variables = ndb.JsonProperty()
-	stimulus_type = ndb.StringProperty()
-
-class Response(ndb.Model):
-	creation_time = ndb.DateTimeProperty(auto_now_add=True)
-	stimulus_index = ndb.IntegerProperty()
-	variables = ndb.JsonProperty()
-
-class RegistrationCoupon(ndb.Model):
-	creation_time = ndb.DateTimeProperty(auto_now_add=True)
-	coupon_type = ndb.StringProperty()
-	coupon_value = ndb.StringProperty()
+from ndb_models import Experiment, Participant, Stimulus, Response, RegistrationCoupon
+from custom_exceptions import DuplicateEntryError, ResourceError, DataFormatError
 
 
 class ExperimentDatastoreGoogleNDB():
@@ -652,22 +615,3 @@ class ExperimentDatastoreGoogleNDB():
 		return [stimulus.to_dict() for stimulus in stimulus_entities]
 
 		
-
-class DuplicateEntryError(Exception):
-    def __init__(self, value):
-        self.parameter = value
-    def __str__(self):
-        return repr(self.parameter)
-
-class ResourceError(Exception):
-    def __init__(self, value):
-        self.parameter = value
-    def __str__(self):
-        return repr(self.parameter)
-
-class DataFormatError(Exception):
-    def __init__(self, value):
-        self.parameter = value
-    def __str__(self):
-        return repr(self.parameter)
-
