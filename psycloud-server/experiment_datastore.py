@@ -440,8 +440,11 @@ class ExperimentDatastoreGoogleNDB():
 		# Load the participant
 		participant = self.get_participant(participant_short_id)
 
-		# Update the status and save
+		# Update the status
 		self.update_participant_status(participant, new_status)
+
+		# Save the participant
+		participant.put()
 
 
 	def update_participant_registration_coupon(self, participant, coupon):
