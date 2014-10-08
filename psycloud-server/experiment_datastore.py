@@ -487,62 +487,8 @@ class ExperimentDatastoreGoogleNDB():
 			raise LookupError('Response %s not found.' % stimulus_number)
 
 
-	# def increment_and_get_next_stimulus(self, participant_short_id):
-	# 	participant_key = self.lookup_participant(participant_short_id)
-	# 	if participant_key is None:
-	# 		return None
-
-	# 	participant = participant_key.get()
-
-	# 	if participant.current_stimulus < (participant.stimuli_count - 1):
-	# 		participant.current_stimulus += 1
-	# 		participant.put()
-	# 		# if participant.current_stimulus < participant.stimuli_count:
-	# 		q = Stimulus.query(Stimulus.stimulus_index == participant.current_stimulus, ancestor=participant_key)
-	# 		# else:
-	# 			# return None
-			
-	# 		stimuli_list = [stimulus.to_dict() for stimulus in q.iter()]
-	# 		return{'status':200, 'stimuli':stimuli_list}
-		
-	# 	else:
-	# 		return{'status':400, 'e':"no more stimuli"}
-
-
-	# def save_response(self, participant_short_id, data, current_only=False, stimulus_index=None):
-
-	# 	participant_key = self.lookup_participant(participant_short_id)
-	# 	if participant_key is None:
-	# 		return None
-
-	# 	valid_response, result = self.validate_response(data)
-	# 	if not valid_response:
-	# 		return result
-
-	# 	participant = participant_key.get()
-	# 	if current_only:
-	# 		stimulus_index = participant.current_stimulus
-	# 	elif not stimulus_index < participant.stimuli_count:
-	# 			return {'status':400, 'e':"stimulus_index %s is out of bounds. Participant has %s stimuli."%(stimulus_index,participant.stimuli_count)}
-
-	# 	q = Response.query(Response.stimulus_index == stimulus_index, ancestor=participant_key)
-	# 	existing_responses = [r for r in q.iter()]
-	# 	if len(existing_responses) > 0:
-	# 		return{'status':400, 'e':"response already exists."}
-	# 	else:
-	# 		response = Response(parent=participant_key,
-	# 		stimulus_index=stimulus_index,
-	# 		variables=data['variables'])
-	# 	response.put()
-	# 	participant.last_completed_stimulus = participant.current_stimulus
-	# 	participant.put()
-
-	# 	return{'status':200, 'response':response.to_dict()}
-
-
 	def save_responses(self, participant_short_id, data):
 		'''
-		** NEW VERSION **
 		Saves a list of responses.
 
 		Assumes data contains a list of responses, where each response is
@@ -592,7 +538,6 @@ class ExperimentDatastoreGoogleNDB():
 
 	def save_stimuli(self, participant_short_id, data):
 		'''
-		** NEW VERSION **
 		Saves a list of stimuli.
 
 		Assumes data contains a list of stimuli, where each stimulus is
@@ -641,72 +586,6 @@ class ExperimentDatastoreGoogleNDB():
 		# Return a list of saved stimuli
 		return [stimulus.to_dict() for stimulus in stimulus_entities]
 
-
-	# def get_responses(self, participant_short_id, previous_only=False, stimulus_number=None):
-	# 	participant_key = self.lookup_participant(participant_short_id)
-	# 	if participant_key is None:
-	# 		return None
-
-	# 	if previous_only:
-	# 		previous_stimuli_number = participant_key.get().current_stimulus - 1
-	# 		if previous_stimuli_number >= 0:
-	# 			q = Response.query(Response.stimulus_index == previous_stimuli_number, ancestor=participant_key).fetch()
-	# 			if len(q) == 1:
-	# 				response_list = [q[0].to_dict()]
-	# 				return response_list
-	# 			else:
-	# 				return None
-	# 		else:
-	# 			return None
-		
-	# 	if stimulus_number is not None:
-	# 		if stimulus_number >= 0 and stimulus_number < participant_key.get().stimuli_count:
-	# 			q = Response.query(Response.stimulus_index == stimulus_number, ancestor=participant_key)
-	# 		else:
-	# 			return None
-	# 	else:
-	# 		q = ndb.Query(kind='Response', ancestor=participant_key)
-
-	# 	response_list = [response.to_dict() for response in q.iter()]
-	# 	return response_list
-
-	def record_as_completed(self, participant_short_id):
-		participant_key = self.lookup_participant(participant_short_id)
-		if participant_key is None:
-			return None
-
-		participant = participant_key.get()
-		if participant.status != 'ACTIVE':
-			return{'status':400, 'e':"Participant not active."}
-
-		response_list = self.get_responses(participant_short_id)
-
-		if len(response_list) == participant.stimuli_count:
-			participant.status = 'COMPLETED'
-			participant.end_time = datetime.now()
-			experiment = participant_key.parent().get()
-			experiment.completed_participants.append(participant.participant_index)
-			experiment.active_participants.remove(participant.participant_index)
-			experiment.put()
-			participant.put()
-			return{'status':200, 'participant':participant.to_dict()}
-		else:
-			return{'status':400, 'e':"All responses have not been recorded for this participant."}
-
-	# def validate_response_list(self, data):
-	# 	pass
-
-	def validate_response(self, data):
-		if not 'variables' in data:
-			return False, {'status':400, 'e':"response entry must contain a 'variables' field"}
-		# if not type(data['variables']) == dict:
-		# 	return False, {'status':400, 'e':"response['variables'] must be a dictionary of variables"}
-		# for variable in data['variables']:
-		# 	if not 'name' in variable:
-		# 		return False, {'status':400, 'e':"variables must contain a 'name' field"}
-		# 	if not 'value' in variable:
-		# 		return False, {'status':400, 'e':"variables must contain a 'value' field"}
-		return True, None
 		
 
 class DuplicateEntryError(Exception):
