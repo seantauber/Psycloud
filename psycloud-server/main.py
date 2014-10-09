@@ -324,6 +324,7 @@ def get_stimuli_list(participant_id):
 def save_stimuli_list(participant_id):
 	'''Saves a list of stimuli.'''
 	pass
+	
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['GET'])
@@ -336,23 +337,20 @@ def get_stimulus_by_number(participant_id, stimulus_number):
 	except Exception, e:
 		return bad_request(str(e))
 
+
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['POST'])
 def save_stimulus_by_number(participant_id, stimulus_number):
 	'''Save a specific stimulus'''
 	pass
 
-@app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/count',
-	methods=['GET'])
-def get_stimuli_count(participant_id):
-	'''Returns the number of stimuli that have been saved.'''
-	pass
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/max_count',
 	methods=['GET'])
 def get_stimuli_max_count(participant_id):
 	'''Returns the maximum number of stimuli that are allowed.'''
 	pass
+
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/responses',
 	methods=['GET'])
@@ -404,12 +402,6 @@ def save_response(participant_id, stimulus_number):
 	except Exception, e:
 		return bad_request(str(e))
 
-
-@app.route('/psycloud/api/v1/participant/<participant_id>/responses/count',
-	methods=['GET'])
-def get_response_count(participant_id):
-	'''Returns the number of responses that have been saved.'''
-	pass
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/current',
 	methods=['GET'])
