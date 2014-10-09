@@ -323,8 +323,14 @@ def get_stimuli_list(participant_id):
 	methods=['POST'])
 def save_stimuli_list(participant_id):
 	'''Saves a list of stimuli.'''
-	pass
 	
+	stimuli_to_save = request.get_json()
+	try:
+		saved_stimuli = client_datastore.save_stimuli(participant_id, stimuli_to_save)
+		return valid_request('responses', saved_stimuli)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['GET'])
@@ -342,14 +348,26 @@ def get_stimulus_by_number(participant_id, stimulus_number):
 	methods=['POST'])
 def save_stimulus_by_number(participant_id, stimulus_number):
 	'''Save a specific stimulus'''
-	pass
+	
+	stimulus_to_save = request.get_json()
+	stimulus_to_save['stimulus_index'] = stimulus_number
+	try:
+		saved_stimuli = client_datastore.save_stimuli(participant_id, [stimulus_to_save])
+		return valid_request('stimuli', saved_stimuli)
+	except Exception, e:
+		return bad_request(str(e))
 
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/max_count',
 	methods=['GET'])
 def get_stimuli_max_count(participant_id):
 	'''Returns the maximum number of stimuli that are allowed.'''
-	pass
+	
+	try:
+		max_count = client_datastore.get_max_number_stimuli(participant_id)
+		return valid_request('max_count', max_count)
+	except Exception, e:
+		return bad_request(str(e))
 
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/responses',
@@ -405,33 +423,62 @@ def save_response(participant_id, stimulus_number):
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/current',
 	methods=['GET'])
-def get_response_count(participant_id):
+def get_current_stimulus_index(participant_id):
 	'''Returns the current stimulus number.'''
-	pass
+	
+	try:
+		stimulus_index = client_datastore.get_current_stimulus(participant_id)
+		return valid_request('stimulus_index', stimulus_index)
+	except Exception, e:
+		return bad_request(str(e))
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/current',
 	methods=['PUT'])
-def get_response_count(participant_id):
+def set_current_stimulus_index(participant_id):
 	'''Sets the current stimulus number.'''
-	pass
+	
+	data = request.get_json()
+	stimulus_index = data['stimulus_index']
+	try:
+		client_datastore.set_current_stimulus(participant_id, stimulus_index)
+		return valid_request('stimulus_index', stimulus_index)
+	except Exception, e:
+		return bad_request(str(e))
 
-@app.route('/psycloud/api/v1/participant/<participant_id>/status',
+
+@app.route('/psycloud/api/v1/participant/<participant_id>/current_status',
 	methods=['GET'])
-def get_response_count(participant_id):
+def get_participant_status(participant_id):
 	'''Returns the participant status.'''
-	pass
+	
+	try:
+		current_status = client_datastore.get_status(participant_id)
+		return valid_request('current_status', current_status)
+	except Exception, e:
+		return bad_request(str(e))
 
-@app.route('/psycloud/api/v1/participant/<participant_id>/status',
+@app.route('/psycloud/api/v1/participant/<participant_id>/current_status',
 	methods=['PUT'])
-def get_response_count(participant_id):
+def set_participant_status(participant_id):
 	'''Sets the participant status.'''
-	pass
+	data = request.get_json()
+	current_status = data['current_status']
+	try:
+		client_datastore.set_status(participant_id, current_status)
+		return valid_request('current_status', current_status)
+	except Exception, e:
+		return bad_request(str(e))
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/confirmation_code',
 	methods=['GET'])
-def get_response_count(participant_id):
+def get_confirmation_code(participant_id):
 	'''Returns the participant confirmation code.'''
-	pass
+	
+	try:
+		confirmation_code = client_datastore.get_confirmation_code(participant_id)
+		return valid_request('confirmation_code', confirmation_code)
+	except Exception, e:
+		return bad_request(str(e))
 
 
 
