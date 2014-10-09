@@ -11,10 +11,10 @@ class Experiment(ndb.Model):
 	short_id = ndb.StringProperty()
 	experiment_name = ndb.StringProperty()
 	num_participants = ndb.IntegerProperty()
-	available_participants = ndb.JsonProperty()
-	active_participants = ndb.JsonProperty()
-	completed_participants = ndb.JsonProperty()
-	stalled_participants = ndb.JsonProperty()
+	# available_participants = ndb.JsonProperty()
+	# active_participants = ndb.JsonProperty()
+	# completed_participants = ndb.JsonProperty()
+	# stalled_participants = ndb.JsonProperty()
 
 class Participant(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
@@ -64,11 +64,7 @@ class AdminDatastore():
 		experiment = Experiment(
 			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=num_participants,
-			available_participants=range(num_participants)[::-1],
-			active_participants=[],
-			completed_participants=[],
-			stalled_participants=[])
+			num_participants=num_participants)
 
 		experiment_key = experiment.put()
 
@@ -95,11 +91,7 @@ class AdminDatastore():
 		experiment = Experiment(
 			experiment_name=d['experiment_name'],
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=d['num_participants'],
-			available_participants=range(d['num_participants'])[::-1],
-			active_participants=[],
-			completed_participants=[],
-			stalled_participants=[])
+			num_participants=d['num_participants'])
 		
 		experiment_key = experiment.put()
 

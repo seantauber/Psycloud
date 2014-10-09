@@ -1,8 +1,9 @@
 """`main` is the top level module for the Flask application."""
 
-from experiment_datastore import ExperimentDatastoreGoogleNDB
+from experiment_datastore_google import AdminDatastore, ClientDatastore
 
-datastore = ExperimentDatastoreGoogleNDB()
+admin_datastore = AdminDatastore()
+client_datastore = ClientDatastore()
 
 from flask import Flask, jsonify, abort, request, make_response, url_for, render_template
 from flask.ext.httpauth import HTTPBasicAuth
