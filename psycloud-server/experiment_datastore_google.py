@@ -283,8 +283,8 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 		# Save the participant entity
 		participant.put()
 
-		# Return the updated participant as a dictionary
-		return participant.to_dict()
+		# Return the participant short_id
+		return participant.short_id
 
 
 	def get_status(self, participant_short_id):

@@ -275,51 +275,49 @@ def dashboard_download_completed_participant_data(exp_id):
 #######################################################################################
 #######################################################################################
 
+
 @app.route('/psycloud/api/v1/experiment/<experiment_id>/register',
 	methods=['POST'])
 def register_participant(experiment_id):
 	'''
 	Register a new participant.
-	Returns a participant_id if successful.
-	Returns an error if experiment_id not found.
+	Returns a participant_short_id if successful.
 	'''
-	result = datastore.register(experiment_id)
-	if result is not None:
-		if result['status'] == 200:
-			return valid_request('participant', result['participant'])
-		elif result['status'] == 400:
-			return bad_request(result['e'])
-	else:
-		abort(404)
+	try:
+		short_id = client_datastore.register(experiment_id)
+		return valid_request('participant_id', short_id)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/experiment/<experiment_id>/register/<registration_coupon>',
 	methods=['POST'])
 def register_participant_with_coupon(experiment_id, registration_coupon):
 	'''
 	Register a new participant with registration coupon.
-	Returns a participant_id if successful.
+	Returns a participant_short_id if successful.
 	Returns an error if registration coupon already registered or experiment_id not found.
 	registration_code might be a mechanical turk id, for example.
 	'''
 
-	result = datastore.register(experiment_id, registration_coupon=registration_coupon)
-	if result is not None:
-		if result['status'] == 200:
-			return valid_request('participant', result['participant'])
-		elif result['status'] == 400:
-			return bad_request(result['e'])
-	else:
-		abort(404)
+	try:
+		short_id = client_datastore.register(experiment_id, registration_coupon=registration_coupon)
+		return valid_request('participant_id', short_id)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli',
 	methods=['GET'])
 def get_stimuli_list(participant_id):
 	'''Retrieves a list of stimuli.'''
-	stimuli_list = datastore.get_stimuli(participant_id)
-	if stimuli_list is not None:
-		return valid_request('stimuli', stimuli_list)
-	else:
-		abort(404)
+
+	try:
+		stimuli = client_datastore.get_stimuli(participant_id)
+		return valid_request('stimuli', stimuli)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli',
 	methods=['POST'])
@@ -331,11 +329,12 @@ def save_stimuli_list(participant_id):
 	methods=['GET'])
 def get_stimulus_by_number(participant_id, stimulus_number):
 	'''Retrieve a specific stimulus'''
-	stimuli_list = datastore.get_stimuli(participant_id, stimulus_number=stimulus_number)
-	if stimuli_list is not None:
-		return valid_request('stimuli', stimuli_list)
-	else:
-		abort(404)
+
+	try:
+		stimuli = client_datastore.get_stimuli(participant_id, stimulus_number=stimulus_number)
+		return valid_request('stimuli', stimuli)
+	except Exception, e:
+		return bad_request(str(e))
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/stimuli/<int:stimulus_number>',
 	methods=['POST'])
@@ -359,41 +358,52 @@ def get_stimuli_max_count(participant_id):
 	methods=['GET'])
 def get_response_list(participant_id):
 	'''Retrieve a list of responses'''
-	response_list = datastore.get_responses(participant_id)
-	if response_list is not None:
-		return valid_request('responses', response_list)
-	else:
-		abort(404)
+
+	try:
+		responses = client_datastore.get_responses(participant_id)
+		return valid_request('responses', responses)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participants/<participant_id>/responses',
 	methods=['POST'])
 def save_response_list(participant_id):
 	'''Save a list of responses'''
-	pass
+	
+	responses_to_save = request.get_json()
+	try:
+		saved_responses = client_datastore.save_responses(participant_id, responses_to_save)
+		return valid_request('responses', saved_responses)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/responses/<int:stimulus_number>',
 	methods=['GET'])
 def get_response(participant_id, stimulus_number):
 	'''Retrieve a specific response'''
-	response_list = datastore.get_responses(participant_id, stimulus_number=stimulus_number)
-	if response_list is not None:
-		return valid_request('responses', response_list)
-	else:
-		abort(404)
+
+	try:
+		responses = client_datastore.get_responses(participant_id, stimulus_number=stimulus_number)
+		return valid_request('responses', responses)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participants/<participant_id>/responses/<int:stimulus_number>',
 	methods=['POST'])
 def save_response(participant_id, stimulus_number):
 	'''Save a specific response'''
-	data = request.get_json()
-	result = datastore.save_response(participant_id, data, stimulus_index=stimulus_number)
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			return valid_request('response', result['response'])
-	else:
-		abort(404)
+	
+	response_to_save = request.get_json()
+	response_to_save['stimulus_index'] = stimulus_number
+	try:
+		saved_responses = client_datastore.save_responses(participant_id, [response_to_save])
+		return valid_request('responses', saved_responses)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/api/v1/participant/<participant_id>/responses/count',
 	methods=['GET'])
