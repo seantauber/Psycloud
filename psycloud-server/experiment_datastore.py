@@ -314,6 +314,7 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 
 		# Save the participant
 		participant.put()
+		return True
 
 
 	def set_registration_coupon(self, participant_short_id, coupon):
@@ -333,6 +334,7 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 		# Add the coupon to the experiment coupon list
 		experiment_key = participant.parent
 		self._register_coupon_to_experiment(experiment_key, coupon)
+		return True
 
 
 	def get_stimuli(self, participant_short_id, stimulus_number=None):
