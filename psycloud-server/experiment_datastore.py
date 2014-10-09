@@ -49,7 +49,7 @@ class AdminDatastore():
 		return experiment_key
 
 
-	def upload_experiment_data(self, experiment_data_dict):
+	def create_experiment_from_data(self, experiment_data_dict):
 		d = experiment_data_dict
 		experiment = Experiment(
 			experiment_name=d['experiment_name'],
@@ -118,7 +118,7 @@ class AdminDatastore():
 		return experiment_list
 
 
-	def get_experiment_participants(self, experiment_id, keys_only=False, status_filter=None, get_data=False):
+	def get_participants(self, experiment_id, keys_only=False, status_filter=None, get_data=False):
 
 		experiment_key = self._key_from_urlsafe_id(experiment_id)
 
@@ -137,7 +137,7 @@ class AdminDatastore():
 		return participants
 
 
-	def get_experiment_data(self, experiment_id, status_filter=None):
+	def get_data(self, experiment_id, status_filter=None):
 
 		experiment_key = self._key_from_urlsafe_id(experiment_id)
 
@@ -193,7 +193,7 @@ class AdminDatastore():
 
 	def _key_from_urlsafe_id(self, urlsafe_id):
 		'''
-		creates an NDB key from a urlsafe entity id
+		Utility function that creates an NDB key from a urlsafe entity id
 		'''
 		return ndb.Key(urlsafe=urlsafe_id)
 
