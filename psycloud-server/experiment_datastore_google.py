@@ -237,6 +237,13 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 	def __init__(self):
 		pass
 
+
+	def get_participant(self, participant_short_id):
+		'''
+		Returns a dictionary representation of a participant entity
+		'''
+		return self._get_participant(participant_short_id).to_dict()
+
 	
 	def register(self, experiment_short_id, registration_coupon=None):
 		'''

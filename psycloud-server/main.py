@@ -200,38 +200,39 @@ def get_coupons(experiment_id):
 @app.route('/psycloud/admin/dashboard', methods=['GET'])
 @dashauth.login_required
 def dashboard_main():
-	experiment_list = datastore.get_experiments()
-	exps = []
-	for exp in experiment_list:
-		exps.append({'name':exp['experiment_name'], 'id':exp['id'],
-			'num_available':len(exp['available_participants']),
-			'num_active':len(exp['active_participants']),
-			'num_completed':len(exp['completed_participants']),
-			'num_participants':exp['num_participants']})
-	return render_template('main_dashboard.html', params=exps)
+	try:
+		experiment_list = admin_datastore.get_experiments()
+		exps = []
+		for exp in experiment_list:
+			exps.append({'name':exp['experiment_name'], 'id':exp['id'],
+				'num_available':len(exp['available_participants']),
+				'num_active':len(exp['active_participants']),
+				'num_completed':len(exp['completed_participants']),
+				'num_participants':exp['num_participants']})
+		return render_template('main_dashboard.html', params=exps)
+	except Exception, e:
+		return bad_request(str(e))
 
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>', methods=['GET'])
 @dashauth.login_required
 def dashboard_view_experiment(exp_id):
-	experiment_list = datastore.get_experiments(experiment_id=exp_id)
-	if experiment_list is not None:
+	try:
+		experiment_list = admin_datastore.get_experiments(experiment_id=exp_id)
 		experiment = experiment_list[0]
 		return jsonify(experiment)
-	else:
-		abort(404)
+	except Exception, e:
+		return bad_request(str(e))
 
 
 def dashboard_view_participant_list(exp_id, status='COMPLETED'):
 	templates = {'ACTIVE': 'active_dash.html', 'COMPLETED': 'completed_dash.html'}
-	result = datastore.get_experiment_participants(exp_id, keys_only=False, status_filter=status)
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			return render_template(templates[status], exp_id=exp_id, subs=result['result'])
-	else:
-		abort(404)
+	try:
+		result = admin_datastore.get_experiment_participants(exp_id, keys_only=False, status_filter=status)
+		return render_template(templates[status], exp_id=exp_id, subs=result['result'])
+	except Exception, e:
+		return bad_request(str(e))
+
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/active', methods=['GET'])
 @dashauth.login_required
@@ -247,38 +248,23 @@ def dashboard_view_completed(exp_id):
 @app.route('/psycloud/admin/dashboard/participant/<uid>', methods=['GET'])
 @dashauth.login_required
 def dashboard_view_participant(uid):
-	participant = datastore.get_participant(uid)
-	if participant is not None:
-		stimuli_list = datastore.get_stimuli(uid)
-		response_list = datastore.get_responses(uid)
-		participant['stimuli'] = stimuli_list
-		participant['responses'] = response_list
+	try:
+		participant = client_datastore.get_participant(uid)
+		participant['stimuli'] = client_datastore.get_stimuli(uid)
+		participant['responses'] = client_datastore.get_responses(uid)
 		return jsonify(participant)
-	else:
-		abort(404)
+	except Exception, e:
+		return bad_request(str(e))
 
 
 @app.route('/psycloud/admin/dashboard/experiment/<exp_id>/completed/download_data', methods=['GET'])
 @dashauth.login_required
 def dashboard_download_completed_participant_data(exp_id):
-	result = datastore.get_experiment_data(exp_id, status_filter='COMPLETED')
-	# if result is not None:
-	# 	if result['status'] == 400:
-	# 		return bad_request(result['e'])
-	# 	else:
-	# 		return jsonify(result['result'])
-	# else:
-	# 	abort(404)
-
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			# return valid_request('participants', result['result'])
-			return jsonify({'participants': result['result']})
-	else:
-		abort(404)
-
+	try:
+		result = admin_datastore.get_data(exp_id, status_filter='COMPLETED')
+		return jsonify({'participants': result['result']})
+	except Exception, e:
+		return bad_request(str(e))
 
 
 #######################################################################################
