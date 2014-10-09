@@ -276,29 +276,25 @@ def dashboard_download_completed_participant_data(exp_id):
 #######################################################################################
 
 
-@app.route('/psycloud/api/v1/experiment/<experiment_id>/register',
+@app.route('/psycloud/api/v1/participant',
 	methods=['POST'])
-def register_participant(experiment_id):
+def register_participant():
 	'''
 	Register a new participant.
-	Returns a participant_short_id if successful.
-	'''
-	try:
-		short_id = client_datastore.register(experiment_id)
-		return valid_request('participant_id', short_id)
-	except Exception, e:
-		return bad_request(str(e))
-
-
-@app.route('/psycloud/api/v1/experiment/<experiment_id>/register/<registration_coupon>',
-	methods=['POST'])
-def register_participant_with_coupon(experiment_id, registration_coupon):
-	'''
-	Register a new participant with registration coupon.
+	Assumes json input contains an experiment_id and optional registration_coupon
 	Returns a participant_short_id if successful.
 	Returns an error if registration coupon already registered or experiment_id not found.
 	registration_code might be a mechanical turk id, for example.
 	'''
+
+	data = request.get_json()
+
+	experiment_id = data['experiment_id']
+
+	if 'registration_coupon' in data:
+		registration_coupon = data['registration_coupon']
+	else:
+		registration_coupon = None
 
 	try:
 		short_id = client_datastore.register(experiment_id, registration_coupon=registration_coupon)
