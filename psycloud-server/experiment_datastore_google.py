@@ -11,10 +11,6 @@ class Experiment(ndb.Model):
 	short_id = ndb.StringProperty()
 	experiment_name = ndb.StringProperty()
 	num_participants = ndb.IntegerProperty()
-	# available_participants = ndb.JsonProperty()
-	# active_participants = ndb.JsonProperty()
-	# completed_participants = ndb.JsonProperty()
-	# stalled_participants = ndb.JsonProperty()
 
 class Participant(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)

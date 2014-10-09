@@ -32,8 +32,11 @@ dashauth = HTTPBasicAuth()
 @auth.login_required
 def upload_experiment_data():
 	data = request.get_json()
-	experiment_key = datastore.upload_experiment_data(data)
-	return valid_request('experiment_id', experiment_key.urlsafe())
+	try:
+		experiment_key = admin_datastore.create_experiment_from_data(data)
+		return valid_request('experiment_id', experiment_key.urlsafe())
+	except Exception, e:
+		return bad_request(str(e))
 
 # Delete an experiment and all of its data
 # how to delete an experiment:
@@ -42,14 +45,12 @@ def upload_experiment_data():
 	methods=['DELETE'])
 @auth.login_required
 def remove_experiment(experiment_id):
-	result = datastore.remove_experiment(experiment_id)
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			return valid_request('deleted', result['experiment_name'])
-	else:
-		abort(404)
+	try:
+		admin_datastore.remove_experiment(experiment_id)
+		return valid_request('deleted experiment', experiment_id)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 # Retrieve all experiment data
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/data',
@@ -60,14 +61,12 @@ def get_experiment_data(experiment_id):
 	args = request.args
 	if 'status' in args:
 		status_filter = args['status']
-	result = datastore.get_experiment_data(experiment_id, status_filter=status_filter)
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			return valid_request('participants', result['result'])
-	else:
-		abort(404)
+	try:
+		result = admin_datastore.get_data(experiment_id, status_filter=status_filter)
+		return valid_request('participants', result['result'])
+	except Exception, e:
+		return bad_request(str(e))
+
 
 # Create a new experiment
 @app.route('/psycloud/admin/api/experiments',
@@ -80,10 +79,10 @@ def create_experiment():
 		if 'num_participants' in data:
 			num_participants = data['num_participants']
 			try:
-				experiment_key = datastore.create_experiment(experiment_name, num_participants)
+				experiment_key = admin_datastore.create_experiment(experiment_name, num_participants)
 				return valid_request('experiment_id', experiment_key.urlsafe())
-			except:
-				abort(500)
+			except Exception, e:
+				return bad_request(str(e))
 		else:
 			return bad_request('num_participants was not provided.')
 	else:
@@ -95,8 +94,11 @@ def create_experiment():
 	methods=['GET'])
 @auth.login_required
 def get_experiment_list():
-	experiment_list = datastore.get_experiments()
-	return valid_request('experiments', experiment_list)
+	try:
+		experiment_list = admin_datastore.get_experiments()
+		return valid_request('experiments', experiment_list)
+	except Exception, e:
+		return bad_request(str(e))
 
 # Retrieve an experiment
 # curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>
@@ -104,11 +106,11 @@ def get_experiment_list():
 	methods=['GET'])
 @auth.login_required
 def get_experiment(experiment_id):
-	experiment_list = datastore.get_experiments(experiment_id=experiment_id)
-	if experiment_list is not None:
+	try:
+		experiment_list = datastore.get_experiments(experiment_id=experiment_id)
 		return valid_request('experiments', experiment_list)
-	else:
-		abort(404)
+	except Exception, e:
+		return bad_request(str(e))
 
 # Modify an experiment
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
@@ -129,14 +131,12 @@ def get_participant_list(experiment_id):
 		keys_only = bool(args['keys_only'])
 	if 'status' in args:
 		status_filter = args['status']
-	result = datastore.get_experiment_participants(experiment_id, keys_only=keys_only, status_filter=status_filter)
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			return valid_request('participants', result['result'])
-	else:
-		abort(404)
+
+	try:
+		result = admin_datastore.get_participants(experiment_id, keys_only=keys_only, status_filter=status_filter)
+		return valid_request('participants', result['result'])
+	except Exception, e:
+		return bad_request(str(e))
 
 
 # Save a list of participants
@@ -167,14 +167,12 @@ def modify_participant(experiment_id, participant_id):
 @auth.login_required
 def save_coupons(experiment_id):
 	data = request.get_json()
-	result = datastore.save_coupons(experiment_id, data)
-	if result is not None:
-		if result['status'] == 400:
-			return bad_request(result['e'])
-		else:
-			return valid_request('coupons', result['result'])
-	else:
-		abort(404)
+	try:
+		result = admin_datastore.save_coupons(experiment_id, data)
+		return valid_request('coupons', result['result'])
+	except Exception, e:
+		return bad_request(str(e))
+	
 
 # Retrieve coupons
 # curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
@@ -182,11 +180,12 @@ def save_coupons(experiment_id):
 	methods=['GET'])
 @auth.login_required
 def get_coupons(experiment_id):
-	coupon_list = datastore.get_coupons(experiment_id)
-	if coupon_list is not None:
+	try:
+		coupon_list = admin_datastore.get_coupons(experiment_id)
 		return valid_request('coupons', coupon_list)
-	else:
-		abort(404)
+	except Exception, e:
+		return bad_request(str(e))
+
 
 
 #######################################################################################
