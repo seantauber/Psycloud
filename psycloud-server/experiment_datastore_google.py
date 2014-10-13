@@ -47,6 +47,8 @@ class RegistrationCoupon(ndb.Model):
 
 class AdminDatastore():
 
+	SHORT_CODE_LENGTH = 16
+
 	def __init__(self):
 		pass
 
@@ -102,7 +104,7 @@ class AdminDatastore():
 				participant_index=p['participant_index'],
 				stimuli_count=p['stimuli_count'],
 				current_stimulus=0,
-				max_number_stimuli=p['stimuli_count']
+				max_number_stimuli=p['stimuli_count'],
 				status='AVAILABLE'))
 			
 		participant_keys = ndb.put_multi(participant_entities)
@@ -139,12 +141,11 @@ class AdminDatastore():
 		if experiment_id is None:
 			q = ndb.Query(kind='Experiment')
 			experiment_list = [dict( {'id':i.key.urlsafe()}.items() + i.to_dict().items() ) for i in q.iter()]
+			return experiment_list
 		else:
 			experiment_key = self._key_from_urlsafe_id(experiment_id)
 			experiment = experiment_key.get()
-			experiment_list = [ experiment.to_dict() ]
-
-		return experiment_list
+			return experiment.to_dict()
 
 
 	def get_participants(self, experiment_id, keys_only=False, status_filter=None, get_data=False):
@@ -225,6 +226,138 @@ class AdminDatastore():
 		Utility function that creates an NDB key from a urlsafe entity id
 		'''
 		return ndb.Key(urlsafe=urlsafe_id)
+
+
+
+
+class ClientDatastoreUtilityMixin():
+
+	def __init__():
+		pass
+
+	def _lookup_experiment(self, short_id):
+
+		q = Experiment.query(Experiment.short_id==short_id).fetch(keys_only=True)
+		if len(q) != 0:
+			experiment_key = q[0]
+		else:
+			raise LookupError('Experiment not found.')
+
+		return experiment_key
+
+
+	def _lookup_participant(self, short_id):
+
+		q = Participant.query(Participant.short_id==short_id).fetch(keys_only=True)
+		if len(q) != 0:
+			participant_key = q[0]
+		else:
+			raise LookupError('Participant not found.')
+
+		return participant_key
+
+	def _lookup_participant_by_index(self, participant_index):
+
+		q = Participant.query(Participant.participant_index==participant_index).fetch(keys_only=True)
+		if len(q) != 0:
+			participant_key = q[0]
+		else:
+			raise LookupError('Participant not found.')
+
+		return participant_key
+
+
+	def _get_participant_index_list_by_status(self, experiment_short_id, status_filter):
+
+		experiment_key = self._lookup_experiment(experiment_short_id)
+		q = Participant.query(Participant.status == status_filter, ancestor=experiment_key)
+		participant_index_list = [p.participant_index for p in q.iter()]
+		participant_index_list.sort()
+		return participant_index_list
+
+
+	def _available_participant_indices(self, experiment_short_id):
+		return self._get_participant_index_list_by_status(experiment_short_id, 'AVAILABLE')
+
+	def _active_participant_indices(self, experiment_short_id):
+		return self._get_participant_index_list_by_status(experiment_short_id, 'ACTIVE')
+
+	def _completed_participant_indices(self, experiment_short_id):
+		return self._get_participant_index_list_by_status(experiment_short_id, 'COMPLETED')
+
+	def _stalled_participant_indices(self, experiment_short_id):
+		return self._get_participant_index_list_by_status(experiment_short_id, 'STALLED')
+
+
+	def _get_participant_key(self, participant_short_id):
+		'''
+		Gets a participant key.
+		'''
+		participant_key = self._lookup_participant(participant_short_id)
+		return participant_key
+
+
+	def _get_participant(self, participant_short_id):
+		'''
+		Gets a participant.
+		'''
+		# Get the participant key and then load using the get method
+		return _get_participant_key(participant_short_id).get()
+
+
+	def _get_participant_key_by_index(self, participant_index):
+		'''
+		Gets a participant key based on the participant index.
+		'''
+		participant_key = self._lookup_participant_by_index(participant_index)
+		return participant_key
+
+
+	def _get_participant_by_index(self, participant_index):
+		'''
+		Gets a participant based on the participant index.
+		'''
+		# Get the participant key and then load using the get method
+		return _get_participant_key_by_index(participant_index).get()
+
+
+	def _update_participant_status(self, participant, new_status):
+		'''
+		Assumes participant is a Participant entity and updates its status.
+		
+		DOES NOT save the participant to the database.
+
+		'''
+		# Record the start time if this is the participant's initial activation
+		if participant.status == 'AVAILABLE' and new_status == 'ACTIVE':
+			participant.start_time = datetime.now()
+
+		# Record the end time if the participant is complete
+		elif participant.status == 'COMPLETED':
+			participant.end_time = datetime.now()
+		
+		# Save the new status
+		participant.status = new_status
+
+
+	def _update_participant_registration_coupon(self, participant, coupon):
+		'''
+		Assumes participant is a Participant entity and updates its registration coupon.
+		
+		DOES NOT save the participant to the database.
+		'''
+		# set the participants registratino coupon and save the participant
+		participant.registration_coupon = registration_coupon
+
+
+	def _register_coupon_to_experiment(self, experiment_key, coupon):
+		'''
+		Create a new coupon entity for the experiment
+		'''
+		# Create a new coupon for the experiment and save
+		coupon = RegistrationCoupon(parent=experiment_key, coupon_value=coupon)
+		coupon.put()
+
 
 
 
@@ -501,7 +634,7 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 		'''
 
 		# Check if the participant exists
-		participant_key = self._get_participant_key(participant_short_id)s
+		participant_key = self._get_participant_key(participant_short_id)
 
 		# Get a list of the stimulus_index for each stimulus to be saved
 		new_stimulus_indices = [response['stimulus_index'] for response in data]
@@ -533,136 +666,6 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 
 		# Return a list of saved stimuli
 		return [stimulus.to_dict() for stimulus in stimulus_entities]
-
-
-
-class ClientDatastoreUtilityMixin():
-
-	def __init__():
-		pass
-
-	def _lookup_experiment(self, short_id):
-
-		q = Experiment.query(Experiment.short_id==short_id).fetch(keys_only=True)
-		if len(q) != 0:
-			experiment_key = q[0]
-		else:
-			raise LookupError('Experiment not found.')
-
-		return experiment_key
-
-
-	def _lookup_participant(self, short_id):
-
-		q = Participant.query(Participant.short_id==short_id).fetch(keys_only=True)
-		if len(q) != 0:
-			participant_key = q[0]
-		else:
-			raise LookupError('Participant not found.')
-
-		return participant_key
-
-	def _lookup_participant_by_index(self, participant_index):
-
-		q = Participant.query(Participant.participant_index==participant_index).fetch(keys_only=True)
-		if len(q) != 0:
-			participant_key = q[0]
-		else:
-			raise LookupError('Participant not found.')
-
-		return participant_key
-
-
-	def _get_participant_index_list_by_status(self, experiment_short_id, status_filter):
-
-		experiment_key = self._lookup_experiment(experiment_short_id)
-		q = Participant.query(Participant.status == status_filter, ancestor=experiment_key)
-		participant_index_list = [p.participant_index for p in q.iter()]
-		participant_index_list.sort()
-		return participant_index_list
-
-
-	def _available_participant_indices(self, experiment_short_id):
-		return self._get_participant_index_list_by_status(experiment_short_id, 'AVAILABLE')
-
-	def _active_participant_indices(self, experiment_short_id):
-		return self._get_participant_index_list_by_status(experiment_short_id, 'ACTIVE')
-
-	def _completed_participant_indices(self, experiment_short_id):
-		return self._get_participant_index_list_by_status(experiment_short_id, 'COMPLETED')
-
-	def _stalled_participant_indices(self, experiment_short_id):
-		return self._get_participant_index_list_by_status(experiment_short_id, 'STALLED')
-
-
-	def _get_participant_key(self, participant_short_id):
-		'''
-		Gets a participant key.
-		'''
-		participant_key = self._lookup_participant(participant_short_id)
-		return participant_key
-
-
-	def _get_participant(self, participant_short_id):
-		'''
-		Gets a participant.
-		'''
-		# Get the participant key and then load using the get method
-		return _get_participant_key(participant_short_id).get()
-
-
-	def _get_participant_key_by_index(self, participant_index):
-		'''
-		Gets a participant key based on the participant index.
-		'''
-		participant_key = self._lookup_participant_by_index(participant_index)
-		return participant_key
-
-
-	def _get_participant_by_index(self, participant_index):
-		'''
-		Gets a participant based on the participant index.
-		'''
-		# Get the participant key and then load using the get method
-		return _get_participant_key_by_index(participant_index).get()
-
-
-	def _update_participant_status(self, participant, new_status):
-		'''
-		Assumes participant is a Participant entity and updates its status.
-		
-		DOES NOT save the participant to the database.
-
-		'''
-		# Record the start time if this is the participant's initial activation
-		if participant.status == 'AVAILABLE' and new_status == 'ACTIVE':
-			participant.start_time = datetime.now()
-
-		# Record the end time if the participant is complete
-		elif participant.status == 'COMPLETED':
-			participant.end_time = datetime.now()
-		
-		# Save the new status
-		participant.status = new_status
-
-
-	def _update_participant_registration_coupon(self, participant, coupon):
-		'''
-		Assumes participant is a Participant entity and updates its registration coupon.
-		
-		DOES NOT save the participant to the database.
-		'''
-		# set the participants registratino coupon and save the participant
-		participant.registration_coupon = registration_coupon
-
-
-	def _register_coupon_to_experiment(self, experiment_key, coupon):
-		'''
-		Create a new coupon entity for the experiment
-		'''
-		# Create a new coupon for the experiment and save
-		coupon = RegistrationCoupon(parent=experiment_key, coupon_value=coupon)
-		coupon.put()
 
 
 

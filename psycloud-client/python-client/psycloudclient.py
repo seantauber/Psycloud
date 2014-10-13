@@ -23,12 +23,19 @@ class PsycloudAdminClient():
 		self.username = username
 		self.password = password
 
-	def create_experiment(self, experiment_name, num_participants):
+	def create_experiment(self, experiment_name, num_participants, max_number_stimuli):
 		url = self.base_url + admin_endpoint['experiments']
 		headers = {'content-type': 'application/json'}
-		data = {'experiment_name': experiment_name, 'num_participants': num_participants}
+		data = {
+		'experiment_name': experiment_name,
+		'num_participants': num_participants,
+		'max_number_stimuli': max_number_stimuli
+		}
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['experiment_id']
+		else:
+			raise Exception(r.text)
 
 	def upload_data(self, data_dict=None, json_filename=None):
 		url = self.base_url + admin_endpoint['experiment_upload']
@@ -40,22 +47,34 @@ class PsycloudAdminClient():
 			data = json.load(f)
 			f.close()
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['experiment_id']
+		else:
+			raise Exception(r.text)
 
 	def get_experiment_list(self):
 		url = self.base_url + admin_endpoint['experiments']
 		r = requests.get(url, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['experiments']
+		else:
+			raise Exception(r.text)
 
 	def get_experiment(self, experiment_id):
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
 		r = requests.get(url, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['experiment']
+		else:
+			raise Exception(r.text)
 
 	def delete_experiment(self, experiment_id):
 		url = self.base_url + admin_endpoint['experiments'] + '/%s'%experiment_id
 		r = requests.delete(url, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return True
+		else:
+			raise Exception(r.text)
 
 	def save_coupons(self, experiment_id,  data_dict=None, json_filename=None):
 		url = self.base_url + admin_endpoint['coupons']%experiment_id
@@ -67,12 +86,18 @@ class PsycloudAdminClient():
 			data = json.load(f)
 			f.close()
 		r = requests.post(url, data=json.dumps(data), headers=headers, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['coupons']
+		else:
+			raise Exception(r.text)
 
 	def get_coupons(self, experiment_id):
 		url = self.base_url + admin_endpoint['coupons']%experiment_id
 		r = requests.get(url, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['coupons']
+		else:
+			raise Exception(r.text)
 
 	def get_participant_list(self, experiment_id, keys_only=False, status=None):
 		url = self.base_url + admin_endpoint['participants']%experiment_id
@@ -82,7 +107,10 @@ class PsycloudAdminClient():
 		if status is not None:
 			d.update({'status':status})
 		r = requests.get(url, params=d, auth=(self.username, self.password))
-		return r.json()
+		if r.ok:
+			return r.json()['result']['participants']
+		else:
+			raise Exception(r.text)
 
 	def get_experiment_data(self, experiment_id, status=None):
 		url = self.base_url + admin_endpoint['experiment_data']%experiment_id
@@ -90,7 +118,10 @@ class PsycloudAdminClient():
 		if status is not None:
 			d.update({'status':status})
 		r = requests.get(url, params=d, auth=(self.username, self.password), timeout=60.)
-		return r.json()
+		if r.ok:
+			return r.json()['result']['participants']
+		else:
+			raise Exception(r.text)
 
 
 
@@ -103,64 +134,64 @@ class PsycloudClient():
 		if registration_coupon is not None:
 			url = url + '/%s'%registration_coupon
 		r = requests.post(url)
-		return r.json()
+		return r
 
 	def get_participant(self, participant_id):
 		url = self.base_url + endpoint['participant']%participant_id
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def get_stimuli_list(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def get_current_stimulus(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/current'
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def get_stimulus(self, participant_id, stimulus_number):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/%s'%stimulus_number
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def increment_and_get_next_stimulus(self, participant_id):
 		url = self.base_url + endpoint['stimuli']%participant_id + '/next'
 		r = requests.put(url)
-		return r.json()
+		return r
 
 	def save_current_response(self, participant_id, data_dict):
 		url = self.base_url + endpoint['responses']%participant_id + '/current'
 		headers = {'content-type': 'application/json'}
 		r = requests.post(url, data=json.dumps(data_dict), headers=headers)
-		return r.json()
+		return r
 
 	def save_response(self, participant_id, stimulus_number, data_dict):
 		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
 		headers = {'content-type': 'application/json'}
 		r = requests.post(url, data=json.dumps(data_dict), headers=headers)
-		return r.json()
+		return r
 
 	def get_response_list(self, participant_id):
 		url = self.base_url + endpoint['responses']%participant_id
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def get_previous_response(self, participant_id):
 		url = self.base_url + endpoint['responses']%participant_id + '/previous'
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def get_response(self, participant_id, stimulus_number):
 		url = self.base_url + endpoint['responses']%participant_id + '/%s'%stimulus_number
 		r = requests.get(url)
-		return r.json()
+		return r
 
 	def completed(self, participant_id):
 		url = self.base_url + endpoint['participant']%participant_id + '/completed'
 		r = requests.post(url)
-		return r.json()
+		return r
 
 
 

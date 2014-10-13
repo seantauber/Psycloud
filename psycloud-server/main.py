@@ -36,6 +36,7 @@ def upload_experiment_data():
 		experiment_key = admin_datastore.create_experiment_from_data(data)
 		return valid_request('experiment_id', experiment_key.urlsafe())
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 # Delete an experiment and all of its data
@@ -49,6 +50,7 @@ def remove_experiment(experiment_id):
 		admin_datastore.remove_experiment(experiment_id)
 		return valid_request('deleted experiment', experiment_id)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -62,9 +64,10 @@ def get_experiment_data(experiment_id):
 	if 'status' in args:
 		status_filter = args['status']
 	try:
-		result = admin_datastore.get_data(experiment_id, status_filter=status_filter)
-		return valid_request('participants', result['result'])
+		participant_list = admin_datastore.get_data(experiment_id, status_filter=status_filter)
+		return valid_request('participants', participant_list)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -78,16 +81,17 @@ def create_experiment():
 		experiment_name = data['experiment_name']
 		if 'num_participants' in data:
 			num_participants = data['num_participants']
-				if 'max_number_stimuli' in data:
-					max_number_stimuli = data['max_number_stimuli']
-					try:
-						experiment_key = admin_datastore.create_experiment(experiment_name, num_participants,
-							max_number_stimuli)
-						return valid_request('experiment_id', experiment_key.urlsafe())
-					except Exception, e:
-						return bad_request(str(e))
-				else:
-					return bad_request('max_number_stimuli was not provided.')
+			if 'max_number_stimuli' in data:
+				max_number_stimuli = data['max_number_stimuli']
+				try:
+					experiment_key = admin_datastore.create_experiment(experiment_name, num_participants,
+						max_number_stimuli)
+					return valid_request('experiment_id', experiment_key.urlsafe())
+				except Exception, e:
+					raise
+					return bad_request(str(e))
+			else:
+				return bad_request('max_number_stimuli was not provided.')
 		else:
 			return bad_request('num_participants was not provided.')
 	else:
@@ -103,6 +107,7 @@ def get_experiment_list():
 		experiment_list = admin_datastore.get_experiments()
 		return valid_request('experiments', experiment_list)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 # Retrieve an experiment
@@ -112,9 +117,10 @@ def get_experiment_list():
 @auth.login_required
 def get_experiment(experiment_id):
 	try:
-		experiment_list = datastore.get_experiments(experiment_id=experiment_id)
-		return valid_request('experiments', experiment_list)
+		experiment = datastore.get_experiments(experiment_id=experiment_id)
+		return valid_request('experiment', experiment)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 # Modify an experiment
@@ -138,9 +144,10 @@ def get_participant_list(experiment_id):
 		status_filter = args['status']
 
 	try:
-		result = admin_datastore.get_participants(experiment_id, keys_only=keys_only, status_filter=status_filter)
-		return valid_request('participants', result['result'])
+		participant_list = admin_datastore.get_participants(experiment_id, keys_only=keys_only, status_filter=status_filter)
+		return valid_request('participants', participant_list)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -173,9 +180,10 @@ def modify_participant(experiment_id, participant_id):
 def save_coupons(experiment_id):
 	data = request.get_json()
 	try:
-		result = admin_datastore.save_coupons(experiment_id, data)
-		return valid_request('coupons', result['result'])
+		coupon_list = admin_datastore.save_coupons(experiment_id, data)
+		return valid_request('coupons', coupon_list)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 	
 
@@ -189,6 +197,7 @@ def get_coupons(experiment_id):
 		coupon_list = admin_datastore.get_coupons(experiment_id)
 		return valid_request('coupons', coupon_list)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -216,6 +225,7 @@ def dashboard_main():
 				'num_participants':exp['num_participants']})
 		return render_template('main_dashboard.html', params=exps)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -227,6 +237,7 @@ def dashboard_view_experiment(exp_id):
 		experiment = experiment_list[0]
 		return jsonify(experiment)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -236,6 +247,7 @@ def dashboard_view_participant_list(exp_id, status='COMPLETED'):
 		result = admin_datastore.get_experiment_participants(exp_id, keys_only=False, status_filter=status)
 		return render_template(templates[status], exp_id=exp_id, subs=result['result'])
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -259,6 +271,7 @@ def dashboard_view_participant(uid):
 		participant['responses'] = client_datastore.get_responses(uid)
 		return jsonify(participant)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -269,6 +282,7 @@ def dashboard_download_completed_participant_data(exp_id):
 		result = admin_datastore.get_data(exp_id, status_filter='COMPLETED')
 		return jsonify({'participants': result['result']})
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -305,6 +319,7 @@ def register_participant():
 		short_id = client_datastore.register(experiment_id, registration_coupon=registration_coupon)
 		return valid_request('participant_id', short_id)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -317,6 +332,7 @@ def get_stimuli_list(participant_id):
 		stimuli = client_datastore.get_stimuli(participant_id)
 		return valid_request('stimuli', stimuli)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -330,6 +346,7 @@ def save_stimuli_list(participant_id):
 		saved_stimuli = client_datastore.save_stimuli(participant_id, stimuli_to_save)
 		return valid_request('responses', saved_stimuli)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -342,6 +359,7 @@ def get_stimulus_by_number(participant_id, stimulus_number):
 		stimuli = client_datastore.get_stimuli(participant_id, stimulus_number=stimulus_number)
 		return valid_request('stimuli', stimuli)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -356,6 +374,7 @@ def save_stimulus_by_number(participant_id, stimulus_number):
 		saved_stimuli = client_datastore.save_stimuli(participant_id, [stimulus_to_save])
 		return valid_request('stimuli', saved_stimuli)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -368,6 +387,7 @@ def get_stimuli_max_count(participant_id):
 		max_count = client_datastore.get_max_number_stimuli(participant_id)
 		return valid_request('max_count', max_count)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -380,6 +400,7 @@ def get_response_list(participant_id):
 		responses = client_datastore.get_responses(participant_id)
 		return valid_request('responses', responses)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -393,6 +414,7 @@ def save_response_list(participant_id):
 		saved_responses = client_datastore.save_responses(participant_id, responses_to_save)
 		return valid_request('responses', saved_responses)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -405,6 +427,7 @@ def get_response(participant_id, stimulus_number):
 		responses = client_datastore.get_responses(participant_id, stimulus_number=stimulus_number)
 		return valid_request('responses', responses)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -419,6 +442,7 @@ def save_response(participant_id, stimulus_number):
 		saved_responses = client_datastore.save_responses(participant_id, [response_to_save])
 		return valid_request('responses', saved_responses)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -431,6 +455,7 @@ def get_current_stimulus_index(participant_id):
 		stimulus_index = client_datastore.get_current_stimulus(participant_id)
 		return valid_request('stimulus_index', stimulus_index)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 @app.route('/psycloud/api/participant/<participant_id>/stimuli/current',
@@ -444,6 +469,7 @@ def set_current_stimulus_index(participant_id):
 		client_datastore.set_current_stimulus(participant_id, stimulus_index)
 		return valid_request('stimulus_index', stimulus_index)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
@@ -456,6 +482,7 @@ def get_participant_status(participant_id):
 		current_status = client_datastore.get_status(participant_id)
 		return valid_request('current_status', current_status)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 @app.route('/psycloud/api/participant/<participant_id>/current_status',
@@ -468,6 +495,7 @@ def set_participant_status(participant_id):
 		client_datastore.set_status(participant_id, current_status)
 		return valid_request('current_status', current_status)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 @app.route('/psycloud/api/participant/<participant_id>/confirmation_code',
@@ -479,6 +507,7 @@ def get_confirmation_code(participant_id):
 		confirmation_code = client_datastore.get_confirmation_code(participant_id)
 		return valid_request('confirmation_code', confirmation_code)
 	except Exception, e:
+		raise
 		return bad_request(str(e))
 
 
