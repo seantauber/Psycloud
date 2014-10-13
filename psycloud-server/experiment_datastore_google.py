@@ -202,14 +202,14 @@ class AdminDatastore():
 
 		experiment_key = self._key_from_urlsafe_id(experiment_id)
 
-		for c in data['coupons']:
-			coupon = RegistrationCoupon(
-				parent=experiment_key,
-				coupon_type=c['coupon_type'],
-				coupon_value=c['coupon_value'])
-			coupon.put()
+		coupon_entities = [ RegistrationCoupon(
+			parent=experiment_key,
+			coupon_type=c['coupon_type'],
+			coupon_value=c['coupon_value']) for c in data['coupons'] ]
+
+		ndb.put_multi(coupon_entities)
 		
-		return self.get_coupons(experiment_id)
+		return [ coupon.to_dict() for coupon in coupon_entities ]
 
 
 	def get_coupons(self, experiment_id):
