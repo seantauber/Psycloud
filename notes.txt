@@ -1,5 +1,8 @@
 # Psycloud
 
+NOTE: The information in these notes is out of date. A new readme will be uploaded soon.
+
+
 ### Deploying the server to Google App Engine
 To launch the REST-API server locally on Google App Engine development server:
 
