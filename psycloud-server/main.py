@@ -329,8 +329,8 @@ def get_stimuli_list(participant_id):
 	'''Retrieves a list of stimuli.'''
 
 	try:
-		stimuli = client_datastore.get_stimuli(participant_id)
-		return valid_request('stimuli', stimuli)
+		stimulus_list = client_datastore.get_stimuli(participant_id)
+		return valid_request('stimuli', stimulus_list)
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -356,8 +356,8 @@ def get_stimulus_by_number(participant_id, stimulus_number):
 	'''Retrieve a specific stimulus'''
 
 	try:
-		stimuli = client_datastore.get_stimuli(participant_id, stimulus_number=stimulus_number)
-		return valid_request('stimuli', stimuli)
+		stimulus_list = client_datastore.get_stimuli(participant_id, stimulus_number=stimulus_number)
+		return valid_request('stimulus', stimulus_list[0])
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -397,8 +397,8 @@ def get_response_list(participant_id):
 	'''Retrieve a list of responses'''
 
 	try:
-		responses = client_datastore.get_responses(participant_id)
-		return valid_request('responses', responses)
+		response_list = client_datastore.get_responses(participant_id)
+		return valid_request('responses', response_list)
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -424,8 +424,8 @@ def get_response(participant_id, stimulus_number):
 	'''Retrieve a specific response'''
 
 	try:
-		response = client_datastore.get_responses(participant_id, stimulus_number=stimulus_number)
-		return valid_request('response', response)
+		response_list = client_datastore.get_responses(participant_id, stimulus_number=stimulus_number)
+		return valid_request('response', response_list[0])
 	except Exception, e:
 		raise
 		return bad_request(str(e))
