@@ -344,7 +344,7 @@ def save_stimuli_list(participant_id):
 	stimuli_to_save = request.get_json()
 	try:
 		saved_stimuli = client_datastore.save_stimuli(participant_id, stimuli_to_save)
-		return valid_request('responses', saved_stimuli)
+		return valid_request('stimuli', saved_stimuli)
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -372,7 +372,7 @@ def save_stimulus_by_number(participant_id, stimulus_number):
 	stimulus_to_save['stimulus_index'] = stimulus_number
 	try:
 		saved_stimuli = client_datastore.save_stimuli(participant_id, [stimulus_to_save])
-		return valid_request('stimuli', saved_stimuli)
+		return valid_request('stimulus', saved_stimuli[0])
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -424,8 +424,8 @@ def get_response(participant_id, stimulus_number):
 	'''Retrieve a specific response'''
 
 	try:
-		responses = client_datastore.get_responses(participant_id, stimulus_number=stimulus_number)
-		return valid_request('responses', responses)
+		response = client_datastore.get_responses(participant_id, stimulus_number=stimulus_number)
+		return valid_request('response', response)
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -440,7 +440,7 @@ def save_response(participant_id, stimulus_number):
 	response_to_save['stimulus_index'] = stimulus_number
 	try:
 		saved_responses = client_datastore.save_responses(participant_id, [response_to_save])
-		return valid_request('responses', saved_responses)
+		return valid_request('response', saved_responses[0])
 	except Exception, e:
 		raise
 		return bad_request(str(e))

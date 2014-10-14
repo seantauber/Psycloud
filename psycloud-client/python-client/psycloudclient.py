@@ -143,7 +143,10 @@ class PsycloudClient():
 		url = self.base_url + self.endpoint['participant']
 		data = {'experiment_id': experiment_id, 'registration_coupon': registration_coupon}
 		r = requests.post(url, data=json.dumps(data), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return r.json()['result']['participant_id']
+		else:
+			raise Exception(r.text)
 
 	def get_stimuli(self, participant_id):
 		url = self.base_url + self.endpoint['stimuli'] % participant_id
@@ -168,22 +171,34 @@ class PsycloudClient():
 	def get_current_stimulus(self, participant_id):
 		url = self.base_url + self.endpoint['current_stimulus'] % participant_id
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['stimulus_index']
+		else:
+			raise Exception(r.text)
 
 	def get_current_status(self, participant_id):
 		url = self.base_url + self.endpoint['current_status'] % participant_id
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['current_status']
+		else:
+			raise Exception(r.text)
 
 	def get_max_stimulus_count(self, participant_id):
 		url = self.base_url + self.endpoint['max_stimulus_count'] % participant_id
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['max_count']
+		else:
+			raise Exception(r.text)
 
 	def get_confirmation_code(self, participant_id):
 		url = self.base_url + self.endpoint['confirmation_code'] % participant_id
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['confirmation_code']
+		else:
+			raise Exception(r.text)
 
 
 	def save_response(self, participant_id, stimulus_index, response):
@@ -199,24 +214,36 @@ class PsycloudClient():
 	def save_stimulus(self, participant_id, stimulus_index, stimulus):
 		url = self.base_url + self.endpoint['stimulus'] % (participant_id, stimulus_index)
 		r = requests.post(url, data=json.dumps(stimulus), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return r.json()['result']['stimulus']
+		else:
+			raise Exception(r.text)
 
 	def save_stimuli(self, participant_id, stimulus_list):
 		url = self.base_url + self.endpoint['stimuli'] % participant_id
 		r = requests.post(url, data=json.dumps(stimulus_list), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return r.json()['result']['stimuli']
+		else:
+			raise Exception(r.text)
 
 	def set_current_stimulus(self, participant_id, stimulus_index):
 		url = self.base_url + self.endpoint['current_stimulus'] % participant_id
 		data = {'stimulus_index': stimulus_index}
 		r = requests.put(url, data=json.dumps(data), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return True
+		else:
+			raise Exception(r.text)
 
 	def set_current_status(self, participant_id, status):
 		url = self.base_url + self.endpoint['current_status'] % participant_id
-		data = {'current_status': current_status}
+		data = {'current_status': status}
 		r = requests.put(url, data=json.dumps(data), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return True
+		else:
+			raise Exception(r.text)
 
 
 
