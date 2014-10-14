@@ -302,7 +302,7 @@ class ClientDatastoreUtilityMixin():
 		Gets a participant.
 		'''
 		# Get the participant key and then load using the get method
-		return _get_participant_key(participant_short_id).get()
+		return self._get_participant_key(participant_short_id).get()
 
 
 	def _get_participant_key_by_index(self, participant_index):

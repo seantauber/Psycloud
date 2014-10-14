@@ -16,6 +16,7 @@ admin_endpoint['coupons'] = '/psycloud/admin/api/experiments/%s/coupons'
 
 endpoint = {}
 endpoint['participant'] = '/psycloud/api/participant'
+endpoint['current_status'] = '/psycloud/api/participant/%s/current_status'
 endpoint['confirmation_code'] = '/psycloud/api/participant/%s/confirmation_code'
 endpoint['stimuli'] = '/psycloud/api/participant/%s/stimuli'
 endpoint['stimulus'] = '/psycloud/api/participant/%s/stimuli/%s'
@@ -23,7 +24,6 @@ endpoint['responses'] = '/psycloud/api/participant/%s/responses'
 endpoint['response'] = '/psycloud/api/participant/%s/responses/%s'
 endpoint['max_stimulus_count'] = '/psycloud/api/participant/%s/stimuli/max_count'
 endpoint['current_stimulus'] = '/psycloud/api/participant/%s/stimuli/current'
-endpoint['current_status'] = '/psycloud/api/participant/%s/stimuli/current_status'
 
 
 class PsycloudAdminClient():
