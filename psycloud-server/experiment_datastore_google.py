@@ -20,7 +20,6 @@ class Participant(ndb.Model):
 	status = ndb.StringProperty()
 	start_time = ndb.DateTimeProperty()
 	end_time = ndb.DateTimeProperty()	
-	stimuli_count = ndb.IntegerProperty()
 	max_number_stimuli = ndb.IntegerProperty()
 	current_stimulus = ndb.IntegerProperty()
 	registration_coupon = ndb.JsonProperty()
@@ -74,7 +73,6 @@ class AdminDatastore():
 				short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
 				conf_code=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
 				participant_index=i,
-				stimuli_count=0,
 				current_stimulus=0,
 				max_number_stimuli=max_number_stimuli,
 				status='AVAILABLE'))
@@ -102,7 +100,6 @@ class AdminDatastore():
 				short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
 				conf_code=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
 				participant_index=p['participant_index'],
-				stimuli_count=p['stimuli_count'],
 				current_stimulus=0,
 				max_number_stimuli=p['stimuli_count'],
 				status='AVAILABLE'))
@@ -333,7 +330,7 @@ class ClientDatastoreUtilityMixin():
 			participant.start_time = datetime.now()
 
 		# Record the end time if the participant is complete
-		elif participant.status == 'COMPLETED':
+		elif new_status == 'COMPLETED':
 			participant.end_time = datetime.now()
 		
 		# Save the new status
