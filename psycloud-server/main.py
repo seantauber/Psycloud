@@ -404,7 +404,7 @@ def get_response_list(participant_id):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participants/<participant_id>/responses',
+@app.route('/psycloud/api/participant/<participant_id>/responses',
 	methods=['POST'])
 def save_response_list(participant_id):
 	'''Save a list of responses'''
@@ -431,7 +431,7 @@ def get_response(participant_id, stimulus_number):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participants/<participant_id>/responses/<int:stimulus_number>',
+@app.route('/psycloud/api/participant/<participant_id>/responses/<int:stimulus_number>',
 	methods=['POST'])
 def save_response(participant_id, stimulus_number):
 	'''Save a specific response'''

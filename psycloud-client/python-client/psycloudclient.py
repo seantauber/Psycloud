@@ -221,7 +221,7 @@ class PsycloudClient():
 		else:
 			raise Exception(r.text)
 
-	def save_responses(self, participant_id, stimulus_index, response_list):
+	def save_responses(self, participant_id, response_list):
 		url = self.base_url + self.endpoint['responses'] % participant_id
 		r = requests.post(url, data=json.dumps(response_list), headers=JSON_HEADER)
 		if r.ok:
