@@ -318,7 +318,7 @@ class ClientDatastoreUtilityMixin():
 		Gets a participant based on the participant index.
 		'''
 		# Get the participant key and then load using the get method
-		return _get_participant_key_by_index(participant_index).get()
+		return self._get_participant_key_by_index(participant_index).get()
 
 
 	def _update_participant_status(self, participant, new_status):
@@ -347,7 +347,7 @@ class ClientDatastoreUtilityMixin():
 		DOES NOT save the participant to the database.
 		'''
 		# set the participants registratino coupon and save the participant
-		participant.registration_coupon = registration_coupon
+		participant.registration_coupon = coupon
 
 
 	def _register_coupon_to_experiment(self, experiment_key, coupon):
@@ -400,8 +400,9 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 		else:
 			raise ResourceError('The experiment is full. Registration failed.')
 
-		# Load the participant_key
-		participant = self._get_participant_by_index(particpant_index)
+		# Load the participant_key and participant
+		participant_key = self._get_participant_key_by_index(particpant_index)
+		participant = participant_key.get()
 
 		# Set participant status to active
 		self._update_participant_status(participant, 'ACTIVE')
@@ -410,8 +411,8 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 			# Set the participant registration coupon
 			self._update_participant_registration_coupon(participant, registration_coupon)
 			# Register and save the coupon with the experiment
-			experiment_key = participant.parent
-			self._register_coupon_to_experiment(experiment_key, coupon)
+			experiment_key = participant_key.parent()
+			self._register_coupon_to_experiment(experiment_key, registration_coupon)
 
 		# Save the participant entity
 		participant.put()

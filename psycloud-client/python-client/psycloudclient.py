@@ -135,7 +135,7 @@ class PsycloudAdminClient():
 
 class PsycloudClient():
 
-	def __init__(self, base_url, endpoint):
+	def __init__(self, base_url, endpoint=endpoint):
 		self.base_url = base_url
 		self.endpoint = endpoint
 
