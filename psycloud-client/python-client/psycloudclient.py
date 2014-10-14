@@ -151,22 +151,34 @@ class PsycloudClient():
 	def get_stimuli(self, participant_id):
 		url = self.base_url + self.endpoint['stimuli'] % participant_id
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['stimuli']
+		else:
+			raise Exception(r.text)
 
 	def get_stimulus(self, participant_id, stimulus_index):
 		url = self.base_url + self.endpoint['stimulus'] % (participant_id, stimulus_index)
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['stimulus']
+		else:
+			raise Exception(r.text)
 
 	def get_responses(self, participant_id):
 		url = self.base_url + self.endpoint['responses'] % participant_id
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['responses']
+		else:
+			raise Exception(r.text)
 
 	def get_response(self, participant_id, stimulus_index):
 		url = self.base_url + self.endpoint['response'] % (participant_id, stimulus_index)
 		r = requests.get(url)
-		return r
+		if r.ok:
+			return r.json()['result']['response']
+		else:
+			raise Exception(r.text)
 
 	def get_current_stimulus(self, participant_id):
 		url = self.base_url + self.endpoint['current_stimulus'] % participant_id
@@ -204,12 +216,18 @@ class PsycloudClient():
 	def save_response(self, participant_id, stimulus_index, response):
 		url = self.base_url + self.endpoint['response'] % (participant_id, stimulus_index)
 		r = requests.post(url, data=json.dumps(response), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return r.json()['result']['response']
+		else:
+			raise Exception(r.text)
 
 	def save_responses(self, participant_id, stimulus_index, response_list):
 		url = self.base_url + self.endpoint['responses'] % participant_id
 		r = requests.post(url, data=json.dumps(response_list), headers=JSON_HEADER)
-		return r
+		if r.ok:
+			return r.json()['result']['responses']
+		else:
+			raise Exception(r.text)
 
 	def save_stimulus(self, participant_id, stimulus_index, stimulus):
 		url = self.base_url + self.endpoint['stimulus'] % (participant_id, stimulus_index)
