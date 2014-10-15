@@ -8,9 +8,12 @@
 		<script src="{{url_for('.static', filename='js/jquery.min.js')}}"></script>
 		<!-- jQuery rest -->
 		<script src="{{url_for('.static', filename='js/jquery.rest.min.js')}}"></script>
+		<!-- Psycloud -->
+		<script src="{{url_for('.static', filename='js/psycloudclient.js')}}"></script>
 
 		<script>
 		 	var expId = '{{ expId }}';
+		 	participant = new Participant(expId, "../../");
 		</script>
 	</body>
 </html>
