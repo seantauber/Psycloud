@@ -289,13 +289,13 @@ def dashboard_download_completed_participant_data(exp_id):
 #######################################################################################
 #######################################################################################
 # 
-# PARTICIPANT API VERSION 1
+# PARTICIPANT API
 # 
 #######################################################################################
 #######################################################################################
 
 
-@app.route('/psycloud/api/participant',
+@app.route('/psycloud/api/participant/',
 	methods=['POST'])
 def register_participant():
 	'''
@@ -323,7 +323,7 @@ def register_participant():
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/stimuli',
+@app.route('/psycloud/api/participant/<participant_id>/stimuli/',
 	methods=['GET'])
 def get_stimuli_list(participant_id):
 	'''Retrieves a list of stimuli.'''
@@ -336,7 +336,7 @@ def get_stimuli_list(participant_id):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/stimuli',
+@app.route('/psycloud/api/participant/<participant_id>/stimuli/',
 	methods=['POST'])
 def save_stimuli_list(participant_id):
 	'''Saves a list of stimuli.'''
@@ -378,7 +378,7 @@ def save_stimulus_by_number(participant_id, stimulus_number):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/stimuli/max_count',
+@app.route('/psycloud/api/participant/<participant_id>/stimuli/max_count/',
 	methods=['GET'])
 def get_stimuli_max_count(participant_id):
 	'''Returns the maximum number of stimuli that are allowed.'''
@@ -391,7 +391,7 @@ def get_stimuli_max_count(participant_id):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/responses',
+@app.route('/psycloud/api/participant/<participant_id>/responses/',
 	methods=['GET'])
 def get_response_list(participant_id):
 	'''Retrieve a list of responses'''
@@ -404,7 +404,7 @@ def get_response_list(participant_id):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/responses',
+@app.route('/psycloud/api/participant/<participant_id>/responses/',
 	methods=['POST'])
 def save_response_list(participant_id):
 	'''Save a list of responses'''
@@ -446,7 +446,7 @@ def save_response(participant_id, stimulus_number):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/stimuli/current',
+@app.route('/psycloud/api/participant/<participant_id>/stimuli/current/',
 	methods=['GET'])
 def get_current_stimulus_index(participant_id):
 	'''Returns the current stimulus number.'''
@@ -458,7 +458,7 @@ def get_current_stimulus_index(participant_id):
 		raise
 		return bad_request(str(e))
 
-@app.route('/psycloud/api/participant/<participant_id>/stimuli/current',
+@app.route('/psycloud/api/participant/<participant_id>/stimuli/current/',
 	methods=['PUT'])
 def set_current_stimulus_index(participant_id):
 	'''Sets the current stimulus number.'''
@@ -473,7 +473,7 @@ def set_current_stimulus_index(participant_id):
 		return bad_request(str(e))
 
 
-@app.route('/psycloud/api/participant/<participant_id>/current_status',
+@app.route('/psycloud/api/participant/<participant_id>/current_status/',
 	methods=['GET'])
 def get_participant_status(participant_id):
 	'''Returns the participant status.'''
@@ -485,7 +485,7 @@ def get_participant_status(participant_id):
 		raise
 		return bad_request(str(e))
 
-@app.route('/psycloud/api/participant/<participant_id>/current_status',
+@app.route('/psycloud/api/participant/<participant_id>/current_status/',
 	methods=['PUT'])
 def set_participant_status(participant_id):
 	'''Sets the participant status.'''
@@ -498,7 +498,7 @@ def set_participant_status(participant_id):
 		raise
 		return bad_request(str(e))
 
-@app.route('/psycloud/api/participant/<participant_id>/confirmation_code',
+@app.route('/psycloud/api/participant/<participant_id>/confirmation_code/',
 	methods=['GET'])
 def get_confirmation_code(participant_id):
 	'''Returns the participant confirmation code.'''
@@ -509,6 +509,20 @@ def get_confirmation_code(participant_id):
 	except Exception, e:
 		raise
 		return bad_request(str(e))
+
+
+#######################################################################################
+#######################################################################################
+# 
+# EXPERIMENT SERVER
+# 
+#######################################################################################
+#######################################################################################
+
+@app.route('/experiment/<exp_short_id>', methods=['GET'])
+def experiment_start(exp_short_id):
+	'''Serves up an experiment'''
+	return render_template('experiment.html', expId=exp_short_id)
 
 
 
