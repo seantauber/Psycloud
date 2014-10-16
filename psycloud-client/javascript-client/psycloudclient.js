@@ -478,7 +478,7 @@ function Participant(expId, baseUrl) {
 			    async: false,
 			    cache: false,
 			    success: function(data){
-			    	status = data.result.details;
+			    	details = data.result.details;
 			    },
 			    error: function(errMsg) {
 			        console.log(errMsg);
