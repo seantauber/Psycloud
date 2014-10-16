@@ -152,7 +152,7 @@ class AdminDatastore():
 			return experiment_list
 
 		else:
-			
+
 			experiment_key = self._key_from_urlsafe_id(experiment_id)
 			experiment = experiment_key.get()
 			return experiment.to_dict()
@@ -459,6 +459,13 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 		return self._get_participant(participant_short_id).conf_code
 
 
+	def get_details(self, participant_short_id):
+		'''
+		Returns the participant's details.
+		'''
+		return self._get_participant(participant_short_id).details
+
+
 	def set_current_stimulus(self, participant_short_id, current_stimulus):
 		'''
 		Sets the current stimulus number for the participant.
@@ -491,6 +498,23 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 
 		# Update the status
 		self._update_participant_status(participant, new_status)
+
+		# Save the participant
+		participant.put()
+		return True
+
+
+	def set_details(self, participant_short_id, details):
+		'''
+		Sets the participant's details.
+		Assumes details is a dictionary.
+		'''
+
+		# Load the participant
+		participant = self._get_participant(participant_short_id)
+
+		# Update the details
+		participant.details = details
 
 		# Save the participant
 		participant.put()
