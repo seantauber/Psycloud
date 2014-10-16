@@ -497,6 +497,33 @@ def set_participant_status(participant_id):
 		raise
 		return bad_request(str(e))
 
+
+@app.route('/psycloud/api/participant/<participant_id>/details/',
+	methods=['GET'])
+def get_participant_details(participant_id):
+	'''Returns the participant details.'''
+	
+	try:
+		details = client_datastore.get_details(participant_id)
+		return valid_request('details', details)
+	except Exception, e:
+		raise
+		return bad_request(str(e))
+
+@app.route('/psycloud/api/participant/<participant_id>/details/',
+	methods=['PUT'])
+def set_participant_details(participant_id):
+	'''Sets the participant details.'''
+	data = request.get_json()
+	details = data['details']
+	try:
+		client_datastore.set_details(participant_id, details)
+		return valid_request('details', details)
+	except Exception, e:
+		raise
+		return bad_request(str(e))
+
+
 @app.route('/psycloud/api/participant/<participant_id>/confirmation_code/',
 	methods=['GET'])
 def get_confirmation_code(participant_id):
