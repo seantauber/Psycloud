@@ -9,6 +9,7 @@ function Participant(expId, baseUrl) {
 
 	this.endpoint = {};
 	this.endpoint['participant'] = 'psycloud/api/participant/';
+	this.endpoint['details'] = 'psycloud/api/participant/<part_id>/details/';
 	this.endpoint['current_status'] = 'psycloud/api/participant/<part_id>/current_status/';
 	this.endpoint['confirmation_code'] = 'psycloud/api/participant/<part_id>/confirmation_code/';
 	this.endpoint['stimuli'] = 'psycloud/api/participant/<part_id>/stimuli/';
@@ -456,6 +457,71 @@ function Participant(expId, baseUrl) {
 
 		} else {
 			console.log('Unable to save status because participant is not registered.')
+		}
+
+	};
+
+
+
+	this.get_details = function() {
+
+		var participant = this;
+		var details;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('details');
+
+			$.ajax({
+			    type: "GET",
+			    url: url,
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	status = data.result.details;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return details;
+
+		} else {
+			console.log('Unable to get details because participant is not registered.')
+		}
+
+	};
+
+	this.set_details = function(details) {
+
+		var participant = this;
+		var savedDetails;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('details');
+
+			$.ajax({
+			    type: "PUT",
+			    url: url,
+			    data: JSON.stringify( {details: details} ),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	savedDetails = data.result.details;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return savedDetails;
+
+		} else {
+			console.log('Unable to save details because participant is not registered.')
 		}
 
 	};
