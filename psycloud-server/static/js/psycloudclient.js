@@ -5,7 +5,13 @@ function Participant(expId, baseUrl) {
 
 	this.expId = expId;
 	this.baseUrl = baseUrl;
-	this.registered = false;
+
+	if ( this.expId in sessionStorage ){
+		this.participantId = sessionStorage[this.expId];
+		this.registered = true;
+	} else {
+		this. registered = false;
+	}
 
 	this.endpoint = {};
 	this.endpoint['participant'] = 'psycloud/api/participant/';
@@ -63,6 +69,8 @@ function Participant(expId, baseUrl) {
 			    success: function(data){
 			    	participant.participantId = data.result.participant_id;
 			    	participant.registered = true;
+			    	// persist the registration for the session
+			    	sessionStorage[participant.expId] = participant.participantId;
 			    	console.log("Paticipant registered.");
 			    },
 			    error: function(errMsg) {
