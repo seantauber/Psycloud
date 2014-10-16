@@ -134,12 +134,25 @@ class AdminDatastore():
 		return True
 
 
-	def get_experiments(self, experiment_id=None):
+	def get_experiments(self, experiment_id=None, include_participant_counts=False):
+		
 		if experiment_id is None:
+
 			q = ndb.Query(kind='Experiment')
 			experiment_list = [dict( {'id':i.key.urlsafe()}.items() + i.to_dict().items() ) for i in q.iter()]
+			
+			if include_participant_counts:
+
+				for exp in experiment_list:
+					exp['num_available'] = len( self.get_participants(exp['id'], keys_only=True, status_filter='AVAILABLE') )
+					exp['num_active'] = len( self.get_participants(exp['id'], keys_only=True, status_filter='ACTIVE') )
+					exp['num_completed'] = len( self.get_participants(exp['id'], keys_only=True, status_filter='COMPLETED') )
+					exp['num_stalled'] = len( self.get_participants(exp['id'], keys_only=True, status_filter='STALLED') )
+
 			return experiment_list
+
 		else:
+			
 			experiment_key = self._key_from_urlsafe_id(experiment_id)
 			experiment = experiment_key.get()
 			return experiment.to_dict()

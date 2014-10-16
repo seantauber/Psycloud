@@ -215,14 +215,14 @@ def get_coupons(experiment_id):
 @dashauth.login_required
 def dashboard_main():
 	try:
-		experiment_list = admin_datastore.get_experiments()
+		experiment_list = admin_datastore.get_experiments(include_participant_counts=True)
 		exps = []
 		for exp in experiment_list:
-			exps.append({'name':exp['experiment_name'], 'id':exp['id'],
-				'num_available':len(exp['available_participants']),
-				'num_active':len(exp['active_participants']),
-				'num_completed':len(exp['completed_participants']),
-				'num_participants':exp['num_participants']})
+			exps.append({'name': exp['experiment_name'], 'id':exp['id'],
+				'num_available': exp['num_available'],
+				'num_active': exp['num_active'],
+				'num_completed': exp['num_completed'],
+				'num_participants': exp['num_participants']})
 		return render_template('main_dashboard.html', params=exps)
 	except Exception, e:
 		raise
@@ -233,8 +233,7 @@ def dashboard_main():
 @dashauth.login_required
 def dashboard_view_experiment(exp_id):
 	try:
-		experiment_list = admin_datastore.get_experiments(experiment_id=exp_id)
-		experiment = experiment_list[0]
+		experiment = admin_datastore.get_experiments(experiment_id=exp_id)
 		return jsonify(experiment)
 	except Exception, e:
 		raise
@@ -244,8 +243,8 @@ def dashboard_view_experiment(exp_id):
 def dashboard_view_participant_list(exp_id, status='COMPLETED'):
 	templates = {'ACTIVE': 'active_dash.html', 'COMPLETED': 'completed_dash.html'}
 	try:
-		result = admin_datastore.get_experiment_participants(exp_id, keys_only=False, status_filter=status)
-		return render_template(templates[status], exp_id=exp_id, subs=result['result'])
+		participant_list = admin_datastore.get_participants(exp_id, keys_only=False, status_filter=status)
+		return render_template(templates[status], exp_id=exp_id, subs=participant_list)
 	except Exception, e:
 		raise
 		return bad_request(str(e))
@@ -279,8 +278,8 @@ def dashboard_view_participant(uid):
 @dashauth.login_required
 def dashboard_download_completed_participant_data(exp_id):
 	try:
-		result = admin_datastore.get_data(exp_id, status_filter='COMPLETED')
-		return jsonify({'participants': result['result']})
+		completed_participant_list = admin_datastore.get_data(exp_id, status_filter='COMPLETED')
+		return jsonify({'participants': completed_participant_list})
 	except Exception, e:
 		raise
 		return bad_request(str(e))
