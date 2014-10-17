@@ -805,7 +805,7 @@ class IteratedClientDatastore(ClientDatastore):
 	def __init__(self):
 		pass
 
-	def get_available_chains(self, participant_short_id):
+	def get_chain_types(self, participant_short_id):
 		'''
 		Returns a list of the chain types for the experiment.
 		Assumes is is an iterated experiment.
@@ -813,7 +813,7 @@ class IteratedClientDatastore(ClientDatastore):
 
 		participant = self._get_participant(participant_short_id)
 		experiment_key = participant.parent
-		
+
 		q = IteratedStimulusResponseChain(ancestor=experiment_key)
 		chain_types = [chain.chain_type for chain in q]
 

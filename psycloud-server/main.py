@@ -1,9 +1,10 @@
 """`main` is the top level module for the Flask application."""
 
-from experiment_datastore_google import AdminDatastore, ClientDatastore
+from experiment_datastore_google import AdminDatastore, ClientDatastore, IteratedClientDatastore
 
 admin_datastore = AdminDatastore()
 client_datastore = ClientDatastore()
+iterated_client_datastore = IteratedClientDatastore()
 
 from flask import Flask, jsonify, abort, request, make_response, url_for, render_template
 from flask.ext.httpauth import HTTPBasicAuth
@@ -552,7 +553,17 @@ def get_confirmation_code(participant_id):
 #######################################################################################
 #######################################################################################
 
-# @app.route('/psycloud/api/iterated')
+@app.route('/psycloud/api/participant/<participant_id>/chain_types/',
+	methods=['GET'])
+def get_iterated_chain_types(participant_id):
+	'''Returns the available iterated chain types for the participant'''
+
+	try:
+		chain_types = iterated_client_datastore.get_chain_types(participant_id)
+		return valid_request('chain_types', chain_types)
+	except Exception, e:
+		raise
+		return bad_request(str(e))
 
 
 #######################################################################################
