@@ -46,6 +46,20 @@ class PsycloudAdminClient():
 		else:
 			raise Exception(r.text)
 
+	def create_iterated_experiment(self, experiment_name, num_participants, config):
+		url = self.base_url + self.endpoint['experiments']
+		data = {
+		'experiment_type': 'iterated',
+		'experiment_name': experiment_name,
+		'num_participants': num_participants,
+		'config': config
+		}
+		r = requests.post(url, data=json.dumps(data), headers=JSON_HEADER, auth=(self.username, self.password))
+		if r.ok:
+			return r.json()['result']['experiment_id']
+		else:
+			raise Exception(r.text)
+
 	def upload_data(self, data_dict=None, json_filename=None):
 		url = self.base_url + self.endpoint['experiment_upload']
 		if data_dict is not None:
