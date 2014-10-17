@@ -49,7 +49,7 @@ class IteratedStimulusResponseChain(ndb.Model):
 	initial_parallel_chains = ndb.IntegerProperty()
 	max_parallel_chains = ndb.IntegerProperty()
 	max_chain_depth = ndb.IntegerProperty()
-	response_queue = ndb.JsonProperty()
+	sample_queue = ndb.JsonProperty()
 
 class IteratedChainSample(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
@@ -178,16 +178,18 @@ class AdminDatastore():
 				max_parallel_chains = max_parallel_chains,
 				max_chain_depth = max_chain_depth,
 				initial_parallel_chains = len(chain['seeds']),
-				response_queue = []
+				sample_queue = []
 				))
 
 		chain_keys = ndb.put_multi(chain_entities)
 
 		# Create the chain seeds
-		chain_sample_entities = []
 		for i, chain in enumerate(config['chains']):
+
+			# Create the seed samples for this chain
+			sample_entities = []
 			for j, seed in enumerate(chain['seeds']):
-				chain_sample_entities.append(
+				sample_entities.append(
 					IteratedChainSample(
 						parent = chain_keys[i],
 						chain_number = j,
@@ -195,7 +197,14 @@ class AdminDatastore():
 						stimulus_data = seed
 						))
 
-		ndb.put_multi(chain_sample_entities)
+			# Save the sample entities
+			sample_keys = ndb.put_multi(sample_entities)
+
+			# initialize the chain queue with the seed samples
+			chain_entities[i].sample_queue = [key.urlsafe() for key in sample_keys]
+
+			# Save the updated chain
+			chain_entities[i].put()
 
 		return experiment_key
 
