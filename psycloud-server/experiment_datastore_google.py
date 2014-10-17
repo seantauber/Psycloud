@@ -84,19 +84,7 @@ class AdminDatastore():
 
 		experiment_key = experiment.put()
 
-		participant_entities = []
-		for i in range(num_participants):
-			participant_entities.append(
-				Participant(
-				parent=experiment_key,
-				short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-				conf_code=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-				participant_index=i,
-				current_stimulus=0,
-				max_number_stimuli=max_number_stimuli,
-				status='AVAILABLE'))
-			
-		participant_keys = ndb.put_multi(participant_entities)
+		participant_keys = self._create_participants(experiment_key, num_participants, max_number_stimuli)
 
 		return experiment_key
 
@@ -137,6 +125,41 @@ class AdminDatastore():
 					stimulus_type=s['stimulus_type']))
 
 		ndb.put_multi(stimulus_entities)
+
+		return experiment_key
+
+
+	def create_iterated_experiment(self, experiment_name, num_participants, config):
+		'''
+		Create a new iterated experiment with the specified experiment_name.
+		The new experiment contains num_participants participants, each
+		with no stimuli and set to AVAILABLE status.
+
+		config is a dictionary with the following items:
+
+			max_parallel_chains: the maximum number of parallel chains
+
+			max_chain_depth: The maximum number of samples per chain
+
+			chains: a list of chain config dictionaries
+
+		Each chain config dictionary has the following items:
+
+			chain_type: a string identifying the stimulus type for the chain
+
+			seed: a dictinoary of variable names / seed values for the chain. 
+
+		'''
+
+		experiment = Experiment(
+			experiment_name=experiment_name,
+			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
+			num_participants=num_participants,
+			experiment_type='iterated')
+
+		experiment_key = experiment.put()
+
+		participant_keys = self._create_participants(experiment_key, num_participants, max_number_stimuli)
 
 		return experiment_key
 
@@ -255,6 +278,23 @@ class AdminDatastore():
 		Utility function that creates an NDB key from a urlsafe entity id
 		'''
 		return ndb.Key(urlsafe=urlsafe_id)
+
+	def _create_participants(self, experiment_key, num_participants, max_number_stimuli):
+
+		participant_entities = []
+		for i in range(num_participants):
+			participant_entities.append(
+				Participant(
+				parent=experiment_key,
+				short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
+				conf_code=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
+				participant_index=i,
+				current_stimulus=0,
+				max_number_stimuli=max_number_stimuli,
+				status='AVAILABLE'))
+			
+		participant_keys = ndb.put_multi(participant_entities)
+		return participant_keys
 
 
 
