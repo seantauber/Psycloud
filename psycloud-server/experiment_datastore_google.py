@@ -185,7 +185,7 @@ class AdminDatastore():
 
 		# Create the chain seeds
 		chain_sample_entities = []
-		for i, chain in enumerate(config['chains'])
+		for i, chain in enumerate(config['chains']):
 			for j, seed in enumerate(chain['seeds']):
 				chain_sample_entities.append(
 					IteratedChainSample(
@@ -631,7 +631,7 @@ class ClientDatastore(ClientDatastoreUtilityMixin):
 		participant.put()
 
 		# Add the coupon to the experiment coupon list
-		experiment_key = participant.parent
+		experiment_key = participant.key.parent()
 		self._register_coupon_to_experiment(experiment_key, coupon)
 		return True
 
@@ -811,10 +811,10 @@ class IteratedClientDatastore(ClientDatastore):
 		Assumes is is an iterated experiment.
 		'''
 
-		participant = self._get_participant(participant_short_id)
-		experiment_key = participant.parent
+		participant_key = self._get_participant_key(participant_short_id)
+		experiment_key = participant_key.parent()
 
-		q = IteratedStimulusResponseChain(ancestor=experiment_key)
+		q = ndb.Query(kind='IteratedStimulusResponseChain', ancestor=experiment_key)
 		chain_types = [chain.chain_type for chain in q]
 
 		return chain_types
