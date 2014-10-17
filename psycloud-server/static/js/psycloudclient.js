@@ -18,12 +18,6 @@ function Participant(expId, baseUrl) {
 	this.endpoint['details'] = 'psycloud/api/participant/<part_id>/details/';
 	this.endpoint['current_status'] = 'psycloud/api/participant/<part_id>/current_status/';
 	this.endpoint['confirmation_code'] = 'psycloud/api/participant/<part_id>/confirmation_code/';
-	this.endpoint['stimuli'] = 'psycloud/api/participant/<part_id>/stimuli/';
-	this.endpoint['stimulus'] = 'psycloud/api/participant/<part_id>/stimuli/<stim_id>';
-	this.endpoint['responses'] = 'psycloud/api/participant/<part_id>/responses/';
-	this.endpoint['response'] = 'psycloud/api/participant/<part_id>/responses/<stim_id>';
-	this.endpoint['max_stimulus_count'] = 'psycloud/api/participant/<part_id>/stimuli/max_count/';
-	this.endpoint['current_stimulus'] = 'psycloud/api/participant/<part_id>/stimuli/current/';
 
 	
 	this.urlFor = function(endpointName, params){
@@ -81,6 +75,181 @@ function Participant(expId, baseUrl) {
 
 		}
 	};
+
+
+	this.get_status = function() {
+
+		var participant = this;
+		var status;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('current_status');
+
+			$.ajax({
+			    type: "GET",
+			    url: url,
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	status = data.result.current_status;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return status;
+
+		} else {
+			console.log('Unable to get current status because participant is not registered.')
+		}
+
+	};
+
+	this.set_status = function(status) {
+
+		var participant = this;
+		var savedStatus;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('current_status');
+
+			$.ajax({
+			    type: "PUT",
+			    url: url,
+			    data: JSON.stringify( {current_status: status} ),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	savedStatus = data.result.current_status;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return savedStatus;
+
+		} else {
+			console.log('Unable to save status because participant is not registered.')
+		}
+
+	};
+
+
+
+	this.get_details = function() {
+
+		var participant = this;
+		var details;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('details');
+
+			$.ajax({
+			    type: "GET",
+			    url: url,
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	details = data.result.details;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return details;
+
+		} else {
+			console.log('Unable to get details because participant is not registered.')
+		}
+
+	};
+
+	this.set_details = function(details) {
+
+		var participant = this;
+		var savedDetails;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('details');
+
+			$.ajax({
+			    type: "PUT",
+			    url: url,
+			    data: JSON.stringify( {details: details} ),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	savedDetails = data.result.details;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return savedDetails;
+
+		} else {
+			console.log('Unable to save details because participant is not registered.')
+		}
+
+	};
+
+
+	this.get_confirmation_code = function() {
+
+		var participant = this;
+		var confCode;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('confirmation_code');
+
+			$.ajax({
+			    type: "GET",
+			    url: url,
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	confCode = data.result.confirmation_code;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return confCode;
+
+		} else {
+			console.log('Unable to get confirmation code because participant is not registered.')
+		}
+
+	};
+
+}
+
+
+
+function StandardParticipant(expId, baseUrl) {
+
+	Participant.call(this, expId, baseUrl);
+
+	this.endpoint['stimuli'] = 'psycloud/api/participant/<part_id>/stimuli/';
+	this.endpoint['stimulus'] = 'psycloud/api/participant/<part_id>/stimuli/<stim_id>';
+	this.endpoint['responses'] = 'psycloud/api/participant/<part_id>/responses/';
+	this.endpoint['response'] = 'psycloud/api/participant/<part_id>/responses/<stim_id>';
+	this.endpoint['max_stimulus_count'] = 'psycloud/api/participant/<part_id>/stimuli/max_count/';
+	this.endpoint['current_stimulus'] = 'psycloud/api/participant/<part_id>/stimuli/current/';
 
 
 	this.get_stimuli = function() {
@@ -405,137 +574,6 @@ function Participant(expId, baseUrl) {
 	};
 
 
-
-	this.get_status = function() {
-
-		var participant = this;
-		var status;
-
-		if ( participant.registered ) {
-
-			url = participant.urlFor('current_status');
-
-			$.ajax({
-			    type: "GET",
-			    url: url,
-			    async: false,
-			    cache: false,
-			    success: function(data){
-			    	status = data.result.current_status;
-			    },
-			    error: function(errMsg) {
-			        console.log(errMsg);
-			    }
-			});
-
-			return status;
-
-		} else {
-			console.log('Unable to get current status because participant is not registered.')
-		}
-
-	};
-
-	this.set_status = function(status) {
-
-		var participant = this;
-		var savedStatus;
-
-		if ( participant.registered ) {
-
-			url = participant.urlFor('current_status');
-
-			$.ajax({
-			    type: "PUT",
-			    url: url,
-			    data: JSON.stringify( {current_status: status} ),
-			    contentType: "application/json; charset=utf-8",
-			    dataType: "json",
-			    async: false,
-			    cache: false,
-			    success: function(data){
-			    	savedStatus = data.result.current_status;
-			    },
-			    error: function(errMsg) {
-			        console.log(errMsg);
-			    }
-			});
-
-			return savedStatus;
-
-		} else {
-			console.log('Unable to save status because participant is not registered.')
-		}
-
-	};
-
-
-
-	this.get_details = function() {
-
-		var participant = this;
-		var details;
-
-		if ( participant.registered ) {
-
-			url = participant.urlFor('details');
-
-			$.ajax({
-			    type: "GET",
-			    url: url,
-			    async: false,
-			    cache: false,
-			    success: function(data){
-			    	details = data.result.details;
-			    },
-			    error: function(errMsg) {
-			        console.log(errMsg);
-			    }
-			});
-
-			return details;
-
-		} else {
-			console.log('Unable to get details because participant is not registered.')
-		}
-
-	};
-
-	this.set_details = function(details) {
-
-		var participant = this;
-		var savedDetails;
-
-		if ( participant.registered ) {
-
-			url = participant.urlFor('details');
-
-			$.ajax({
-			    type: "PUT",
-			    url: url,
-			    data: JSON.stringify( {details: details} ),
-			    contentType: "application/json; charset=utf-8",
-			    dataType: "json",
-			    async: false,
-			    cache: false,
-			    success: function(data){
-			    	savedDetails = data.result.details;
-			    },
-			    error: function(errMsg) {
-			        console.log(errMsg);
-			    }
-			});
-
-			return savedDetails;
-
-		} else {
-			console.log('Unable to save details because participant is not registered.')
-		}
-
-	};
-
-
-
 	this.get_max_stimulus_count = function() {
 
 		var participant = this;
@@ -566,15 +604,24 @@ function Participant(expId, baseUrl) {
 
 	};
 
+}
 
-	this.get_confirmation_code = function() {
 
+
+function IteratedParticipant(expId, baseUrl) {
+
+	Participant.call(this, expId, baseUrl);
+
+	this.endpoint['chain_types'] = 'psycloud/api/participant/<part_id>/chain_types/';
+	
+
+	this.get_chain_types = function() {
 		var participant = this;
-		var confCode;
+		var chainTypes;
 
 		if ( participant.registered ) {
 
-			url = participant.urlFor('confirmation_code');
+			url = participant.urlFor('chain_types');
 
 			$.ajax({
 			    type: "GET",
@@ -582,22 +629,22 @@ function Participant(expId, baseUrl) {
 			    async: false,
 			    cache: false,
 			    success: function(data){
-			    	confCode = data.result.confirmation_code;
+			    	chainTypes = data.result.chain_types;
 			    },
 			    error: function(errMsg) {
 			        console.log(errMsg);
 			    }
 			});
 
-			return confCode;
+			return chainTypes;
 
 		} else {
-			console.log('Unable to get confirmation code because participant is not registered.')
+			console.log('Unable to get chain types because participant is not registered.')
 		}
-
 	};
 
 }
+
 
 
 var sampleStim = {stimulus_index:0, variables:{a:[1,2,3], b:100}, stimulus_type:'stim'};
