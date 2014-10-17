@@ -147,19 +147,55 @@ class AdminDatastore():
 
 			chain_type: a string identifying the stimulus type for the chain
 
-			seed: a dictinoary of variable names / seed values for the chain. 
+			seeds: a list of dictionaries containing variable names / seed values.
+					Each seed will result in an initial parallel chain.
 
 		'''
 
+		# Create the experiment
 		experiment = Experiment(
 			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
 			num_participants=num_participants,
 			experiment_type='iterated')
-
 		experiment_key = experiment.put()
 
-		participant_keys = self._create_participants(experiment_key, num_participants, max_number_stimuli)
+		# Create the participants
+		# Maximum number of stimuli is set to 0 because they are not
+		# needed for iterated experiments.
+		self._create_participants(experiment_key, num_participants, 0)
+
+		# Create the chains
+		max_parallel_chains = config['max_parallel_chains']
+		max_chain_depth = config['max_chain_depth']
+
+		chain_entities = []
+		for chain in config['chains']:
+			chain_entities.append(
+				IteratedStimulusResponseChain(
+				parent = experiment_key,
+				chain_type = chain['chain_type'],
+				max_parallel_chains = max_parallel_chains,
+				max_chain_depth = max_chain_depth,
+				initial_parallel_chains = len(chain['seeds']),
+				response_queue = []
+				))
+
+		chain_keys = ndb.put_multi(chain_entities)
+
+		# Create the chain seeds
+		chain_sample_entities = []
+		for i, chain in enumerate(config['chains'])
+			for j, seed in enumerate(chain['seeds']):
+				chain_sample_entities.append(
+					IteratedChainSample(
+						parent = chain_keys[i],
+						chain_number = j,
+						sample_number = 0,
+						stimulus_data = seed
+						))
+
+		ndb.put_multi(chain_sample_entities)
 
 		return experiment_key
 
