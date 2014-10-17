@@ -11,6 +11,7 @@ class Experiment(ndb.Model):
 	short_id = ndb.StringProperty()
 	experiment_name = ndb.StringProperty()
 	num_participants = ndb.IntegerProperty()
+	experiment_type = ndb.StringProperty()
 
 class Participant(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
@@ -40,6 +41,24 @@ class RegistrationCoupon(ndb.Model):
 	creation_time = ndb.DateTimeProperty(auto_now_add=True)
 	coupon_type = ndb.StringProperty()
 	coupon_value = ndb.StringProperty()
+
+
+class IteratedStimulusResponseChain(ndb.Model):
+	creation_time = ndb.DateTimeProperty(auto_now_add=True)
+	chain_type = ndb.StringProperty()
+	initial_parallel_chains = ndb.IntegerProperty()
+	max_parallel_chains = ndb.IntegerProperty()
+	max_chain_depth = ndb.IntegerProperty()
+	response_queue = ndb.JsonProperty()
+
+class IteratedChainSample(ndb.Model):
+	creation_time = ndb.DateTimeProperty(auto_now_add=True)
+	chain_number = ndb.IntegerProperty()
+	sample_number = ndb.IntegerProperty()
+	response_from_previous_sample = ndb.JsonProperty()
+	stimulus_data = ndb.JsonProperty()
+	response_data = ndb.JsonProperty()
+	participant_short_id = ndb.StringProperty()
 
 
 
