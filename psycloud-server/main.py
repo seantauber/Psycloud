@@ -25,8 +25,6 @@ dashauth = HTTPBasicAuth()
 #######################################################################################
 
 # Upload a Json file that contains the complete experiment with participants and stimuli
-# how to upload a Json experiment file:
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @../sample_data/mammals-stimset-00.json http://localhost:8080/psycloud/admin/api/experiments/upload_all_data
 @app.route('/psycloud/admin/api/experiments/upload_all_data',
 	methods=['POST'])
 @auth.login_required
@@ -40,8 +38,6 @@ def upload_experiment_data():
 		return bad_request(str(e))
 
 # Delete an experiment and all of its data
-# how to delete an experiment:
-# curl -u username:password -XDELETE http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
 	methods=['DELETE'])
 @auth.login_required
@@ -71,34 +67,47 @@ def get_experiment_data(experiment_id):
 		return bad_request(str(e))
 
 
+
+def create_iterated_experiment(data):
+
+	experiment_name = data['experiment_name']
+	num_participants = data['num_participants']
+	config = data['config']
+
+	try:
+		experiment_key = admin_datastore.create_iterated_experiment(experiment_name,
+			num_participants, config)
+		return valid_request('experiment_id', experiment_key.urlsafe())
+	except Exception, e:
+		raise
+		return bad_request(str(e))
+
+
 # Create a new experiment
 @app.route('/psycloud/admin/api/experiments',
 	methods=['POST'])
 @auth.login_required
 def create_experiment():
+	
 	data = request.get_json()
-	if 'experiment_name' in data:
-		experiment_name = data['experiment_name']
-		if 'num_participants' in data:
-			num_participants = data['num_participants']
-			if 'max_number_stimuli' in data:
-				max_number_stimuli = data['max_number_stimuli']
-				try:
-					experiment_key = admin_datastore.create_experiment(experiment_name, num_participants,
-						max_number_stimuli)
-					return valid_request('experiment_id', experiment_key.urlsafe())
-				except Exception, e:
-					raise
-					return bad_request(str(e))
-			else:
-				return bad_request('max_number_stimuli was not provided.')
-		else:
-			return bad_request('num_participants was not provided.')
-	else:
-		return bad_request('experiment_name was not provided.')
+
+	if 'experiment_type' in data:
+		if data['experiment_type'] == 'iterated':
+			return create_iterated_experiment(data)
+
+	experiment_name = data['experiment_name']
+	num_participants = data['num_participants']
+	max_number_stimuli = data['max_number_stimuli']
+	try:
+		experiment_key = admin_datastore.create_experiment(experiment_name,
+			num_participants, max_number_stimuli)
+		return valid_request('experiment_id', experiment_key.urlsafe())
+	except Exception, e:
+		raise
+		return bad_request(str(e))
+
 
 # Retrieve a list of experiments
-# curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments
 @app.route('/psycloud/admin/api/experiments',
 	methods=['GET'])
 @auth.login_required
@@ -111,7 +120,6 @@ def get_experiment_list():
 		return bad_request(str(e))
 
 # Retrieve an experiment
-# curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
 	methods=['GET'])
 @auth.login_required
@@ -173,7 +181,6 @@ def modify_participant(experiment_id, participant_id):
 	pass
 
 # Save coupons
-# curl -u username:password -XPOST -H 'Content-Type:application/json' -d @../sample_data/reg_coupons.json http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/coupons',
 	methods=['POST'])
 @auth.login_required
@@ -188,7 +195,6 @@ def save_coupons(experiment_id):
 	
 
 # Retrieve coupons
-# curl -u username:password -XGET http://localhost:8080/psycloud/admin/api/experiments/<experiment_id>/coupons
 @app.route('/psycloud/admin/api/experiments/<experiment_id>/coupons',
 	methods=['GET'])
 @auth.login_required
