@@ -613,6 +613,21 @@ function IteratedParticipant(expId, baseUrl) {
 	Participant.call(this, expId, baseUrl);
 
 	this.endpoint['chain_types'] = 'psycloud/api/participant/<part_id>/chain_types/';
+	this.endpoint['chain'] = 'psycloud/api/participant/<part_id>/chain/<chain_type>/';
+
+
+	this.urlFor = function(endpointName, params){
+
+		params = params || {};
+
+		url = Participant.urlFor.call(this, endpointName, params);
+
+		if ('chainType' in params){
+			url = url.replace('<chain_type>', params.chainType);
+		}
+		
+		return url;
+	};
 	
 
 	this.get_chain_types = function() {
@@ -640,6 +655,35 @@ function IteratedParticipant(expId, baseUrl) {
 
 		} else {
 			console.log('Unable to get chain types because participant is not registered.')
+		}
+	};
+
+
+	this.read_chain = function(chain_type) {
+		var participant = this;
+		var sample;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('chain');
+
+			$.ajax({
+			    type: "GET",
+			    url: url,
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	sample = data.result.sample;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return sample;
+
+		} else {
+			console.log('Unable to get sample because participant is not registered.')
 		}
 	};
 
