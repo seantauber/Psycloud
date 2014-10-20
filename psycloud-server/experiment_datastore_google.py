@@ -829,6 +829,59 @@ class IteratedClientDatastore(ClientDatastore):
 		return chain_types
 
 
+	def get_sample_from_chain(self, participant_short_id, chain_type):
+		'''
+		Gets a sample from the chain specified by chain_type and returns it in a list.
+		Assumes chain_type is a valid chain.
+		Returns an empty list if the chain queue is empty.
+		'''
+
+		participant_key = self._get_participant_key(participant_short_id)
+		experiment_key = participant_key.parent()
+
+		q = ndb.Query(kind='IteratedStimulusResponseChain',
+			chain_type=chain_type,
+			ancestor=experiment_key)
+
+		if len(q) == 0:
+			raise ResourceError('Invalid chain type.')
+		else:
+			chain = q[0]
+
+			# If the queue is empty return an empty list
+			if len(chain.queue) == 0:
+				return []
+			
+			# Queue is not empty so get a sample id
+			sample_id = chain.queue[0]
+			# Remove the sample from the queue
+			chain.queue = chain.queue[1:]
+			# Save the update to the chain
+			chain.put()
+
+			# Convert the sample id to a key
+			sample_key = self._key_from_urlsafe_id(sample_id)
+			# Load the sample
+			sample = sample_key.get()
+			
+			return [sample.to_dict()]
+			
+
+
+	def _key_from_urlsafe_id(self, urlsafe_id):
+		'''
+		Utility function that creates an NDB key from a urlsafe entity id
+		'''
+		return ndb.Key(urlsafe=urlsafe_id)
+
+
+
+
+
+
+
+
+
 
 
 		
