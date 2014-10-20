@@ -566,6 +566,20 @@ def get_iterated_chain_types(participant_id):
 		return bad_request(str(e))
 
 
+@app.route('/psycloud/api/participant/<participant_id>/chain/<chain_type>/',
+	methods=['GET'])
+def get_sample_from_chain(chain_type):
+	'''Returns a sample from the chain specified by chain_type'''
+
+	try:
+		sample = iterated_client_datastore.get_sample_from_chain(participant_id, chain_type)
+		return valid_request('sample', sample)
+	except Exception, e:
+		raise
+		return bad_request(str(e))
+
+
+
 #######################################################################################
 #######################################################################################
 # 
