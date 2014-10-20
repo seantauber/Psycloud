@@ -617,10 +617,16 @@ function IteratedParticipant(expId, baseUrl) {
 
 
 	this.urlFor = function(endpointName, params){
+		// Overides the parent method in order to account for chains
 
 		params = params || {};
 
-		url = Participant.urlFor.call(this, endpointName, params);
+		url = this.baseUrl + this.endpoint[endpointName];
+		url = url.replace('<part_id>', this.participantId);
+		
+		if ('stimulusIndex' in params){
+			url = url.replace('<stim_id>', params.stimulusIndex);
+		}
 
 		if ('chainType' in params){
 			url = url.replace('<chain_type>', params.chainType);

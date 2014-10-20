@@ -839,9 +839,9 @@ class IteratedClientDatastore(ClientDatastore):
 		participant_key = self._get_participant_key(participant_short_id)
 		experiment_key = participant_key.parent()
 
-		q = ndb.Query(kind='IteratedStimulusResponseChain',
-			chain_type=chain_type,
-			ancestor=experiment_key)
+		q = IteratedStimulusResponseChain.query(
+			IteratedStimulusResponseChain.chain_type == chain_type,
+			ancestor = experiment_key).fetch()
 
 		if len(q) == 0:
 			raise ResourceError('Invalid chain type.')
@@ -863,7 +863,7 @@ class IteratedClientDatastore(ClientDatastore):
 			sample_key = self._key_from_urlsafe_id(sample_id)
 			# Load the sample
 			sample = sample_key.get()
-			
+
 			return [sample.to_dict()]
 			
 

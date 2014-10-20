@@ -568,7 +568,7 @@ def get_iterated_chain_types(participant_id):
 
 @app.route('/psycloud/api/participant/<participant_id>/chain/<chain_type>/',
 	methods=['GET'])
-def get_sample_from_chain(chain_type):
+def get_sample_from_chain(participant_id, chain_type):
 	'''Returns a sample from the chain specified by chain_type'''
 
 	try:
