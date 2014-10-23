@@ -863,9 +863,16 @@ class IteratedClientDatastore(ClientDatastore):
 			sample_key = self._key_from_urlsafe_id(sample_id)
 			# Load the sample
 			sample = sample_key.get().to_dict()
+
+
 			# Remove the id of the participant who submitted this sample
 			# So it isn't visible to next participant
 			sample['participant_short_id'] = None
+
+			# Prepare the sample for the next participant
+			sample['response_from_previous_sample'] = sample['response_data']
+			sample['response_data'] = None
+			sample['stimulus_data'] = None
 
 			return sample
 
@@ -892,7 +899,7 @@ class IteratedClientDatastore(ClientDatastore):
 		sample = IteratedChainSample(
 			parent = chain.key,
 			chain_number = sample_data['chain_number'],
-			sample_number = sample_data['sample_number'],
+			sample_number = sample_data['sample_number'] + 1, # increment the sample number
 			stimulus_data = sample_data['stimulus_data'],
 			response_data = sample_data['response_data'],
 			response_from_previous_sample = sample_data['response_from_previous_sample']
