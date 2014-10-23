@@ -906,7 +906,12 @@ class IteratedClientDatastore(ClientDatastore):
 			response_from_previous_sample = sample_data['response_from_previous_sample']
 			)
 		# Save the sample
-		sample.put()
+		sample_key = sample.put()
+
+		# Put the sample on the queue
+		chain.sample_queue.append(sample_key.urlsafe())
+		# Save the chain
+		chain.put()
 
 		return sample.to_dict()
 

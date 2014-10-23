@@ -587,7 +587,7 @@ def save_sample_to_chain(participant_id, chain_type):
 	new_sample = request.get_json()
 
 	try:
-		saved_sample = iterated_client_datastore.get_sample_from_chain(participant_id,
+		saved_sample = iterated_client_datastore.save_sample_to_chain(participant_id,
 			chain_type, new_sample)
 		return valid_request('sample', saved_sample)
 	except Exception, e:

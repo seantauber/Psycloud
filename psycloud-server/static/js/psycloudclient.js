@@ -719,7 +719,7 @@ function IteratedParticipant(expId, baseUrl) {
 			    }
 			});
 
-			return sample;
+			return savedSample;
 
 		} else {
 			console.log('Unable to write sample because participant is not registered.')
