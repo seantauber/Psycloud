@@ -850,7 +850,7 @@ class IteratedClientDatastore(ClientDatastore):
 
 			# If the queue is empty return an empty list
 			if len(chain.sample_queue) == 0:
-				return []
+				return None
 			
 			# Queue is not empty so get a sample id
 			sample_id = chain.sample_queue[0]
@@ -862,9 +862,12 @@ class IteratedClientDatastore(ClientDatastore):
 			# Convert the sample id to a key
 			sample_key = self._key_from_urlsafe_id(sample_id)
 			# Load the sample
-			sample = sample_key.get()
+			sample = sample_key.get().to_dict()
+			# Remove the id of the participant who submitted this sample
+			# So it isn't visible to next participant
+			sample['participant_short_id'] = None
 
-			return [sample.to_dict()]
+			return sample
 			
 
 
