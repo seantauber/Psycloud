@@ -701,6 +701,16 @@ function IteratedParticipant(expId, baseUrl) {
 
 		if ( participant.registered ) {
 
+			if ( sample.response_data === null ) {
+				console.log('No response data to write.');
+				return;
+			}
+
+			if ( sample.stimulus_data === null ) {
+				console.log('No stimulus data specified so setting it equal to response data from previous sample.')
+				sample.stimulus_data = sample.response_from_previous_sample;
+			}
+
 			url = participant.urlFor('chain', {chainType: chainType});
 
 			$.ajax({
@@ -726,7 +736,7 @@ function IteratedParticipant(expId, baseUrl) {
 		}
 	};
 
-	
+
 
 }
 
