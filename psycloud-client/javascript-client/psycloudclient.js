@@ -693,6 +693,41 @@ function IteratedParticipant(expId, baseUrl) {
 		}
 	};
 
+
+
+	this.write_chain = function(chainType, sample) {
+		var participant = this;
+		var savedSample;
+
+		if ( participant.registered ) {
+
+			url = participant.urlFor('chain', {chainType: chainType});
+
+			$.ajax({
+			    type: "POST",
+			    url: url,
+			    data: JSON.stringify(sample),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    async: false,
+			    cache: false,
+			    success: function(data){
+			    	savedSample = data.result.sample;
+			    },
+			    error: function(errMsg) {
+			        console.log(errMsg);
+			    }
+			});
+
+			return sample;
+
+		} else {
+			console.log('Unable to write sample because participant is not registered.')
+		}
+	};
+
+	
+
 }
 
 

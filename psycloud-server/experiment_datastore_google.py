@@ -867,7 +867,7 @@ class IteratedClientDatastore(ClientDatastore):
 
 			# Remove the id of the participant who submitted this sample
 			# So it isn't visible to next participant
-			sample['participant_short_id'] = None
+			del(sample['participant_short_id'])
 
 			# Prepare the sample for the next participant
 			sample['response_from_previous_sample'] = sample['response_data']
@@ -898,6 +898,7 @@ class IteratedClientDatastore(ClientDatastore):
 
 		sample = IteratedChainSample(
 			parent = chain.key,
+			participant_short_id = participant_short_id,
 			chain_number = sample_data['chain_number'],
 			sample_number = sample_data['sample_number'] + 1, # increment the sample number
 			stimulus_data = sample_data['stimulus_data'],
