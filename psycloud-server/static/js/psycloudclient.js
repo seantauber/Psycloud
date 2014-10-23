@@ -665,13 +665,13 @@ function IteratedParticipant(expId, baseUrl) {
 	};
 
 
-	this.read_chain = function(chain_type) {
+	this.read_chain = function(chainType) {
 		var participant = this;
 		var sample;
 
 		if ( participant.registered ) {
 
-			url = participant.urlFor('chain');
+			url = participant.urlFor('chain', {chainType: chainType});
 
 			$.ajax({
 			    type: "GET",

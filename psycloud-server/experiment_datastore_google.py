@@ -844,18 +844,18 @@ class IteratedClientDatastore(ClientDatastore):
 			ancestor = experiment_key).fetch()
 
 		if len(q) == 0:
-			raise ResourceError('Invalid chain type.')
+			raise ResourceError("Invalid chain type '%s'" % chain_type)
 		else:
 			chain = q[0]
 
 			# If the queue is empty return an empty list
-			if len(chain.queue) == 0:
+			if len(chain.sample_queue) == 0:
 				return []
 			
 			# Queue is not empty so get a sample id
-			sample_id = chain.queue[0]
+			sample_id = chain.sample_queue[0]
 			# Remove the sample from the queue
-			chain.queue = chain.queue[1:]
+			chain.sample_queue = chain.sample_queue[1:]
 			# Save the update to the chain
 			chain.put()
 
