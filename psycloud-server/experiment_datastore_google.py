@@ -831,9 +831,9 @@ class IteratedClientDatastore(ClientDatastore):
 
 	def get_sample_from_chain(self, participant_short_id, chain_type):
 		'''
-		Gets a sample from the chain specified by chain_type and returns it in a list.
+		Gets a sample from the chain specified by chain_type and returns it.
 		Assumes chain_type is a valid chain.
-		Returns an empty list if the chain queue is empty.
+		Returns None value if the chain queue is empty.
 		'''
 
 		participant_key = self._get_participant_key(participant_short_id)
@@ -868,6 +868,40 @@ class IteratedClientDatastore(ClientDatastore):
 			sample['participant_short_id'] = None
 
 			return sample
+
+
+	def save_sample_to_chain(self, participant_short_id, chain_type, sample_data):
+		'''
+		Creates a new sample entity and puts it on the chain.
+		Assumes chain_type is a valid chain.
+		'''
+
+		participant_key = self._get_participant_key(participant_short_id)
+		experiment_key = participant_key.parent()
+
+		q = IteratedStimulusResponseChain.query(
+			IteratedStimulusResponseChain.chain_type == chain_type,
+			ancestor = experiment_key).fetch()
+
+		if len(q) == 0:
+			raise ResourceError("Invalid chain type '%s'" % chain_type)
+		else:
+			chain = q[0]
+
+
+		sample = IteratedChainSample(
+			parent = chain.key,
+			chain_number = sample_data['chain_number'],
+			sample_number = sample_data['sample_number'],
+			stimulus_data = sample_data['stimulus_data'],
+			response_data = sample_data['response_data'],
+			response_from_previous_sample = sample_data['response_from_previous_sample']
+			)
+		# Save the sample
+		sample.put()
+
+		return sample.to_dict()
+
 			
 
 
