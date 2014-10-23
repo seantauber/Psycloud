@@ -579,6 +579,23 @@ def get_sample_from_chain(participant_id, chain_type):
 		return bad_request(str(e))
 
 
+@app.route('/psycloud/api/participant/<participant_id>/chain/<chain_type>/',
+	methods=['POST'])
+def save_sample_to_chain(participant_id, chain_type):
+	'''Saves a new sample from the chain specified by chain_type'''
+
+	new_sample = request.get_json()
+
+	try:
+		saved_sample = iterated_client_datastore.get_sample_from_chain(participant_id,
+			chain_type, new_sample)
+		return valid_request('sample', saved_sample)
+	except Exception, e:
+		raise
+		return bad_request(str(e))
+
+
+
 
 #######################################################################################
 #######################################################################################
