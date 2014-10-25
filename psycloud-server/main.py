@@ -225,7 +225,7 @@ def dashboard_main():
 		experiment_list = admin_datastore.get_experiments(include_participant_counts=True)
 		exps = []
 		for exp in experiment_list:
-			exps.append({'name': exp['experiment_name'], 'id':exp['id'],
+			exps.append({'name': exp['experiment_name'], 'id':exp['id'], 'type':exp['experiment_type'],
 				'num_available': exp['num_available'],
 				'num_active': exp['num_active'],
 				'num_completed': exp['num_completed'],

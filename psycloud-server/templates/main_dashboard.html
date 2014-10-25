@@ -23,6 +23,7 @@
                     <thead>
                     <tr>
                       <th>Study</th>
+                      <th style="text-align:center">Type</th>
                       <th style="text-align:center">Active</th>
                       <th style="text-align:center">Completed</th>
                       <th style="text-align:center">Available</th>
@@ -33,6 +34,7 @@
                     {% for exp in params %}
                         <tr>
                             <td><a href="{{ url_for('dashboard_view_experiment', exp_id=exp.id) }}">{{ exp.name }}</a></td>
+                            <td style="text-align:center">{{ exp.type }}</td>
                             <td style="text-align:center"><a href="{{ url_for('dashboard_view_active', exp_id=exp.id) }}">{{ exp.num_active }}</a></td>
                             <td style="text-align:center"><a href="{{ url_for('dashboard_view_completed', exp_id=exp.id) }}">{{ exp.num_completed }}</a></td>
                             <td style="text-align:center">{{ exp.num_available }}</td>
