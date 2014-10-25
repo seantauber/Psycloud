@@ -605,10 +605,10 @@ def save_sample_to_chain(participant_id, chain_type):
 #######################################################################################
 #######################################################################################
 
-@app.route('/experiment/<exp_short_id>', methods=['GET'])
-def experiment_start(exp_short_id):
+@app.route('/experiment/<exp_kind>/<exp_short_id>', methods=['GET'])
+def experiment_start(exp_kind, exp_short_id):
 	'''Serves up an experiment'''
-	return render_template('experiment.html', expId=exp_short_id)
+	return render_template('experiments/%s/index.html' % exp_kind, expId=exp_short_id, expKind=exp_kind)
 
 
 

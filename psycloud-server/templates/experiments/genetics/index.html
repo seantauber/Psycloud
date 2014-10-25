@@ -4,14 +4,22 @@
 	</head>
 	<body>
 
+		<script>
+			var expId = '{{ expId }}';
+		</script>
+
 		<!-- jQuery -->
 		<script src="{{url_for('.static', filename='js/jquery.min.js')}}"></script>
 		
 		<!-- Psycloud -->
 		<script src="{{url_for('.static', filename='js/psycloudclient.js')}}"></script>
 
+		<!-- Custom script for this experiment -->
+		<!--
+		<script src="{{url_for('.static', filename='experiments/' + expKind + '/js/my_experiment_script.js')}}"></script>
+		-->
+
 		<script>
-		 	var expId = '{{ expId }}';
 		 	standardParticipant = new StandardParticipant(expId, "../../");
 		 	iteratedParticipant = new IteratedParticipant(expId, "../../");
 		</script>
