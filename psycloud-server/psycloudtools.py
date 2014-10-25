@@ -1,18 +1,28 @@
 import numpy as np
+import pandas as pd
 import json
 
-class PsycloudResultsReader:
+class PsycloudJsonResultsReader:
 
-	def __init__(self, json_filename):
-		self.json_filename = json_filename
-		self.read_data();
-		self.build_header();
-		self.build_data_matrix();
+	def __init__(self, json_filename=None, results_dict=None):
+		if json_filename is not None:
+			self.json_filename = json_filename
+			self.read_json()
+		elif results_dict is not None:
+			self. results_dict = results_dict
+		else:
+			raise Exception('No data provided.')
+		self.build_header()
+		self.build_data_matrix()
+		self.create_data_frame()
 
-	def read_data(self):
+	def read_json(self):
 		f = open(self.json_filename, 'rb')
 		self.results_dict = json.load(f)
 		f.close()
+
+	def to_csv(self, fname):
+		self.data_frame.to_csv(fname, index=False)
 
 	def build_header(self):
 		
@@ -32,6 +42,9 @@ class PsycloudResultsReader:
 		for participant in self.results_dict['participants']:
 			self.extract_data(participant['participant_index'], participant['stimuli'])
 			self.extract_data(participant['participant_index'], participant['responses'])
+
+	def create_data_frame(self):
+		self.data_frame = pd.DataFrame(self.data_matrix[1:], columns=self.header)
 
 	def extract_data(self, participant_index, stim_list):
 
@@ -54,7 +67,7 @@ class PsycloudResultsReader:
 			for var_name in item['variables'].keys():
 				if type(item['variables'][var_name]) == list:
 					for i, val in enumerate(item['variables'][var_name]):
-						self.set_value(row, "%s_%i" % (var_name, i), val)
+						self.set_value(row, "%s.%i" % (var_name, i), val)
 				else:
 					self.set_value(row, var_name, item['variables'][var_name])
 
@@ -97,7 +110,7 @@ class PsycloudResultsReader:
 			for var in item['variables'].keys():
 				if type(item['variables'][var]) == list:
 					for i in range(len(item['variables'][var])):
-						var_set.add("%s_%i" % (var, i))
+						var_set.add("%s.%i" % (var, i))
 				else:
 					var_set.add(var)
 		return list(var_set)
