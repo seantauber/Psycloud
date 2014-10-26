@@ -193,7 +193,7 @@ class AdminDatastore():
 						parent = chain_keys[i],
 						chain_number = j,
 						sample_number = 0,
-						response_from_previous_sample = seed
+						response_data = seed
 						))
 
 			# Save the sample entities
