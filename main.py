@@ -3,6 +3,10 @@
 from experiment_datastore_google import AdminDatastore, ClientDatastore, IteratedClientDatastore
 from custom_exceptions import DuplicateEntryError, ResourceError, DataFormatError
 
+cfg_file = open('server.cfg')
+cfg = json.load(cfg_file)
+cfg_file.close()
+
 admin_datastore = AdminDatastore()
 client_datastore = ClientDatastore()
 iterated_client_datastore = IteratedClientDatastore()
@@ -639,14 +643,14 @@ def experiment_start(exp_kind, exp_short_id):
 
 @auth.get_password
 def get_password(username):
-    if username == 'psycloud':
-        return 'psycloud'
+    if username == cfg['adminuser']:
+        return cfg['adminpass']
     return None
 
 @dashauth.get_password
 def get_password(username):
-    if username == 'dashboard':
-        return 'dashboard'
+    if username == cfg['dashuser']:
+        return cfg['dashpass']
     return None
  
 @auth.error_handler
