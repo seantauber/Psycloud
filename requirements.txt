@@ -4,5 +4,9 @@
 # in `lib/` subdirectory.
 #
 # Note: The `lib` directory is added to `sys.path` by `appengine_config.py`.
+
 Flask==0.10
 flask-httpauth
+
+# install psycloud_python directly from github
+https://github.com/seantauber/psycloud-python/zipball/master#egg=psycloud_python
