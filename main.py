@@ -325,10 +325,10 @@ def register_participant():
 	try:
 		short_id = client_datastore.register(experiment_id, registration_coupon=registration_coupon)
 		return valid_request('participant_id', short_id)
-	except DuplicateEntryError, e:
-		return bad_request(str(e))
-	except ResourceError, e:
-		return bad_request(str(e))
+	except DuplicateEntryError:
+		abort(409)
+	except ResourceError:
+		abort(410)
 	except Exception, e:
 		raise # this is for debugging purposes
 		return bad_request(str(e))
@@ -647,6 +647,14 @@ def bad_request(e):
 @app.errorhandler(404)
 def page_not_found(e):
     return jsonify( {'status':404, 'message':'Not Found'}), 404
+
+@app.errorhandler(409)
+def duplicate_registration(e):
+    return jsonify( {'status':409, 'message':'Duplicate registraton.'}), 409
+
+@app.errorhandler(410)
+def experiment_full(e):
+    return jsonify( {'status':410, 'message':'Experiment full.'}), 410
 
 @app.errorhandler(500)
 def page_not_found(e):
