@@ -1,6 +1,7 @@
 """`main` is the top level module for the Flask application."""
 
 from experiment_datastore_google import AdminDatastore, ClientDatastore, IteratedClientDatastore
+from custom_exceptions import DuplicateEntryError, ResourceError, DataFormatError
 
 admin_datastore = AdminDatastore()
 client_datastore = ClientDatastore()
@@ -324,8 +325,12 @@ def register_participant():
 	try:
 		short_id = client_datastore.register(experiment_id, registration_coupon=registration_coupon)
 		return valid_request('participant_id', short_id)
+	except DuplicateEntryError, e:
+		return bad_request(str(e))
+	except ResourceError, e:
+		return bad_request(str(e))
 	except Exception, e:
-		raise
+		raise # this is for debugging purposes
 		return bad_request(str(e))
 
 
