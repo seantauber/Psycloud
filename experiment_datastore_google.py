@@ -89,16 +89,15 @@ class AdminDatastore():
 		return experiment_key
 
 
-	def create_experiment_from_data(self, experiment_data_dict):
+	def create_experiment_with_participants(self, experiment_name, participant_list):
 		d = experiment_data_dict
 		experiment = Experiment(
-			experiment_name=d['experiment_name'],
+			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=d['num_participants'])
+			num_participants=len(participant_list)
 		
 		experiment_key = experiment.put()
 
-		participant_list = d['participants']
 		participant_entities = []
 		for p in participant_list:
 			participant_entities.append(
@@ -108,7 +107,7 @@ class AdminDatastore():
 				conf_code=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
 				participant_index=p['participant_index'],
 				current_stimulus=0,
-				max_number_stimuli=p['stimuli_count'],
+				max_number_stimuli=len(p['stimuli']),
 				status='AVAILABLE'))
 			
 		participant_keys = ndb.put_multi(participant_entities)

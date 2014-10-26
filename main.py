@@ -26,18 +26,19 @@ dashauth = HTTPBasicAuth()
 #######################################################################################
 #######################################################################################
 
-# Upload a Json file that contains the complete experiment with participants and stimuli
-@app.route('/psycloud/admin/api/experiments/upload_all_data',
-	methods=['POST'])
-@auth.login_required
-def upload_experiment_data():
-	data = request.get_json()
-	try:
-		experiment_key = admin_datastore.create_experiment_from_data(data)
-		return valid_request('experiment_id', experiment_key.urlsafe())
-	except Exception, e:
-		raise
-		return bad_request(str(e))
+# # Upload a Json file that contains the complete experiment with participants and stimuli
+# @app.route('/psycloud/admin/api/experiments/upload_all_data',
+# 	methods=['POST'])
+# @auth.login_required
+# def upload_experiment_data():
+# 	data = request.get_json()
+# 	try:
+# 		experiment_key = admin_datastore.create_experiment_from_data(data)
+# 		return valid_request('experiment_id', experiment_key.urlsafe())
+# 	except Exception, e:
+# 		raise
+# 		return bad_request(str(e))
+
 
 # Delete an experiment and all of its data
 @app.route('/psycloud/admin/api/experiments/<experiment_id>',
@@ -95,18 +96,33 @@ def create_experiment():
 
 	if 'experiment_type' in data:
 		if data['experiment_type'] == 'iterated':
+			# This is an iterated experiment
 			return create_iterated_experiment(data)
 
 	experiment_name = data['experiment_name']
-	num_participants = data['num_participants']
-	max_number_stimuli = data['max_number_stimuli']
+
 	try:
-		experiment_key = admin_datastore.create_experiment(experiment_name,
-			num_participants, max_number_stimuli)
-		return valid_request('experiment_id', experiment_key.urlsafe())
+		if 'participants' in data:
+			# the data contains a participant list
+			participant_list = data['participants']
+
+			experiment_key = admin_datastore.create_experiment_with_participants(experiment_name, participant_list)
+
+		else:
+			# the data does not contain a participant list
+			# Creating an empty experiment where participants have no stimuli
+			num_participants = data['num_participants']
+			max_number_stimuli = data['max_number_stimuli']
+
+			experiment_key = admin_datastore.create_experiment(experiment_name,
+				num_participants, max_number_stimuli)
+
 	except Exception, e:
 		raise
 		return bad_request(str(e))
+
+	else:
+		return valid_request('experiment_id', experiment_key.urlsafe())
 
 
 # Retrieve a list of experiments
