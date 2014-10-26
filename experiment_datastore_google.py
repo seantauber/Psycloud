@@ -90,11 +90,11 @@ class AdminDatastore():
 
 
 	def create_experiment_with_participants(self, experiment_name, participant_list):
-		d = experiment_data_dict
+
 		experiment = Experiment(
 			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=len(participant_list)
+			num_participants=len(participant_list))
 		
 		experiment_key = experiment.put()
 
