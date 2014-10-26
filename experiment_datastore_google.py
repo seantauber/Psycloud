@@ -80,7 +80,8 @@ class AdminDatastore():
 		experiment = Experiment(
 			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=num_participants)
+			num_participants=num_participants,
+			experiment_type='standard')
 
 		experiment_key = experiment.put()
 
@@ -94,7 +95,8 @@ class AdminDatastore():
 		experiment = Experiment(
 			experiment_name=experiment_name,
 			short_id=urlsafe_b64encode(str(uuid4()))[:self.SHORT_CODE_LENGTH],
-			num_participants=len(participant_list))
+			num_participants=len(participant_list),
+			experiment_type='standard')
 		
 		experiment_key = experiment.put()
 
