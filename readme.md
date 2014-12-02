@@ -64,7 +64,10 @@ You can either use the Google AppEngine launcher program, or the command line. T
 ```
 appcfg.py update .
 ```
-If you are outside of the psycloud directory replace the `.` with the path to the psycloud folder.
+If you are outside of the psycloud directory replace the `.` with the path to the psycloud folder:
+```
+appcfg.py update psycloud-master
+```
 
 ####Go to the experiment dashboard
 Once your server has launched, you can view the experiment dashboard at http://my-psycloud-server.appspot.com/psycloud/admin/dashboard
