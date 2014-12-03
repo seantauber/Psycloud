@@ -181,7 +181,7 @@ You can host multiple experiments on the server at the same time. You can have m
 
 ####Setting up experiment types
 
-You can setup an experiment type by placing the front-end resources in specific folders on the psycloud server. Let's say your experiment type is called *my_exp_type*. First create a new subfolder called my_exp_type in the existing folder ../templates/
+You can setup an experiment type by placing the front-end resources in specific folders on the psycloud server. Let's say your experiment type is called *my_exp_type*. First create a new subfolder called my_exp_type in the existing folder ./templates/
 
 You will notice that there are already some existing types in this folder, *demo_exp_type_1* and *demo_exp_type_2*.
 
@@ -258,6 +258,21 @@ Here is what happens when we navigate to this Url in a browser, and the *index.h
 </html>
 ```
 
+A number of useful JavaScript variables have been automatically defined in the *index.html* file. The most important is the creation of the *participant* JavaScript client which you will use to interact with the psycloud server (details on using the JS client are in Part 5).
+
+The other important variables are expJsDir (the relative path to the JS code for your experiment) and expResourceDir (the relative path to other resources for your experiment such as images, html, etc.)
+
+In your psycloud server directory, you will need to go to ./static/experiments/ and create a new subfolder for your experiment type. You will find that there are already folders for the demo experiment types. Each of these experiment type folders then contain additional subfolders for JavaScript and other resources.
+
+To summarize, in the case of an experiment of type *demo_exp_type_1*, the main Html for the front end (with template code) goes in the following path on psycloud server:
+```
+templates/experiments/demo_exp_type_1/index.html
+``` 
+Your custom JavaScript code for the experiment front end, and also additional resources such as stimuli images, etc would go in the following paths on psycloud server:
+```
+static/experiments/demo_exp_type_1/js/
+static/experiments/demo_exp_type2/resources/
+```
 
 
 ###Part 5: Using PsycloudJS JavaScript client
