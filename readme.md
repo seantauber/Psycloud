@@ -286,37 +286,37 @@ appcfg.py update /local/path/to/psycloud/server/
 
 While creating the custom Html and JavaScript for your experiment front-end, you can use the *participant* object -- which is the psycloud JavaScript client -- that was created in the main *index.html* template. This section outlines the basic functionality of this object.
 
-**participant.register**(coupon)
+**participant.register**(*coupon*)
 
 **participant.get_stimuli**()
 
-**participant.save_stimuli**(stimuli)
+**participant.save_stimuli**(*stimuli*)
 
-**participant.get_stimulus**(stimulusIndex)
+**participant.get_stimulus**(*stimulusIndex*)
 
-**participant.save_stimulus**(stimulusIndex, stimulus)
+**participant.save_stimulus**(*stimulusIndex*, *stimulus*)
 
 **participant.get_responses**()
 
-**participant.save_responses**(responses)
+**participant.save_responses**(*responses*)
 
-**participant.get_response**(stimulusIndex)
+**participant.get_response**(*stimulusIndex*)
 
-**participant.save_response**(stimulusIndex, response)
+**participant.save_response**(*stimulusIndex*, *response*)
 
 **participant.get_current_stimulus**()
 
-**participant.set_current_stimulus**(stimulusIndex)
+**participant.set_current_stimulus**(*stimulusIndex*)
 
 **participant.get_max_stimulus_count**()
 
 **participant.get_status**()
 
-**participant.set_status**(status)
+**participant.set_status**(*status*)
 
 **participant.get_details**()
 
-**participant.set_details**(details)
+**participant.set_details**(*details*)
 
 **participant.get_confirmation_code**()
 
