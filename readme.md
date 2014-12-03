@@ -284,6 +284,8 @@ appcfg.py update /local/path/to/psycloud/server/
 
 ###Part 5: Using PsycloudJS JavaScript client
 
+While creating the custom Html and JavaScript for your experiment front-end, you can use the *participant* object -- which is the psycloud JavaScript client -- that was created in the main *index.html* template. This section outlines the basic functionality of this object. 
+
 
 
 ###Part 6: Downloading Experiment Data
