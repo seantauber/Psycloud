@@ -85,6 +85,12 @@ You can either clone or download the python client to a local repository from ht
 pip install https://github.com/seantauber/psycloud-python/zipball/master#egg=psycloud_python
 ```
 
+**Note:** The psycloud-python client has dependencies on the following packages: *requests*, *numpy*, and *pandas*. You will need to ensure these packages are installed in your python distribution. All oif these packages are pre-configured in the highly recommended [Anaconda Python Distribution](https://store.continuum.io/cshop/anaconda/).
+
+
+####Creating a new experiment without predefined stimuli
+
+
 
 ###Part 3: Downloading Experiment Data
 
