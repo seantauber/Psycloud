@@ -74,7 +74,7 @@ Once your server has launched, you can view the experiment dashboard at http://m
 
 
 
-###Part 2: Creating and Managing Experiments
+###Part 2: Creating Experiments
 
 ####Installing psycloud-python client
 
@@ -146,15 +146,33 @@ admin_client = PsycloudAdminClient(base_url, username, password)
 # Create a new experiment
 
 experiment_name = "demo_exp_with_stimuli"
-json_config_file = "seeing-stimset.json"
+json_config_filename = "seeing-stimset.json"
 
-admin_client.create_experiment(experiment_name, json_file=json_config_file)
+admin_client.create_experiment(experiment_name, json_file=json_config_filename)
 ```
 Just like in the previous example, an experiment id will be returned by the server if everything goes well.
 
 
-###Part 3: Managing Experiments on the Server
+###Part 3: Managing Experiments
 
+The python admin client allows you to list and delete existing experiments, as well as getting information about participants. The web dashboard for your server -- which is found at http://my-psycloud-server.appspot.com/psycloud/admin/dashboard -- provides a convenient way to see a list of your existing experiments, including participants who are ACTIVE, AVAILABLE, COMPLETED, etc. The Dashboard also allows you to inspect individual participant data and download all the data for completed participants. You can do all of these things and more using the python client, but I will only cover listing and deleting experiments with the python client because deletion is not currently possible using the dashboard.
+
+
+####Listing experiments
+You can get a list of all existing experiments using either the web dashboard, or with the following python command:
+```python
+admin_client.get_experiment_list()
+```
+Each experiment as an *id* which is used to identify the experiment internally for administrative purposes, and a *short_id* which is used as a public reference in the url that participants will use to access the experiment over the web (more on this later). 
+
+
+####Deleting experiments
+You can easily delete and experiment using its long internal *id*:
+```python
+exp_id = 'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA'
+admin_client.delete_experiment(exp_id)
+```
+The above code will delete all everything associated with the experiment including all participants and data.
 
 
 ###Part 4: Setup Experiment Front-End with Psycloud Server
