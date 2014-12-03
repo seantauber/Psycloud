@@ -177,6 +177,73 @@ The above code will delete everything associated with the experiment including a
 
 ###Part 4: Setup Experiment Front-End with Psycloud Server
 
+You can host multiple experiments on the server at the same time. You can have multiple *types* of experiments, where each type has a particular user interface and front-end resources (html, JavaScript, images, etc). You can also have multiple *instances* of each type of experiment. Each instance of the same type would use the same user interface but would have a separate database on the server. This is useful if you need to run the same experiment multiple times with different participants.
+
+####Setting up experiment types
+
+You can setup an experiment type by placing the front-end resources in specific folders on the psycloud server. Let's say your experiment type is called *my_exp_type*. First create a new subfolder called my_exp_type in the existing folder ../templates/
+
+You will notice that there are already some existing types in this folder, *demo_exp_type_1* and *demo_exp_type_2*.
+
+The main html landing page for your experiment should be placed in the new folder you just created, and should be called *index.html*. This html file needs to have some special templating code (the code between double curly brackets {{ }}) that the server will be automatically rendered by the server at runtime. You should start by copying the *index.html* file from one of the demo types and leave the template code in place. Below is an example of the basic template file for *demo_exp_type_1*.
+
+```html
+<html>
+	<head>
+		<title>Psycloud JavaScript Client Demo</title>
+	</head>
+	<body>
+
+		<script>
+			var expId = "{{ expId }}";
+			var expKind = "{{ expKind }}";
+
+			var expJsDir = "{{ url_for('.static', filename='experiments/'+expKind+'/js/') }}"
+			var expResourceDir = "{{ url_for('.static', filename='experiments/'+expKind+'/resources/') }}"
+		</script>
+
+		<!-- jQuery -->
+		<script src="{{url_for('.static', filename='js/jquery.min.js')}}"></script>
+		
+		<!-- PsycloudJS -->
+		<script src="{{url_for('.static', filename='js/PsycloudJS/psycloud.js')}}"></script>
+
+		<script>
+		 	participant = new StandardParticipant(expId, "../../");
+		</script>
+	</body>
+</html>
+```
+
+And here is what happens to the above code when it is rendered by the server:
+```html
+<html>
+	<head>
+		<title>Psycloud JavaScript Client Demo</title>
+	</head>
+	<body>
+
+		<script>
+			var expId = "NjNhOGUwMzgtZWRk";
+			var expKind = "demo_exp_type_1";
+
+			var expJsDir = "/experiments/demo_exp_type_1/js/"
+			var expResourceDir = "/experiments/demo_exp_type_1/resources/"
+		</script>
+
+		<!-- jQuery -->
+		<script src="/js/jquery.min.js"></script>
+		
+		<!-- PsycloudJS -->
+		<script src="/js/PsycloudJS/psycloud.js"></script>
+
+		<script>
+		 	participant = new StandardParticipant(expId, "../../");
+		</script>
+	</body>
+</html>
+```
+
 
 
 ###Part 5: Using PsycloudJS JavaScript client
