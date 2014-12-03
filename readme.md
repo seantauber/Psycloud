@@ -273,6 +273,7 @@ Your custom JavaScript code for the experiment front end, and also additional re
 static/experiments/demo_exp_type_1/js/
 static/experiments/demo_exp_type2/resources/
 ```
+You can reference the JavaScript files and resources from within the main *index.html* file using the relative path variables that were created for you: *expJsDir* and *expResourceDir*.
 
 
 ###Part 5: Using PsycloudJS JavaScript client
