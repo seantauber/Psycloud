@@ -124,14 +124,14 @@ If you enter the last line in a python shell, and all goes well, a unique experi
 In some cases you may want to create an experiment in which all of the participants and stimuli are preset. When new participants begin your experiment, they will be assigned to the next available preset participant and the preset stimuli can simply be loaded directly from the server.
 
 In order to create an experiment with preset participant and stimuli, you must create an experiment configuration file containing all of the participant and stimulus data. This file should be in JSON format. The details of how to format this file are provided in a later section of this readme. The following sample config files are provided in the [psycloud_python github repo](https://github.com/seantauber/psycloud-python/tree/master/sample_data)
-'''
+```
 seeing-stimset.json
 psychic-stimset.json
 mammals-stimset.json
-'''
+```
 
 Here is an example of how to use the python admin client to create a new experiment using the *seeing* config file:
-'''python
+```python
 from psycloud_python.client import PsycloudAdminClient
 
 # Initialize the admin client
@@ -149,7 +149,7 @@ experiment_name = "demo_exp_with_stimuli"
 json_config_file = "seeing-stimset.json"
 
 admin_client.create_experiment(experiment_name, json_file=json_config_file)
-'''
+```
 Just like in the previous example, an experiment id will be returned by the server if everything goes well.
 
 
