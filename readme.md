@@ -66,7 +66,7 @@ appcfg.py update .
 ```
 If you are outside of the psycloud directory replace the `.` with the path to the psycloud folder:
 ```
-appcfg.py update psycloud-master
+appcfg.py update /local/path/to/psycloud/server/
 ```
 
 ####Go to the experiment dashboard
@@ -274,6 +274,12 @@ static/experiments/demo_exp_type_1/js/
 static/experiments/demo_exp_type2/resources/
 ```
 You can reference your JavaScript files and resources from within the main *index.html* file using the relative path variables that were created for you: *expJsDir* and *expResourceDir*.
+
+
+**Note:** Once you have added or modified folders or files in the templates/ or static/ folders you will need to push the updates to AppEngine:
+```
+appcfg.py update /local/path/to/psycloud/server/
+```
 
 
 ###Part 5: Using PsycloudJS JavaScript client
