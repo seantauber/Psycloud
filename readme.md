@@ -74,7 +74,16 @@ Once your server has launched, you can view the experiment dashboard at http://m
 
 
 
-###Part 2: Uploading and Managing Experiments
+###Part 2: Creating and Managing Experiments
+
+####Installing psycloud-python client
+
+The psycloud-python client is required in order to remotely administer the experiment server from your local machine. Some administrative functions -- such as viewing active experiments, participants, and downloading data -- are also available through the web-based admin dashboard. Creating new experiments and uploading stimuli are currently only possible through the python client.
+
+You can either clone or download the python client to a local repository from https://github.com/seantauber/psycloud-python or you can install it as a package in your local python distribution using a package manager such as pip:
+```
+pip install https://github.com/seantauber/psycloud-python/zipball/master#egg=psycloud_python
+```
 
 
 ###Part 3: Downloading Experiment Data
