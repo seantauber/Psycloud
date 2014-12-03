@@ -5,7 +5,11 @@
 	<body>
 
 		<script>
-			var expId = '{{ expId }}';
+			var expId = "{{ expId }}";
+			var expKind = "{{ expKind }}";
+
+			var expJsDir = "{{ url_for('.static', filename='experiments/'+expKind+'/js/') }}"
+			var expResourceDir = "{{ url_for('.static', filename='experiments/'+expKind+'/resources/') }}"
 		</script>
 
 		<!-- jQuery -->
