@@ -185,3 +185,7 @@ The above code will delete everything associated with the experiment including a
 
 ###Part 6: Downloading Experiment Data
 
+
+
+###Appendix A: Formating the Experiment Configuration JSON File
+
