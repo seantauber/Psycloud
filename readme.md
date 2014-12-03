@@ -88,9 +88,12 @@ pip install https://github.com/seantauber/psycloud-python/zipball/master#egg=psy
 **Note:** The psycloud-python client has dependencies on the following packages: *requests*, *numpy*, and *pandas*. You will need to ensure these packages are installed in your python distribution. All of these packages are pre-configured in the highly recommended [Anaconda Python Distribution](https://store.continuum.io/cshop/anaconda/).
 
 
+In the next section I will demonstrate how the psycloud python client can be used to create new experiments on the server. A later section will provide more detail about how the python client can be used to administer your experiment server from a python shell on your local machine.
+
+
 ####Creating a new experiment *without* pre-allocated stimuli
 
-You can create an experiment in which you create and save the stimuli for each participant at runtime using the JavaScript client. However, you are required to specify the maximum number of participants and the maximum number of stimuli per participant. 
+You can create an experiment in which you create and save the stimuli for each participant at runtime using the JavaScript client. However, you are required to specify the maximum number of participants and the maximum number of stimuli per participant. The following python script creates a new experiment.
 
 ```python
 from psycloud_python.client import PsycloudAdminClient
@@ -113,12 +116,54 @@ max_number_stimuli = 100
 admin_client.create_experiment(experiment_name, num_participants, max_num_stimuli)
 ```
 
+If you enter the last line in a python shell, and all goes well, a unique experiment id will be returned by the server indicating that the experiment creation was successful.
+
 
 ####Creating a new experiment *with* pre-allocated stimuli
 
-```python
-```
+In some cases you may want to create an experiment in which all of the participants and stimuli are preset. When new participants begin your experiment, they will be assigned to the next available preset participant and the preset stimuli can simply be loaded directly from the server.
+
+In order to create an experiment with preset participant and stimuli, you must create an experiment configuration file containing all of the participant and stimulus data. This file should be in JSON format. The details of how to format this file are provided in a later section of this readme. The following sample config files are provided in the [psycloud_python github repo](https://github.com/seantauber/psycloud-python/tree/master/sample_data)
+'''
+seeing-stimset.json
+psychic-stimset.json
+mammals-stimset.json
+'''
+
+Here is an example of how to use the python admin client to create a new experiment using the *seeing* config file:
+'''python
+from psycloud_python.client import PsycloudAdminClient
+
+# Initialize the admin client
+
+base_url="http://my-psycloud-server.appspot.com"
+username="admin"
+password="defaultadminpassword"
+
+admin_client = PsycloudAdminClient(base_url, username, password)
 
 
-###Part 3: Downloading Experiment Data
+# Create a new experiment
+
+experiment_name = "demo_exp_with_stimuli"
+json_config_file = "seeing-stimset.json"
+
+admin_client.create_experiment(experiment_name, json_file=json_config_file)
+'''
+Just like in the previous example, an experiment id will be returned by the server if everything goes well.
+
+
+###Part 3: Managing Experiments on the Server
+
+
+
+###Part 4: Setup Experiment Front-End with Psycloud Server
+
+
+
+###Part 5: Using PsycloudJS JavaScript client
+
+
+
+###Part 6: Downloading Experiment Data
 
