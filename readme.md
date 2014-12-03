@@ -85,11 +85,39 @@ You can either clone or download the python client to a local repository from ht
 pip install https://github.com/seantauber/psycloud-python/zipball/master#egg=psycloud_python
 ```
 
-**Note:** The psycloud-python client has dependencies on the following packages: *requests*, *numpy*, and *pandas*. You will need to ensure these packages are installed in your python distribution. All oif these packages are pre-configured in the highly recommended [Anaconda Python Distribution](https://store.continuum.io/cshop/anaconda/).
+**Note:** The psycloud-python client has dependencies on the following packages: *requests*, *numpy*, and *pandas*. You will need to ensure these packages are installed in your python distribution. All of these packages are pre-configured in the highly recommended [Anaconda Python Distribution](https://store.continuum.io/cshop/anaconda/).
 
 
-####Creating a new experiment without predefined stimuli
+####Creating a new experiment *without* pre-allocated stimuli
 
+You can create an experiment in which you create and save the stimuli for each participant at runtime using the JavaScript client. However, you are required to specify the maximum number of participants and the maximum number of stimuli per participant. 
+
+```python
+from psycloud_python import PsycloudAdminClient
+
+# Initialize the admin client
+
+base_url="http://my-psycloud-server.appspot.com"
+username="admin"
+password="defaultadminpassword"
+
+admin_client = PsycloudAdminClient(base_url, username, password)
+
+
+# Create a new experiment
+
+experiment_name = "demo_exp_without_stimuli"
+num_participants = 200
+max_number_stimuli = 100
+
+admin_client.create_experiment(experiment_name, num_participants, max_num_stimuli)
+```
+
+
+####Creating a new experiment *with* pre-allocated stimuli
+
+```python
+```
 
 
 ###Part 3: Downloading Experiment Data
