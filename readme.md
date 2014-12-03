@@ -93,7 +93,7 @@ pip install https://github.com/seantauber/psycloud-python/zipball/master#egg=psy
 You can create an experiment in which you create and save the stimuli for each participant at runtime using the JavaScript client. However, you are required to specify the maximum number of participants and the maximum number of stimuli per participant. 
 
 ```python
-from psycloud_python import PsycloudAdminClient
+from psycloud_python.client import PsycloudAdminClient
 
 # Initialize the admin client
 
