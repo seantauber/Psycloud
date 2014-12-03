@@ -163,16 +163,16 @@ You can get a list of all existing experiments using either the web dashboard, o
 ```python
 admin_client.get_experiment_list()
 ```
-Each experiment as an *id* which is used to identify the experiment internally for administrative purposes, and a *short_id* which is used as a public reference in the url that participants will use to access the experiment over the web (more on this later). 
+Each experiment has an *id* which is used to identify the experiment internally for administrative purposes, and a *short_id* which is used as a public reference in the url that participants will use to access the experiment over the web (more on this later). 
 
 
 ####Deleting experiments
-You can easily delete and experiment using its long internal *id*:
+You can easily delete an experiment using its long internal *id*:
 ```python
 exp_id = 'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA'
 admin_client.delete_experiment(exp_id)
 ```
-The above code will delete all everything associated with the experiment including all participants and data.
+The above code will delete everything associated with the experiment including all participants and data.
 
 
 ###Part 4: Setup Experiment Front-End with Psycloud Server
