@@ -216,16 +216,18 @@ The main html landing page for your experiment should be placed in the new folde
 ```
 
 Let's assume that we previously created a new experiment as described in Part 2, and that this experiment will be of type *demo_exp_type_1*. The Url for this experiment -- **this is the link you will give to participants** -- depends on both the experiment type and the experiment *short_id*:
-
+```
 http://my-psycloud-server.appspot.com/experiment/<experiment_type>/<experiment_short_id>
-
+```
 We can find the experiment short_id either by listing the experiments using the python client, or using the web dashboard. In our example, the *short_id* is:
 ```python
 short_id = "NjNhOGUwMzgtZWRk"
 ```
 and so the Url for the experiment is:
 
+```
 http://my-psycloud-server.appspot.com/experiment/demo_exp_type_1/NjNhOGUwMzgtZWRk
+```
 
 Here is what happens when we navigate to this Url in a browser, and the *index.html* template code is rendered by the server:
 ```html
