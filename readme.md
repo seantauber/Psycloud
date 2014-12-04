@@ -322,7 +322,7 @@ While creating the custom Html and JavaScript for your experiment front-end, you
 
 
 
-###Part 7: Quick Tutorial
+#### A Quick JavaScript Client Demo
 This quick tutorial demonstrates the creation of a new experiment with preallocated participants using JSON config file. It then shows how to use the Psycloud JavaScript client to interact with the server.
 
 First we create a new exeriment, *myexperiment*, and then get a list of all the experiments in order to find the *short_id*. The experiment is created using the *seeing-stimset.json* configuration file that can be found [here](https://github.com/seantauber/psycloud-python/tree/master/sample_data) in the psycloud-python repository.
