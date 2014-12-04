@@ -322,6 +322,28 @@ While creating the custom Html and JavaScript for your experiment front-end, you
 
 
 
+###Part 7: Quick Tutorial
+This quick tutorial demonstrates the creation of a new experiment using a pre
+
+```python
+In [16]: admin_client.create_experiment_with_participants('demo-exp-with-with-stimuli', json_file="seeing-stimset.json")
+Out[16]: u'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA3pCBCgw'
+
+In [17]: admin_client.get_experiment_list()
+Out[17]: 
+[{u'creation_time': u'Thu, 04 Dec 2014 01:49:52 GMT',
+  u'experiment_name': u'demo-exp-with-with-stimuli',
+  u'experiment_type': u'standard',
+  u'id': u'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA3pCBCgw',
+  u'num_participants': 100,
+  u'short_id': u'OGZjM2FkNjQtM2U2'},
+ {u'creation_time': u'Wed, 03 Dec 2014 04:05:08 GMT',
+  u'experiment_name': u'demo_seeing_exp_a',
+  u'experiment_type': u'standard',
+  u'id': u'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA-O2dCgw',
+  u'num_participants': 200,
+  u'short_id': u'NjNhOGUwMzgtZWRk'}]
+```
 
 
 ###Part 6: Downloading Experiment Data
