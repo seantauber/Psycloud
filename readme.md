@@ -429,6 +429,24 @@ The webpage will be blank, but you can open the JavaScript console in order to t
 
 ###Part 6: Downloading Experiment Data
 
+The easiest way to download data for all completed participants is through the web admin dashboard. Login to the dashboard and then find the row for the experiment for which you would like to download data. Click the number indicating the number of participants in the "Completed" column. This will bring up a list of completed participants. Click the link for "Download Data" and save as a ```.json``` file.
+
+####Reformating the data
+The JSON file containing your data is in an inconvenient format for data analysis. The psycloud python client comes with a utility for reformatting these files. 
+
+The [pyscloud_python repo](https://github.com/seantauber/psycloud-python/tree/master/psycloud_python) has a utility called ```expadmin.py```. Assuming your data is in a file called ```mydata.json```, you can convert it using the command line like this:
+```
+python expadmin.py json_results_to_csv mydata.json mydata.csv 
+```
+
+Alternatively, you can use the python shell:
+```python
+from psycloud_python import expadmin
+
+expadmin.json_results_to_csv(['mydata.json', 'mydata.csv'])
+```
+
+If you would like to try this out on some preexisting data, there is a demo data file [here](https://github.com/seantauber/psycloud-python/blob/master/sample_data/psychic-results.json).
 
 
 ###Appendix A: Formating the Experiment Configuration JSON File
