@@ -433,3 +433,45 @@ The webpage will be blank, but you can open the JavaScript console in order to t
 
 ###Appendix A: Formating the Experiment Configuration JSON File
 
+The JSON file used for preallocating participants and stimuli consists of a series of nested key-value dictionaries. The top level dictionary has the following format:
+```json
+{
+'experiment_name': experiment_name,
+'num_participants': number_of_participants,
+'participants': list_of_participants
+}
+```
+Each item in the list_of_participants is a dictionary with the format:
+```json
+{
+'participant_index': participant_index,
+'stimuli_count': number_stimuli,
+'stimuli': list_of_stimuli
+}
+```
+Each item in the list_of_stimuli is a dictionary with the format:
+```json
+{
+'stimulus_index': stimulus_index,
+'stimulus_type': stimulus_type_label,
+'variables': dictionary_of_variables
+}
+```
+Each stimulus_type can correspond to an html template or javascript function that renders that stimuli. This allows for a mixture of stimulus types within an experiment and provides a great deal of flexibility when implementing new experiments.
+
+Each item in the dictionary_of_variables is a key-value pair, where each key is the name of a variable. The value for each key corresponds to the variable's value and can be scalar or a list. There can be any number of key value pairs, each representing a variable. In the example below there are three variables, X, Y and responseTime, where Y is a vector and X,Z are scalar values. The variables can be anything, it's up to you to handle them properly in your front-end experiment code.
+```python
+{
+'Y': [1,2,3,4,5,'six'],
+'X': 'scalarvalue',
+'responseTime': 200
+}
+```
+
+The following sample config files are provided in the [psycloud_python github repo](https://github.com/seantauber/psycloud-python/tree/master/sample_data)
+```
+seeing-stimset.json
+psychic-stimset.json
+mammals-stimset.json
+```
+
