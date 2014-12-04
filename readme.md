@@ -361,7 +361,7 @@ The webpage will be blank, but you can open the JavaScript console in order to t
 < StandardParticipant {expId: "OGZjM2FkNjQtM2U2", baseUrl: "../../", registered: false, endpoint: Object, urlFor: function…}
 
 > participant.register('fake-turk-id-000');
-< psycloud.js:68 Paticipant registered.
+< Paticipant registered.
 < undefined
 
 > current_stim = participant.get_current_stimulus();
