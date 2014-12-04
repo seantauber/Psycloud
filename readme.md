@@ -434,7 +434,7 @@ The webpage will be blank, but you can open the JavaScript console in order to t
 ###Appendix A: Formating the Experiment Configuration JSON File
 
 The JSON file used for preallocating participants and stimuli consists of a series of nested key-value dictionaries. The top level dictionary has the following format:
-```json
+```python
 {
 'experiment_name': experiment_name,
 'num_participants': number_of_participants,
@@ -442,7 +442,7 @@ The JSON file used for preallocating participants and stimuli consists of a seri
 }
 ```
 Each item in the list_of_participants is a dictionary with the format:
-```json
+```python
 {
 'participant_index': participant_index,
 'stimuli_count': number_stimuli,
@@ -450,7 +450,7 @@ Each item in the list_of_participants is a dictionary with the format:
 }
 ```
 Each item in the list_of_stimuli is a dictionary with the format:
-```json
+```python
 {
 'stimulus_index': stimulus_index,
 'stimulus_type': stimulus_type_label,
