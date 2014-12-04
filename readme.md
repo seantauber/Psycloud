@@ -323,28 +323,109 @@ While creating the custom Html and JavaScript for your experiment front-end, you
 
 
 ###Part 7: Quick Tutorial
-This quick tutorial demonstrates the creation of a new experiment using a pre
+This quick tutorial demonstrates the creation of a new experiment with preallocated participants using JSON config file. It then shows how to use the Psycloud JavaScript client to interact with the server.
+
+First we create a new exeriment, *myexperiment*, and then get a list of all the experiments in order to find the *short_id*. The experiment is created using the *seeing-stimset.json* configuration file that can be found [here](https://github.com/seantauber/psycloud-python/tree/master/sample_data) in the psycloud-python repository.
 
 ```python
-In [16]: admin_client.create_experiment_with_participants('demo-exp-with-with-stimuli', json_file="seeing-stimset.json")
+In [16]: admin_client.create_experiment_with_participants('myexperiment', json_file="seeing-stimset.json")
 Out[16]: u'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA3pCBCgw'
 
 In [17]: admin_client.get_experiment_list()
 Out[17]: 
 [{u'creation_time': u'Thu, 04 Dec 2014 01:49:52 GMT',
-  u'experiment_name': u'demo-exp-with-with-stimuli',
+  u'experiment_name': u'myexperiment',
   u'experiment_type': u'standard',
   u'id': u'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA3pCBCgw',
   u'num_participants': 100,
   u'short_id': u'OGZjM2FkNjQtM2U2'},
  {u'creation_time': u'Wed, 03 Dec 2014 04:05:08 GMT',
-  u'experiment_name': u'demo_seeing_exp_a',
+  u'experiment_name': u'demo-exp-without-stimuli',
   u'experiment_type': u'standard',
   u'id': u'ag5zfnBzeWNsb3VkZGVtb3IXCxIKRXhwZXJpbWVudBiAgICA-O2dCgw',
   u'num_participants': 200,
   u'short_id': u'NjNhOGUwMzgtZWRk'}]
 ```
 
+We will use the *demo_exp_type_1* type for our experiment, and above you can see that the *short_id* is *'OGZjM2FkNjQtM2U2'*. Therefore, the Url for the experiment is,
+```
+http://my-psycloud-server.appspot.com/experiment/demo_exp_type_1/OGZjM2FkNjQtM2U2
+```
+Replace all of the values in the above Url with your own values, and navigate to this Url in your web browser (Chrome recommended).
+
+The webpage will be blank, but you can open the JavaScript console in order to test out the Psycloud JavaScript client. Below is a JavaScript console session.
+
+```javascript
+
+> participant
+< StandardParticipant {expId: "OGZjM2FkNjQtM2U2", baseUrl: "../../", registered: false, endpoint: Object, urlFor: function…}
+
+> participant.register('fake-turk-id-000');
+< psycloud.js:68 Paticipant registered.
+< undefined
+
+> current_stim = participant.get_current_stimulus();
+< 0
+
+> stim = participant.get_stimulus(current_stim);
+< Object {creation_time: "Thu, 04 Dec 2014 01:49:55 GMT", stimulus_index: 0, stimulus_type: "circle_star_scene", variables: Object}
+
+> stim.variables
+< Object {T: 0, X: 232}
+
+> response = {variables:{resp:0, reactionTime:200}};
+< Object {variables: Object}
+
+> participant.save_response(current_stim, response);
+< Object {creation_time: "Thu, 04 Dec 2014 02:33:19 GMT", stimulus_index: 0, variables: Object}
+
+> saved_resp = participant.get_response(current_stim);
+< Object {creation_time: "Thu, 04 Dec 2014 02:33:19 GMT", stimulus_index: 0, variables: Object}
+
+> saved_resp.variables
+< Object {reactionTime: 200, resp: 0}
+
+> current_stim = participant.set_current_stimulus(current_stim+1);
+< 1
+
+> stim = participant.get_stimulus(current_stim);
+< Object {creation_time: "Thu, 04 Dec 2014 01:49:55 GMT", stimulus_index: 1, stimulus_type: "circle_star_scene", variables: Object}
+
+> stim.variables
+< Object {T: 90, X: 45}
+
+> participant.get_response(1)
+< 500 (Internal Server Error)
+< undefined
+
+> participant.save_response(current_stim, response)
+< Object {creation_time: "Thu, 04 Dec 2014 02:35:42 GMT", stimulus_index: 1, variables: Object}
+
+> num_stim = participant.get_max_stimulus_count();
+< 49
+
+> participant.get_details();
+< null
+
+> participant.set_details({sex:'F', age:30, country:'USA'});
+< Object {age: 30, country: "USA", sex: "F"}
+
+> participant.get_details();
+< Object {age: 30, country: "USA", sex: "F"}
+
+> participant.get_status()
+< "ACTIVE"
+
+> conf_code = participant.get_confirmation_code();
+< "NTdmOWNiMjQtZDlj"
+
+> participant.set_status('COMPLETED');
+< "COMPLETED"
+
+> participant.get_status()
+< "COMPLETED"
+
+```
 
 ###Part 6: Downloading Experiment Data
 
